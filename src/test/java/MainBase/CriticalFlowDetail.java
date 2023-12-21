@@ -47,7 +47,7 @@ public class CriticalFlowDetail extends HelpdeskPageobject {
 
 	JavascriptExecutor js;
 	Robot robot; 
-	ExtentTest testr;  
+	ExtentTest testr;   
   
 	public CriticalFlowDetail(WebDriver driver, String Helpdeskuserid, String helpdeskpassword, String notesname,
 			String notedescrption, String QNameOfCustomer, String qaddress, String qpincode, String Professionalfees,
