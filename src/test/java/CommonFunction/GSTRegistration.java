@@ -118,8 +118,8 @@ public class GSTRegistration {
 
 			try {
 				wait.until(ExpectedConditions.elementToBeClickable(
-						By.xpath("//label[contains(text(),'No, I don�t have a company name')]/parent::div")));
-				driver.findElement(By.xpath("//label[contains(text(),'No, I don�t have a company name')]/parent::div"))
+						By.xpath("(//input[@name='newCompanyName'])[2]")));
+				driver.findElement(By.xpath("(//input[@name='newCompanyName'])[2]"))
 						.click();
 
 				Thread.sleep(2000);
@@ -189,6 +189,10 @@ public class GSTRegistration {
 				driver.findElement(By.xpath("(//input[@type='number'])[3]")).sendKeys("0");
 				driver.findElement(By.xpath("(//input[@type='number'])[4]")).sendKeys("0");
 				driver.findElement(By.xpath("(//input[@type='number'])[5]")).sendKeys("0");
+				driver.findElement(By.xpath("(//input[@type='number'])[6]")).sendKeys("0");
+				driver.findElement(By.xpath("(//input[@type='number'])[7]")).sendKeys("0");
+				
+				
 				Thread.sleep(1500);
 				LoginPageobjects.Next.click();
 			} catch (Exception open) {

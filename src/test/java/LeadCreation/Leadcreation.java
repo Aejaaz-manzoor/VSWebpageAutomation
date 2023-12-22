@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import MainBase.*;
+
 import org.apache.commons.mail.EmailException;
 import org.apache.poi.poifs.property.Parent;
 import org.openqa.selenium.WebDriver;
@@ -33,6 +33,7 @@ import CommonFunction.Driver;
 import CommonFunction.GSTRegistration;
 import CommonFunction.ScreenShot;
 import CommonFunction.SendMailSSLWithAttachment;
+import CommonFunction.slack;
 import PageFactory.HomescreenPageobject;
 import PageFactory.LoginPageobjects;
 import PageFactory.HelpdeskPageobject;
@@ -47,7 +48,7 @@ public class Leadcreation {
 	ExtentSparkReporter htmlReporter;
 	ExtentTest test;
 
-	String[][] data = null; 
+	String[][] data = null;
 
 	@DataProvider(name = "itemsdata")
 	public String[][] loginDataProvider() throws BiffException, IOException {
@@ -78,6 +79,7 @@ public class Leadcreation {
 	public WebDriver driver;
 	public DesiredCapabilities capabilities;
 	public ChromeOptions option;
+	
 
 	@BeforeSuite
 	public void Login() throws InterruptedException, AWTException {
@@ -97,13 +99,14 @@ public class Leadcreation {
 	public void Max() throws InterruptedException, AWTException {
 
 		WebDriverManager.chromedriver().setup();
-		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-		ChromeOptions option = new ChromeOptions();
-		option.addArguments("incognito");
-		option.addArguments("start-maximized");
-		capabilities.setCapability(ChromeOptions.CAPABILITY, option);
-		option.addArguments("--headless");
-		driver = new ChromeDriver(capabilities);
+//		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+//		ChromeOptions option = new ChromeOptions();
+//		option.addArguments("incognito");
+//		option.addArguments("start-maximized");
+//		capabilities.setCapability(ChromeOptions.CAPABILITY, option);
+//		option.addArguments("--headless");
+//		driver = new ChromeDriver(capabilities);
+		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 
 	}
@@ -128,97 +131,97 @@ public class Leadcreation {
 		SimpleDateFormat dateFormat1 = new SimpleDateFormat("MMddyyHHMMSSSS");
 		String Date11 = dateFormat1.format(new Date());
 		Base base = new Base();
-		Robot robot = new Robot();
-		GSTRegistration gstregistration = new GSTRegistration();
+		
+		 GSTRegistration gstregistration = new GSTRegistration();
 
-//		base.BaseQE(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.GstRegistration(driver, Username, Mobilenumber, Date11, extentreport);
-//	Thread.sleep(3000);
-//	base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//	gstregistration.PrivateLimited(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//	Thread.sleep(3000);
-//    base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//    gstregistration.TrademarkRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
-// 	Thread.sleep(3000);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.GstFiling(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.TalkToLawyer(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//	base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.TalkToCA(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		driver.close();
-//		Thread.sleep(3000);
-//		
-//	
-//		driver = new ChromeDriver();
-//		driver.manage().window().maximize();
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.TalkToCS(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		driver.close();
-//		Thread.sleep(3000);
-//		driver = new ChromeDriver();
-//		driver.manage().window().maximize();
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.FSSAI(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		driver.close();
-//		Thread.sleep(3000);
-//		driver = new ChromeDriver();
-//		driver.manage().window().maximize();
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.NGO(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.TrustRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.PFRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.ESIRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.ApplyForNameChange(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.ImportExportCode(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.Section8Company(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.MarriageRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.ChequeBounceNotice(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.SoleProprietorshipRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.ShopandEstablishmentAct(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.LLPPartnershipRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.RespondtoTMObjection(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		Thread.sleep(3000);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.PatentRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.ProvisionalPatentRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.OnepersonCompany(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.PatentSearch(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//	gstregistration.PatnershipFirm(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//		gstregistration.MSMERegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		 base.BaseQE(driver, CrmUsernames, GRCMobileNumber, extentreport);
+	gstregistration.GstRegistration(driver, Username, Mobilenumber, Date11, extentreport);
+	Thread.sleep(3000);
+	base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+	gstregistration.PrivateLimited(driver, CrmUsernames, GRCMobileNumber, extentreport);
+	Thread.sleep(3000);
+    base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+    gstregistration.TrademarkRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
+ 	Thread.sleep(3000);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.GstFiling(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.TalkToLawyer(driver, CrmUsernames, GRCMobileNumber, extentreport);
+	base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.TalkToCA(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		driver.close();
+		Thread.sleep(3000);
+		
+	
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.TalkToCS(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		driver.close();
+		Thread.sleep(3000);
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.FSSAI(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		driver.close();
+		Thread.sleep(3000);
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.NGO(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.TrustRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.PFRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.ESIRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.ApplyForNameChange(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.ImportExportCode(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.Section8Company(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.MarriageRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.ChequeBounceNotice(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.SoleProprietorshipRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.ShopandEstablishmentAct(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.LLPPartnershipRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.RespondtoTMObjection(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		Thread.sleep(3000);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.PatentRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.ProvisionalPatentRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.OnepersonCompany(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.PatentSearch(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+	gstregistration.PatnershipFirm(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		gstregistration.MSMERegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
 
 	}
 
@@ -237,14 +240,16 @@ public class Leadcreation {
 	}
 
 	@AfterSuite
-	public void Mail() throws EmailException {
-	//	 SendMailSSLWithAttachment Mail = new SendMailSSLWithAttachment();
-		
-		//	 Mail.main();
-	        
-		
-		 System.out.println("Test completed1");
-		 driver.quit();
+	public void Mail() throws EmailException, AWTException, InterruptedException, IOException {
+	//	SendMailSSLWithAttachment Mail = new SendMailSSLWithAttachment();
+		//Robot robot = new Robot();
+		//Mail.main();
+		//slack slackmsg = new slack();
+		//slackmsg.slackMessageTest(driver);
+		//robot.keyPress(KeyEvent.VK_ENTER);
+		//robot.keyRelease(KeyEvent.VK_ENTER);
+		//System.out.println("Test completed1");
+		driver.quit();
 	}
 
 }

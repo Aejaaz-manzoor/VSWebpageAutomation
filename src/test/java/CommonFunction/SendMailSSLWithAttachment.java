@@ -1,5 +1,8 @@
 package CommonFunction;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,27 +29,38 @@ import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.MultiPartEmail;
 import org.apache.commons.mail.SimpleEmail;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-public class SendMailSSLWithAttachment{
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class SendMailSSLWithAttachment {
+	public WebDriver driver;
 	static SimpleDateFormat dateFormat = new SimpleDateFormat("MMddyyyy");
-static String Date1 = dateFormat.format(new Date());
+	static String Date1 = dateFormat.format(new Date());
+
 //public static void main(String[] args) throws IOException {
-public void main() throws EmailException{
-	SimpleDateFormat dateFormat = new SimpleDateFormat("MMddyyyy");
-	String Date1 = dateFormat.format(new Date());
+	public void main() throws EmailException {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MMddyyyy");
+		String Date1 = dateFormat.format(new Date());
 
-	
-	 Properties props = new Properties();
+		Properties props = new Properties();
 
-		// this will set host of server- you can change based on your requirement 
+		// this will set host of server- you can change based on your requirement
 		props.put("mail.smtp.host", "sandbox.smtp.mailtrap.io");
-		//props.put("mail.smtp.host", "smtp.gmail.com");
-		// set the port of socket factory 
+		// props.put("mail.smtp.host", "smtp.gmail.com");
+		// set the port of socket factory
 		props.put("mail.smtp.socketFactory.port", "2525");
 
 		// set socket factory
-		props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
+		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 
 		// set the authentication to true
 		props.put("mail.smtp.auth", "true");
@@ -61,13 +75,13 @@ public void main() throws EmailException{
 
 					protected PasswordAuthentication getPasswordAuthentication() {
 
-					return new PasswordAuthentication("544212b5d7fd47","8f2cf98cecbaeb");
+						return new PasswordAuthentication("544212b5d7fd47", "8f2cf98cecbaeb");
 
 					}
 
 				});
 
-		try { 
+		try {
 
 			// Create object of MimeMessage class
 			Message message = new MimeMessage(session);
@@ -76,10 +90,11 @@ public void main() throws EmailException{
 			message.setFrom(new InternetAddress("automation@vakilsearch-emailer.com"));
 
 			// Set the recipient address
-	//message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("sakthi.priyan@vakilsearch.com"));
-         			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("sakthi.priyan@vakilsearch.com,sakthipriyan071297@gmail.com,senthilkumar@vakilsearch.com,kavitha.jagatheeswaran@vakilsearch.com,saravanan.muthu@vakilsearch.com,selvamani@vakilsearch.com,aejaaz.ghouse@vakilsearch.com,naveen.nagalingam@vakilsearch.com,divya.vijayaraghavan@vakilsearch.com"));
+			// message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("sakthi.priyan@vakilsearch.com"));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(
+					"sakthi.priyan@vakilsearch.com,sakthipriyan071297@gmail.com,senthilkumar@vakilsearch.com,kavitha.jagatheeswaran@vakilsearch.com,saravanan.muthu@vakilsearch.com,selvamani@vakilsearch.com,aejaaz.ghouse@vakilsearch.com,naveen.nagalingam@vakilsearch.com,divya.vijayaraghavan@vakilsearch.com"));
 
-                     // Add the subject link
+			// Add the subject link
 			message.setSubject("Onboarding Lead Creation");
 
 			// Create object to add multimedia type content
@@ -90,20 +105,22 @@ public void main() throws EmailException{
 
 			// Create another object to add another content
 			MimeBodyPart messageBodyPart2 = new MimeBodyPart();
-			//"C:\\Users\\admin\\git\\Automation-Critical-Flow\\GRCCriticalflow\\Screenshots"
+			// "C:\\Users\\admin\\git\\Automation-Critical-Flow\\GRCCriticalflow\\Screenshots"
 			// Mention the file which you want to send
-			String filename = "\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\extentreport.html";
-		//	String filename = "C:\\Users\\admin\\git\\Automation-Critical-Flow\\GRCCriticalflow\\Screenshots\\"+Date1+"\\extentreport.html";
+			String filename = "\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1
+					+ "\\extentreport.html";
+			// String filename =
+			// "C:\\Users\\admin\\git\\Automation-Critical-Flow\\GRCCriticalflow\\Screenshots\\"+Date1+"\\extentreport.html";
 			// Create data source and pass the filename
 			DataSource source = new FileDataSource(filename);
-			
+
 			// set the handler
 			messageBodyPart2.setDataHandler(new DataHandler(source));
 
 			// set the file
 			messageBodyPart2.setFileName(filename);
-		
-			//messageBodyPart2.attachFile("C:\\\\Users\\\\admin\\\\git\\\\Automation-Critical-Flow\\\\GRCCriticalflow\\\\Screenshots\\\\\"+Date1+\"\\\\extentreport.html");
+
+			// messageBodyPart2.attachFile("C:\\\\Users\\\\admin\\\\git\\\\Automation-Critical-Flow\\\\GRCCriticalflow\\\\Screenshots\\\\\"+Date1+\"\\\\extentreport.html");
 			// Create object of MimeMultipart class
 			Multipart multipart = new MimeMultipart();
 
@@ -126,8 +143,8 @@ public void main() throws EmailException{
 			throw new RuntimeException(e);
 
 		}
-		
 
 	}
 
+	
 }
