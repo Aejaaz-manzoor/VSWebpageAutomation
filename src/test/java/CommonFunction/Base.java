@@ -45,7 +45,7 @@ public class Base extends HelpdeskPageobject {
 	//	test = extentreport.createTest("Vakilsearch website landing");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 	
-	
+	 
 		try {
 			driver.get("https://vakilsearch.com/");
 		}catch(Exception Excp){

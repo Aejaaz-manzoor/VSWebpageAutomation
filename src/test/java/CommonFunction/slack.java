@@ -58,7 +58,7 @@ String Date1 = dateFormat.format(new Date());
 		driver.findElement(By.xpath("//input[@type='password']")).sendKeys("shakthi_07");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(),'Next')]"))).click();
 		// Add your Slack messaging steps here
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(text(),'Vakilsearch')])[3]")))
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(text(),'7')]//parent::div//parent::div)[1]")))
 				.click();
 		
 		Thread.sleep(5000);
