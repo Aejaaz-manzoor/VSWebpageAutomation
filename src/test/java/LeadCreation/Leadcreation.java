@@ -241,15 +241,24 @@ public class Leadcreation {
 
 	@AfterSuite
 	public void Mail() throws EmailException, AWTException, InterruptedException, IOException {
-	//	SendMailSSLWithAttachment Mail = new SendMailSSLWithAttachment();
-		//Robot robot = new Robot();
-		//Mail.main();
-		//slack slackmsg = new slack();
-		//slackmsg.slackMessageTest(driver);
-		//robot.keyPress(KeyEvent.VK_ENTER);
-		//robot.keyRelease(KeyEvent.VK_ENTER);
-		//System.out.println("Test completed1");
-		driver.quit();
+		 try {
+		        SendMailSSLWithAttachment Mail = new SendMailSSLWithAttachment();
+		        Robot robot = new Robot();
+		        Mail.main();
+
+		        slack slackmsg = new slack();
+		        slackmsg.slackMessageTest(driver);
+
+		        robot.keyPress(KeyEvent.VK_ENTER);
+		        robot.keyRelease(KeyEvent.VK_ENTER);
+		    } catch (Exception e) {
+		        // Handle exceptions appropriately, log them
+		        e.printStackTrace();
+		    } finally {
+		        // Ensure that driver is quit even if there is an exception
+		        if (driver != null) {
+		            driver.quit();
+		        }
 	}
 
-}
+}}

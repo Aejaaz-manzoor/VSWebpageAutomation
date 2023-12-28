@@ -5,7 +5,9 @@
     <classes>
       <class name="CommonFunction.slack">
         <methods>
+          <include name="loginToSlack"/>
           <include name="slackMessageTest"/>
+          <include name="ExtenScreenshot"/>
         </methods>
       </class> <!-- CommonFunction.slack -->
     </classes>
