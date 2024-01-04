@@ -101,7 +101,7 @@ public class slack {
 		channelElement.click();
 		WebElement messageInput = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ql-placeholder']")));
-		messageInput.clear();
+	
 		messageInput.sendKeys(messageInputdata);
 		WebElement uploadButton1 = wait.until(ExpectedConditions
 				.elementToBeClickable(By.xpath("//button[@class='c-button-unstyled c-icon_button c-icon_button--size_small c-wysiwyg_container__button c-wysiwyg_container__button--shortcuts p-shortcuts_menu_trigger_button--composer_ia c-icon_button--default']")));
