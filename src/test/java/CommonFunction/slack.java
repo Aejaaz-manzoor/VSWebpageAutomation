@@ -99,13 +99,12 @@ public class slack {
 				By.xpath("(//span[contains(text(),'automation-testing-reports')])[1]/parent::span/parent::div")));
 	
 		channelElement.click();
+		Thread.sleep(4000);
 		WebElement messageInput = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='ql-placeholder'])[1]")));
 	
-		messageInput.sendKeys(messageInputdata);
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("(//div[@class='ql-editor'])[1]")).click();
-		Thread.sleep(7000);
+		messageInput.click();
+		messageinput(robot, messageInputdata);
 		
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_U);
@@ -166,6 +165,16 @@ Thread.sleep(6000);
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 		Thread.sleep(8000);
+	}
+	private void messageinput(Robot robot, String messageInputdata) throws InterruptedException {
+		for (char c : messageInputdata.toCharArray()) {
+			int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
+			robot.keyPress(keyCode);
+			robot.keyRelease(keyCode);
+			
+		}
+		Thread.sleep(8000);
+		
 	}
 	public void ExtenScreenshot(WebDriver driver,String screenshotLocation ,String extentreportLocation) throws InterruptedException, IOException {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
