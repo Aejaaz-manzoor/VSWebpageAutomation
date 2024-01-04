@@ -248,7 +248,7 @@ public class Leadcreation {
 			String extentreportLocation = "\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\extentreport.html";
 			String messageInputdata = "Onboarding Automation Test Report";
 			
-			
+			 
 			
 			SendMailSSLWithAttachment Mail = new SendMailSSLWithAttachment();
 			Mail.main(extentreportLocation, messageInputdata,Date1);
