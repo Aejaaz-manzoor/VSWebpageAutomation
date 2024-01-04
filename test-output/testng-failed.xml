@@ -3,13 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="CommonFunction.slack">
+      <class name="LeadCreation.Leadcreation">
         <methods>
-          <include name="loginToSlack"/>
-          <include name="slackMessageTest"/>
-          <include name="ExtenScreenshot"/>
+          <include name="close"/>
+          <include name="url"/>
+          <include name="Mail"/>
+          <include name="Login"/>
+          <include name="Max"/>
+          <include name="Report"/>
+          <include name="Customercreation100" invocation-numbers="0"/>
         </methods>
-      </class> <!-- CommonFunction.slack -->
+      </class> <!-- LeadCreation.Leadcreation -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

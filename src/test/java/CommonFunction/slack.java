@@ -24,15 +24,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 public class slack {
-	public WebDriver driver;
-SimpleDateFormat dateFormat = new SimpleDateFormat("MMddyyyy");
-String Date1 = dateFormat.format(new Date());
-	@Test
-	public void slackMessageTest(WebDriver driver) throws AWTException, InterruptedException, IOException {
 	
-		ExtenScreenshot(driver);
+
+	@Test
+	public void slackMessageTest(WebDriver driver,String screenshotLocation,String extentreportLocation,String messageInputdata) throws AWTException, InterruptedException, IOException {
+	
+		ExtenScreenshot(driver,screenshotLocation,extentreportLocation);
 		loginToSlack(driver);
-		sendMessageInSlack(driver);
+		sendMessageInSlack(driver,screenshotLocation,extentreportLocation,messageInputdata);
 		
 		
 	}
@@ -49,7 +48,7 @@ String Date1 = dateFormat.format(new Date());
 		signInWithGoogle.click();
 		// Add login steps here
 	}
-	private void sendMessageInSlack(WebDriver driver) throws InterruptedException, AWTException {
+	private void sendMessageInSlack(WebDriver driver,String screenshotLocation,String extentreportLocation,String messageInputdata) throws InterruptedException, AWTException {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		Robot robot = new Robot();
 		driver.findElement(By.xpath("//input[@type='email']")).sendKeys("sakthi.priyan@vakilsearch.com");
@@ -58,11 +57,33 @@ String Date1 = dateFormat.format(new Date());
 		driver.findElement(By.xpath("//input[@type='password']")).sendKeys("shakthi_07");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(),'Next')]"))).click();
 		// Add your Slack messaging steps here
+		try {
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(text(),'7')]//parent::div//parent::div)[1]")))
+			.click();
+	
+	Thread.sleep(5000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		
+		// Add your Slack messaging steps here
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_R);
+		robot.keyRelease(KeyEvent.VK_R);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_R);
+		robot.keyRelease(KeyEvent.VK_R);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_R);
+		robot.keyRelease(KeyEvent.VK_R);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(8000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(text(),'7')]//parent::div//parent::div)[1]")))
 				.click();
 		
-		Thread.sleep(5000);
-				Set<String> handles = driver.getWindowHandles();
+		Thread.sleep(8000);
+		}				Set<String> handles = driver.getWindowHandles();
         // Switch to the second tab
         for (String handle : handles) {
             driver.switchTo().window(handle);
@@ -76,10 +97,12 @@ String Date1 = dateFormat.format(new Date());
 		
 		WebElement channelElement = wait.until(ExpectedConditions.elementToBeClickable(
 				By.xpath("(//span[contains(text(),'automation-testing-reports')])[1]/parent::span/parent::div")));
+	
 		channelElement.click();
 		WebElement messageInput = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ql-placeholder']")));
-		messageInput.sendKeys("VS Onboarding Test Report");
+		messageInput.clear();
+		messageInput.sendKeys(messageInputdata);
 		WebElement uploadButton1 = wait.until(ExpectedConditions
 				.elementToBeClickable(By.xpath("//button[@class='c-button-unstyled c-icon_button c-icon_button--size_small c-wysiwyg_container__button c-wysiwyg_container__button--shortcuts p-shortcuts_menu_trigger_button--composer_ia c-icon_button--default']")));
 		uploadButton1.click();
@@ -89,66 +112,68 @@ String Date1 = dateFormat.format(new Date());
 		uploadButton.click();
 Thread.sleep(6000);
 		// Add dynamic file path or make it configurable
-		String filePath = "\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1
-						+ "\\ExtentreportScreenshot.png";
+		
 		// Perform file upload actions using Robot class
-		uploadFileWithRobot(robot, filePath);
+		uploadFileWithRobot(robot, screenshotLocation);
 //		WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
 //				"//button[@class='c-button-unstyled c-icon_button c-icon_button--size_small c-wysiwyg_container__button c-wysiwyg_container__button--send c-wysiwyg_container__button--disabled c-button--disabled c-icon_button--default']")));
 //		sendButton.click();
+	
 		
-		uploadButton1.click();
-		
-		uploadButton.click();
-Thread.sleep(6000);
+			Thread.sleep(4000);
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_U);
+			robot.keyRelease(KeyEvent.VK_U);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			Thread.sleep(7000);
+	
+
 		// Add dynamic file path or make it configurable
-		String Extentreport = "\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1
-					+ "\\extentreport.html";
+		
 		// Perform file upload actions using Robot class
-		uploadFileWithRobot1(robot, Extentreport);
+		uploadFileWithRobot1(robot, extentreportLocation);
 		WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
 			"//button[@aria-label='Send now']")));
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 		sendButton.click();
 	}
-	private void uploadFileWithRobot(Robot robot, String filePath) throws InterruptedException {
-		for (char c : filePath.toCharArray()) {
+	private void uploadFileWithRobot(Robot robot, String screenshotLocation) throws InterruptedException {
+		for (char c : screenshotLocation.toCharArray()) {
 			int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
 			robot.keyPress(keyCode);
 			robot.keyRelease(keyCode);
 			
 		}
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 	}
-	private void uploadFileWithRobot1(Robot robot, String Extentreport) throws InterruptedException {
-		for (char c : Extentreport.toCharArray()) {
+	private void uploadFileWithRobot1(Robot robot, String extentreportLocation) throws InterruptedException {
+		for (char c : extentreportLocation.toCharArray()) {
 			int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
 			robot.keyPress(keyCode);
 			robot.keyRelease(keyCode);
-			Thread.sleep(4000);
+			
 		}
+		Thread.sleep(8000);
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 	}
-	public void ExtenScreenshot(WebDriver driver) throws InterruptedException, IOException {
+	public void ExtenScreenshot(WebDriver driver,String screenshotLocation ,String extentreportLocation) throws InterruptedException, IOException {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
-		String filename = "\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1
-				+ "\\extentreport.html";
-		driver.get(filename);
-		Thread.sleep(3000);
+	
+		driver.get(extentreportLocation);
+		Thread.sleep(8000);
 		wait.until(
 				ExpectedConditions.elementToBeClickable(By.xpath("//i[@class='fa fa-bar-chart']")))
 				.click();
 		TakesScreenshot screenshot1 = ((TakesScreenshot) driver);
 		File srcFile1 = screenshot1.getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(srcFile1,
-				new File("\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1
-						+ "\\ExtentreportScreenshot.png"));
+				new File(screenshotLocation));
 		
 	}
 }

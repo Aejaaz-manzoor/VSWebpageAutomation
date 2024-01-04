@@ -36,6 +36,7 @@ public class GSTRegistration {
 	String Date11 = dateFormat1.format(new Date());
 	SimpleDateFormat dateFormat = new SimpleDateFormat("MMddyyyy");
 	String Date1 = dateFormat.format(new Date());
+	
 	public void GstRegistration(WebDriver driver, String Username, String Mobilenumber, String Date11,
 			ExtentReports extentreport) throws InterruptedException, AWTException, IOException {
 		    PageFactory.initElements(driver, LoginPageobjects.class);
@@ -346,7 +347,9 @@ public class GSTRegistration {
 			robot.keyRelease(KeyEvent.VK_E);
 			robot.keyPress(KeyEvent.VK_N);
 			robot.keyRelease(KeyEvent.VK_N);
-
+			wait.until(
+					ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='text'])[1]")))
+					.click();
 			Thread.sleep(10000);
 			wait.until(
 					ExpectedConditions.elementToBeClickable(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu')]")))
@@ -556,7 +559,7 @@ public class GSTRegistration {
 
 			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();
 			Thread.sleep(5000);
-			driver.findElement(By.xpath("//p[contains(text(),' Click to upload an image')]")).click();
+			driver.findElement(By.xpath("//p[contains(text(),'Click to upload an image')]")).click();
 			Thread.sleep(5000);
 			String text1 = "\\\\14.140.167.188\\Vakilsearch\\AutomatonLeadCreation5\\Adharfront";
 
@@ -669,14 +672,14 @@ public class GSTRegistration {
 				element3001.sendKeys("chen");
 
 				try {
-					WebElement findElement222 = driver.findElement(By.xpath("(//li[@class='hover:clib-bg-[#E6EAEE] clib-cursor-pointer clib-px-3 clib-py-2 clib-text-black'])[1]"));
 					
-					findElement222.click();
+					wait.until(ExpectedConditions
+							.visibilityOfElementLocated(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu')]"))).click();
+					
 					
 					}catch (Exception selection) {
-						WebElement findElement222 = driver.findElement(By.xpath("//li[contains(text(),'Chengalpattu, Tamil Nadu')]"));
+						WebElement findElement222 = driver.findElement(By.xpath("(//input[@type='text'])[1]"));
 						findElement222.click();
-						
 					}
 				
 				Robot robot = new Robot();
@@ -814,7 +817,7 @@ public class GSTRegistration {
 
 			long start1 = System.currentTimeMillis();
 
-			WebElement element300121 = driver.findElement(By.xpath("//button[@type='submit']"));
+			WebElement element300121 = driver.findElement(By.xpath("//button[contains(text(),'Book an appointment now')]"));
 			JavascriptExecutor executor300121 = (JavascriptExecutor) driver;
 			executor300121.executeScript("arguments[0].click();", element300121);
 			screenshot.screenshot29(driver, extentreport);
@@ -1142,54 +1145,17 @@ public class GSTRegistration {
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot39.png",
 					"FSSAI HomePage").build());
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='email']")));
-			long finish = System.currentTimeMillis();
-			long totalTime = finish - start;
-			System.out.println("Total Time for page load - " + totalTime);
-			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
 			Thread.sleep(3000);
-			// HelpdeskPageobject.GSTRegistration.click();
-			WebElement findElement2 = driver.findElement(By.xpath("(//input[@id='email'])[1]"));
-
-			findElement2.click();
-			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
-
-			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@id='phone'])[1]"));
-			findElement2122.click();
-			findElement2122.sendKeys("91" + Date12);
-
-			Thread.sleep(4000);
-			Thread.sleep(8000);
-
-			driver.findElement(By.xpath("(//input[@type='text'])[1]")).sendKeys("chen");
-
-			Thread.sleep(8000);
-			Robot robot = new Robot();
-
-			driver.findElement(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu')]")).click();
-			Thread.sleep(3000);
-
-			long start1 = System.currentTimeMillis();
-			screenshot.screenshot40(driver, extentreport);
-			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot40.png",
-					"LeadCreation").build());
-			WebElement element300119 = driver.findElement(By.xpath("(//button[@type='submit'])[1]"));
-			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
-			executor300119.executeScript("arguments[0].click();", element300119);
-
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
-			long finish1 = System.currentTimeMillis();
-			long totalTime1 = finish1 - start1;
-
-			System.out.println("Total Time for page load - " + totalTime1);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(text(),'Get Started')])[1]"))).click();
+			
+			
+			System.out.println("Total Time for page load - ");
 			Thread.sleep(6500);
-			test.log(Status.PASS, "Age of Business page redirection" + totalTime);
+			test.log(Status.PASS, "What’s your annual turnover?" );
 			screenshot.screenshot41(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot41.png",
-					"Date selection").build());
+					"What’s your annual turnover?").build());
 
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[1]")));
 			WebElement element30011 = driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
@@ -1197,7 +1163,7 @@ public class GSTRegistration {
 			executor30011.executeScript("arguments[0].click();", element30011);
 
 			Thread.sleep(3000);
-			WebElement element300111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element300111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
 			executor300111.executeScript("arguments[0].click();", element300111);
 			Thread.sleep(1500);
@@ -1208,22 +1174,79 @@ public class GSTRegistration {
 			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
 			executor3001111.executeScript("arguments[0].click();", element3001111);
 
-			WebElement element30011111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element30011111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor30011111 = (JavascriptExecutor) driver;
 			executor30011111.executeScript("arguments[0].click();", element30011111);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']")));
+			long finish = System.currentTimeMillis();
+			long totalTime = finish - start;
+			System.out.println("Total Time for page load - " + totalTime);
+			test.log(Status.PASS, "NGO page redirection" + totalTime);
+			Thread.sleep(3000);
+			// HelpdeskPageobject.GSTRegistration.click();
+			WebElement findElement2 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']"));
+
+			findElement2.click();
+			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
+
+			WebElement findElement2122 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr ']"));
+			findElement2122.click();
+			findElement2122.sendKeys("91" + Date12);
+
+			Thread.sleep(4000);
+			Thread.sleep(8000);
+
+			driver.findElement(By.xpath("//div[contains(text(),'City')]")).sendKeys("chen");
+
+			Thread.sleep(8000);
+			Robot robot = new Robot();
+
+			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamil Nadu')]")).click();
+			Thread.sleep(3000);
+
+			long start1 = System.currentTimeMillis();
+			screenshot.screenshot40(driver, extentreport);
+			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot40.png",
+					"LeadCreation").build());
+			WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
+			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
+			executor300119.executeScript("arguments[0].click();", element300119);
+
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			long finish1 = System.currentTimeMillis();
+			long totalTime1 = finish1 - start1;
+
+			
 
 			screenshot.screenshot42(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot42.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
-			driver.findElement(By.xpath("//span[contains(text(),'Proceed to pay')]")).click();
-			long finish11 = System.currentTimeMillis();
-			long totalTime11 = finish11 - start11;
-			System.out.println("Pament page Redirection " + totalTime11);
+			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
+			
+			System.out.println("Pament page Redirection ");
 			Thread.sleep(3500);
 
-			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
+			test.log(Status.PASS, "Pament page Redirection ");
 
 		} catch (Exception TTCS) {
 			screenshot.screenshot42(driver, extentreport);
@@ -1254,55 +1277,16 @@ public class GSTRegistration {
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot43.png",
 					"NGO HomePage").build());
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='service_form_primary_email']")));
-			long finish = System.currentTimeMillis();
-			long totalTime = finish - start;
-			System.out.println("Total Time for page load - " + totalTime);
-			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
-			Thread.sleep(3000);
-			// HelpdeskPageobject.GSTRegistration.click();
-			WebElement findElement2 = driver.findElement(By.xpath("//input[@id='service_form_primary_email']"));
-
-			findElement2.click();
-			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
-
-			WebElement findElement2122 = driver
-					.findElement(By.xpath("(//input[@id='service_form_primary_mobile_number'])[1]"));
-			findElement2122.click();
-			findElement2122.sendKeys("91" + Date12);
-
-			Thread.sleep(4000);
-			Thread.sleep(8000);
-
-			driver.findElement(By.xpath("(//input[@placeholder='City'])[1]")).sendKeys("chen");
-
-			Thread.sleep(8000);
-			Robot robot = new Robot();
-
-			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamil Nadu')]")).click();
-			Thread.sleep(3000);
-
-			long start1 = System.currentTimeMillis();
-			screenshot.screenshot44(driver, extentreport);
-			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot44.png",
-					"LeadCreation").build());
-			WebElement element300119 = driver.findElement(By.xpath("(//button[contains(text(),'Get Started')])[1]"));
-			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
-			executor300119.executeScript("arguments[0].click();", element300119);
-
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
-			long finish1 = System.currentTimeMillis();
-			long totalTime1 = finish1 - start1;
-
-			System.out.println("Total Time for page load - " + totalTime1);
+wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(text(),'Get Started')])[1]"))).click();
+			
+			
+			System.out.println("Total Time for page load - ");
 			Thread.sleep(6500);
-			test.log(Status.PASS, "Age of Business page redirection" + totalTime);
-			screenshot.screenshot45(driver, extentreport);
+			test.log(Status.PASS, "What’s your annual turnover?" );
+			screenshot.screenshot41(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot45.png",
-					"Date selection").build());
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot41.png",
+					"What’s your annual turnover?").build());
 
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[1]")));
 			WebElement element30011 = driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
@@ -1310,7 +1294,7 @@ public class GSTRegistration {
 			executor30011.executeScript("arguments[0].click();", element30011);
 
 			Thread.sleep(3000);
-			WebElement element300111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element300111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
 			executor300111.executeScript("arguments[0].click();", element300111);
 			Thread.sleep(1500);
@@ -1321,22 +1305,83 @@ public class GSTRegistration {
 			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
 			executor3001111.executeScript("arguments[0].click();", element3001111);
 
-			WebElement element30011111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element30011111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor30011111 = (JavascriptExecutor) driver;
 			executor30011111.executeScript("arguments[0].click();", element30011111);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']")));
+			long finish = System.currentTimeMillis();
+			long totalTime = finish - start;
+			System.out.println("Total Time for page load - " + totalTime);
+			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
+			Thread.sleep(3000);
+			// HelpdeskPageobject.GSTRegistration.click();
+			WebElement findElement2 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']"));
 
-			screenshot.screenshot46(driver, extentreport);
+			findElement2.click();
+			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
+
+			WebElement findElement2122 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr ']"));
+			findElement2122.click();
+			findElement2122.sendKeys("91" + Date12);
+
+			Thread.sleep(4000);
+			Thread.sleep(8000);
+
+			driver.findElement(By.xpath("//div[contains(text(),'City')]")).sendKeys("chen");
+
+			Thread.sleep(8000);
+			Robot robot = new Robot();
+
+			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamil Nadu')]")).click();
+			Thread.sleep(3000);
+
+			long start1 = System.currentTimeMillis();
+			screenshot.screenshot40(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot46.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot40.png",
+					"LeadCreation").build());
+			WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
+			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
+			executor300119.executeScript("arguments[0].click();", element300119);
+
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			long finish1 = System.currentTimeMillis();
+			long totalTime1 = finish1 - start1;
+
+			
+
+			screenshot.screenshot42(driver, extentreport);
+			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot42.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
-			driver.findElement(By.xpath("//span[contains(text(),'Proceed to pay')]")).click();
-			long finish11 = System.currentTimeMillis();
-			long totalTime11 = finish11 - start11;
-			System.out.println("Pament page Redirection " + totalTime11);
+			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
+			
+			System.out.println("Pament page Redirection ");
 			Thread.sleep(3500);
 
-			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
+			test.log(Status.PASS, "Pament page Redirection ");
+			System.out.println("Pament page Redirection ");
+			Thread.sleep(3500);
+
+			test.log(Status.PASS, "Pament page Redirection " );
 
 		} catch (Exception TTCS) {
 			screenshot.screenshot46(driver, extentreport);
@@ -1424,7 +1469,7 @@ public class GSTRegistration {
 			executor30011.executeScript("arguments[0].click();", element30011);
 
 			Thread.sleep(3000);
-			WebElement element300111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element300111 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
 			executor300111.executeScript("arguments[0].click();", element300111);
 			Thread.sleep(1500);
@@ -1435,7 +1480,7 @@ public class GSTRegistration {
 			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
 			executor3001111.executeScript("arguments[0].click();", element3001111);
 
-			WebElement element30011111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element30011111 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor30011111 = (JavascriptExecutor) driver;
 			executor30011111.executeScript("arguments[0].click();", element30011111);
 
@@ -1467,6 +1512,7 @@ public class GSTRegistration {
 		test = extentreport.createTest("PFRegistration");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		Thread.sleep(2000);
+		Robot robot = new Robot();
 		try {
 			driver.get("https://vakilsearch.com/");
 
@@ -1481,41 +1527,80 @@ public class GSTRegistration {
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot51.png",
 					"PFRegistration HomePage").build());
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='service_form_primary_email']")));
+		
+wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(text(),'Get Started')])[1]"))).click();
+			
+			
+			System.out.println("Total Time for page load - ");
+			Thread.sleep(6500);
+			test.log(Status.PASS, "What’s your annual turnover?" );
+			screenshot.screenshot41(driver, extentreport);
+			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot41.png",
+					"What’s your annual turnover?").build());
+
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[1]")));
+			WebElement element30011 = driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
+			JavascriptExecutor executor30011 = (JavascriptExecutor) driver;
+			executor30011.executeScript("arguments[0].click();", element30011);
+
+			Thread.sleep(3000);
+			WebElement element300111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
+			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
+			executor300111.executeScript("arguments[0].click();", element300111);
+			Thread.sleep(1500);
+
+			long start11 = System.currentTimeMillis();
+
+			WebElement element3001111 = driver.findElement(By.xpath("//div[contains(text(),'Select option')]"));
+			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
+			executor3001111.executeScript("arguments[0].click();", element3001111);
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			Thread.sleep(3000);
+
+			WebElement element30011111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
+			JavascriptExecutor executor30011111 = (JavascriptExecutor) driver;
+			executor30011111.executeScript("arguments[0].click();", element30011111);
+			
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']")));
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			System.out.println("Total Time for page load - " + totalTime);
 			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
-			WebElement findElement2 = driver.findElement(By.xpath("//input[@id='service_form_primary_email']"));
+			WebElement findElement2 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']"));
 
 			findElement2.click();
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
-			WebElement findElement2122 = driver
-					.findElement(By.xpath("(//input[@id='service_form_primary_mobile_number'])[1]"));
+			WebElement findElement2122 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr ']"));
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
 			Thread.sleep(4000);
 			Thread.sleep(8000);
 
-			driver.findElement(By.xpath("(//input[@placeholder='City'])[1]")).sendKeys("chen");
+			driver.findElement(By.xpath("//div[contains(text(),'City')]")).sendKeys("chen");
 
 			Thread.sleep(8000);
-			Robot robot = new Robot();
+		
 
 			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamil Nadu')]")).click();
 			Thread.sleep(3000);
 
 			long start1 = System.currentTimeMillis();
-			screenshot.screenshot52(driver, extentreport);
+			screenshot.screenshot40(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot52.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot40.png",
 					"LeadCreation").build());
-			WebElement element300119 = driver
-					.findElement(By.xpath("(//button[contains(text(),'Consult an EPF expert')])[1]"));
+			WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
 
@@ -1524,59 +1609,26 @@ public class GSTRegistration {
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
 
-			System.out.println("Total Time for page load - " + totalTime1);
-			Thread.sleep(6500);
-			test.log(Status.PASS, "Age of Business page redirection" + totalTime);
-			screenshot.screenshot53(driver, extentreport);
+			
+
+			screenshot.screenshot42(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot53.png",
-					"Date selection").build());
-
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[1]")));
-			WebElement element30011 = driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
-			JavascriptExecutor executor30011 = (JavascriptExecutor) driver;
-			executor30011.executeScript("arguments[0].click();", element30011);
-
-			Thread.sleep(3000);
-			WebElement element300111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
-			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
-			executor300111.executeScript("arguments[0].click();", element300111);
-			Thread.sleep(8000);
-
-			long start11 = System.currentTimeMillis();
-
-			WebElement element3001111 = driver.findElement(By.xpath("//div[@class='styles_label__JD1A8']"));
-			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
-			executor3001111.executeScript("arguments[0].click();", element3001111);
-			Thread.sleep(3500);
-			robot.keyPress(KeyEvent.VK_TAB);
-			robot.keyRelease(KeyEvent.VK_TAB);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_SPACE);
-			robot.keyRelease(KeyEvent.VK_SPACE);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_DOWN);
-			robot.keyRelease(KeyEvent.VK_DOWN);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
-			Thread.sleep(3000);
-			WebElement element30011111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
-			JavascriptExecutor executor30011111 = (JavascriptExecutor) driver;
-			executor30011111.executeScript("arguments[0].click();", element30011111);
-
-			screenshot.screenshot54(driver, extentreport);
-			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot54.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot42.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
-			long finish11 = System.currentTimeMillis();
-			long totalTime11 = finish11 - start11;
-			System.out.println("Pament page Redirection " + totalTime11);
+			
+			System.out.println("Pament page Redirection ");
 			Thread.sleep(3500);
 
-			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
+			test.log(Status.PASS, "Pament page Redirection ");
+			System.out.println("Pament page Redirection ");
+			Thread.sleep(3500);
+
+			test.log(Status.PASS, "Pament page Redirection " );
+			
+			
+
 
 		} catch (Exception TTCS) {
 			screenshot.screenshot54(driver, extentreport);
@@ -1593,6 +1645,7 @@ public class GSTRegistration {
 		test = extentreport.createTest("ESIRegistration");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		Thread.sleep(2000);
+		Robot robot = new Robot();
 		try {
 			driver.get("https://vakilsearch.com/");
 
@@ -1607,41 +1660,79 @@ public class GSTRegistration {
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot55.png",
 					"ESIRegistration HomePage").build());
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='service_form_primary_email']")));
+wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(text(),'Get Started')])[1]"))).click();
+			
+			
+			System.out.println("Total Time for page load - ");
+			Thread.sleep(6500);
+			test.log(Status.PASS, "What’s your annual turnover?" );
+			screenshot.screenshot41(driver, extentreport);
+			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot41.png",
+					"What’s your annual turnover?").build());
+
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[1]")));
+			WebElement element30011 = driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
+			JavascriptExecutor executor30011 = (JavascriptExecutor) driver;
+			executor30011.executeScript("arguments[0].click();", element30011);
+
+			Thread.sleep(3000);
+			WebElement element300111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
+			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
+			executor300111.executeScript("arguments[0].click();", element300111);
+			Thread.sleep(1500);
+
+			long start11 = System.currentTimeMillis();
+
+			WebElement element3001111 = driver.findElement(By.xpath("//div[contains(text(),'Select option')]"));
+			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
+			executor3001111.executeScript("arguments[0].click();", element3001111);
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			Thread.sleep(3000);
+
+			WebElement element30011111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
+			JavascriptExecutor executor30011111 = (JavascriptExecutor) driver;
+			executor30011111.executeScript("arguments[0].click();", element30011111);
+			
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']")));
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			System.out.println("Total Time for page load - " + totalTime);
 			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
-			WebElement findElement2 = driver.findElement(By.xpath("//input[@id='service_form_primary_email']"));
+			WebElement findElement2 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']"));
 
 			findElement2.click();
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
-			WebElement findElement2122 = driver
-					.findElement(By.xpath("(//input[@id='service_form_primary_mobile_number'])[1]"));
+			WebElement findElement2122 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr ']"));
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
 			Thread.sleep(4000);
 			Thread.sleep(8000);
 
-			driver.findElement(By.xpath("(//input[@placeholder='City'])[1]")).sendKeys("chen");
+			driver.findElement(By.xpath("//div[contains(text(),'City')]")).sendKeys("chen");
 
 			Thread.sleep(8000);
-			Robot robot = new Robot();
+		
 
 			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamil Nadu')]")).click();
 			Thread.sleep(3000);
 
 			long start1 = System.currentTimeMillis();
-			screenshot.screenshot56(driver, extentreport);
+			screenshot.screenshot40(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot56.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot40.png",
 					"LeadCreation").build());
-			WebElement element300119 = driver
-					.findElement(By.xpath("(//button[contains(text(),'Consult an Expert')])[1]"));
+			WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
 
@@ -1650,59 +1741,24 @@ public class GSTRegistration {
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
 
-			System.out.println("Total Time for page load - " + totalTime1);
-			Thread.sleep(6500);
-			test.log(Status.PASS, "Age of Business page redirection" + totalTime);
-			screenshot.screenshot57(driver, extentreport);
+			
+
+			screenshot.screenshot42(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot57.png",
-					"Date selection").build());
-
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[1]")));
-			WebElement element30011 = driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
-			JavascriptExecutor executor30011 = (JavascriptExecutor) driver;
-			executor30011.executeScript("arguments[0].click();", element30011);
-
-			Thread.sleep(3000);
-			WebElement element300111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
-			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
-			executor300111.executeScript("arguments[0].click();", element300111);
-			Thread.sleep(8000);
-
-			long start11 = System.currentTimeMillis();
-
-			WebElement element3001111 = driver.findElement(By.xpath("//div[@class='styles_label__JD1A8']"));
-			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
-			executor3001111.executeScript("arguments[0].click();", element3001111);
-			Thread.sleep(3500);
-			robot.keyPress(KeyEvent.VK_TAB);
-			robot.keyRelease(KeyEvent.VK_TAB);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_SPACE);
-			robot.keyRelease(KeyEvent.VK_SPACE);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_DOWN);
-			robot.keyRelease(KeyEvent.VK_DOWN);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
-			Thread.sleep(3000);
-			WebElement element30011111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
-			JavascriptExecutor executor30011111 = (JavascriptExecutor) driver;
-			executor30011111.executeScript("arguments[0].click();", element30011111);
-
-			screenshot.screenshot58(driver, extentreport);
-			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot58.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot42.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
-			long finish11 = System.currentTimeMillis();
-			long totalTime11 = finish11 - start11;
-			System.out.println("Pament page Redirection " + totalTime11);
+			
+			System.out.println("Pament page Redirection ");
 			Thread.sleep(3500);
 
-			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
+			test.log(Status.PASS, "Pament page Redirection ");
+			System.out.println("Pament page Redirection ");
+			Thread.sleep(3500);
+
+			test.log(Status.PASS, "Pament page Redirection " );
+			
 
 		} catch (Exception TTCS) {
 			screenshot.screenshot59(driver, extentreport);
@@ -1718,6 +1774,7 @@ public class GSTRegistration {
 			throws InterruptedException, AWTException, IOException {
 		test = extentreport.createTest("ApplyForNameChange");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
+		Robot robot = new Robot();
 		Thread.sleep(2000);
 		try {
 			driver.get("https://vakilsearch.com/");
@@ -1733,41 +1790,89 @@ public class GSTRegistration {
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot60.png",
 					"ApplyForNameChange HomePage").build());
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='service_form_primary_email']")));
+wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(text(),'Get Started')])[1]"))).click();
+			
+			
+			System.out.println("Total Time for page load - ");
+			Thread.sleep(6500);
+			test.log(Status.PASS, "What’s your annual turnover?" );
+			screenshot.screenshot41(driver, extentreport);
+			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot41.png",
+					"What’s your annual turnover?").build());
+
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder='Enter your old name']")));
+			WebElement element30011 = driver.findElement(By.xpath("//input[@placeholder='Enter your old name']"));
+			JavascriptExecutor executor30011 = (JavascriptExecutor) driver;
+			executor30011.executeScript("arguments[0].click();", element30011);
+			element30011.sendKeys("selvam");
+			
+			WebElement element300111 = driver.findElement(By.xpath("//input[@placeholder='Enter your old name']"));
+			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
+			executor300111.executeScript("arguments[0].click();", element300111);
+	     	element300111.sendKeys("balpam");
+			
+			Thread.sleep(3000);
+			WebElement element300111y = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
+			JavascriptExecutor executor300111y = (JavascriptExecutor) driver;
+			executor300111y.executeScript("arguments[0].click();", element300111y);
+			Thread.sleep(1500);
+
+			long start11 = System.currentTimeMillis();
+
+			WebElement element3001111 = driver.findElement(By.xpath("//div[contains(text(),'Select option')]"));
+			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
+			executor3001111.executeScript("arguments[0].click();", element3001111);
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			Thread.sleep(3000);
+
+			WebElement element30011111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
+			JavascriptExecutor executor30011111 = (JavascriptExecutor) driver;
+			executor30011111.executeScript("arguments[0].click();", element30011111);
+			
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']")));
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			System.out.println("Total Time for page load - " + totalTime);
 			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
-			WebElement findElement2 = driver.findElement(By.xpath("//input[@id='service_form_primary_email']"));
+			WebElement findElement2 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']"));
 
 			findElement2.click();
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
-			WebElement findElement2122 = driver
-					.findElement(By.xpath("(//input[@id='service_form_primary_mobile_number'])[1]"));
+			WebElement findElement2122 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr ']"));
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
 			Thread.sleep(4000);
 			Thread.sleep(8000);
 
-			driver.findElement(By.xpath("(//input[@placeholder='City'])[1]")).sendKeys("chen");
+			driver.findElement(By.xpath("//div[contains(text(),'City')]")).sendKeys("chen");
 
 			Thread.sleep(8000);
-			Robot robot = new Robot();
+		
 
 			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamil Nadu')]")).click();
 			Thread.sleep(3000);
 
 			long start1 = System.currentTimeMillis();
-			screenshot.screenshot61(driver, extentreport);
+			screenshot.screenshot40(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot61.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot40.png",
 					"LeadCreation").build());
-			WebElement element300119 = driver
-					.findElement(By.xpath("(//button[contains(text(),'Consult an Expert')])[1]"));
+			WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
 
@@ -1776,66 +1881,23 @@ public class GSTRegistration {
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
 
-			System.out.println("Total Time for page load - " + totalTime1);
-			Thread.sleep(6500);
-			test.log(Status.PASS, "Age of Business page redirection" + totalTime);
-			screenshot.screenshot62(driver, extentreport);
+			
+
+			screenshot.screenshot42(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot62.png",
-					"Date selection").build());
-
-			wait.until(ExpectedConditions
-					.elementToBeClickable(By.xpath("(//input[@placeholder='Enter your old name'])[1]")));
-			WebElement element30011 = driver.findElement(By.xpath("(//input[@placeholder='Enter your old name'])[1]"));
-			JavascriptExecutor executor30011 = (JavascriptExecutor) driver;
-			executor30011.executeScript("arguments[0].click();", element30011);
-			element30011.sendKeys("VASU");
-			WebElement element3001122 = driver
-					.findElement(By.xpath("(//input[@placeholder='Enter your new name'])[1]"));
-			JavascriptExecutor executor3001122 = (JavascriptExecutor) driver;
-			executor3001122.executeScript("arguments[0].click();", element3001122);
-			element3001122.sendKeys("PASU");
-			Thread.sleep(3000);
-			WebElement element300111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
-			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
-			executor300111.executeScript("arguments[0].click();", element300111);
-			Thread.sleep(8000);
-
-			long start11 = System.currentTimeMillis();
-
-			WebElement element3001111 = driver.findElement(By.xpath("//div[@class='styles_label__JD1A8']"));
-			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
-			executor3001111.executeScript("arguments[0].click();", element3001111);
-			Thread.sleep(3500);
-			robot.keyPress(KeyEvent.VK_TAB);
-			robot.keyRelease(KeyEvent.VK_TAB);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_SPACE);
-			robot.keyRelease(KeyEvent.VK_SPACE);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_DOWN);
-			robot.keyRelease(KeyEvent.VK_DOWN);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
-			Thread.sleep(3000);
-			WebElement element30011111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
-			JavascriptExecutor executor30011111 = (JavascriptExecutor) driver;
-			executor30011111.executeScript("arguments[0].click();", element30011111);
-
-			screenshot.screenshot63(driver, extentreport);
-			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot63.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot42.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
-			long finish11 = System.currentTimeMillis();
-			long totalTime11 = finish11 - start11;
-			System.out.println("Pament page Redirection " + totalTime11);
+			
+			System.out.println("Pament page Redirection ");
 			Thread.sleep(3500);
 
-			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
+			test.log(Status.PASS, "Pament page Redirection ");
+			System.out.println("Pament page Redirection ");
+			Thread.sleep(3500);
 
+			test.log(Status.PASS, "Pament page Redirection " );
 		} catch (Exception TTCS) {
 			screenshot.screenshot64(driver, extentreport);
 			System.out.println(TTCS);
@@ -1923,7 +1985,7 @@ public class GSTRegistration {
 			element30011.sendKeys("VASU");
 
 			Thread.sleep(3000);
-			WebElement element300111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element300111 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
 			executor300111.executeScript("arguments[0].click();", element300111);
 			Thread.sleep(8000);
@@ -1935,7 +1997,7 @@ public class GSTRegistration {
 			executor3001111.executeScript("arguments[0].click();", element3001111);
 			Thread.sleep(3500);
 
-			WebElement element30011111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element30011111 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor30011111 = (JavascriptExecutor) driver;
 			executor30011111.executeScript("arguments[0].click();", element30011111);
 
@@ -1981,14 +2043,14 @@ public class GSTRegistration {
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot70.png",
 					"Section8Company HomePage").build());
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='service_form_primary_email']")));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='inputForEmail']")));
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			System.out.println("Total Time for page load - " + totalTime);
 			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
-			WebElement findElement2 = driver.findElement(By.xpath("//input[@id='service_form_primary_email']"));
+			WebElement findElement2 = driver.findElement(By.xpath("//input[@id='inputForEmail']"));
 
 			findElement2.click();
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
@@ -2015,11 +2077,11 @@ public class GSTRegistration {
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot71.png",
 					"LeadCreation").build());
 			WebElement element300119 = driver
-					.findElement(By.xpath("(//button[contains(text(),'Consult a section 8 expert')])[1]"));
+					.findElement(By.xpath("(//button[contains(text(),'Get Started')])[1]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
 			Thread.sleep(3500);
-			WebElement element3001111 = driver.findElement(By.xpath("(//div[@class='styles_label__JD1A8'])[1]"));
+			WebElement element3001111 = driver.findElement(By.xpath("(//div[@class=' css-19bb58m'])[1]"));
 			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
 			executor3001111.executeScript("arguments[0].click();", element3001111);
 			Thread.sleep(3500);
@@ -2035,7 +2097,7 @@ public class GSTRegistration {
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
 
-			driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]")).click();
+			driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
 
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
@@ -2052,10 +2114,10 @@ public class GSTRegistration {
 			WebElement element30011 = driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
 			JavascriptExecutor executor30011 = (JavascriptExecutor) driver;
 			executor30011.executeScript("arguments[0].click();", element30011);
-			element30011.sendKeys("VASU");
+			
 
 			Thread.sleep(3000);
-			WebElement element300111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element300111 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
 			executor300111.executeScript("arguments[0].click();", element300111);
 			Thread.sleep(8000);
@@ -2151,7 +2213,7 @@ public class GSTRegistration {
 			driver.findElement(By.xpath("(//input[@placeholder='e.g. Mumbai, Chennai, New Delhi'])[1]"))
 					.sendKeys("Testing");
 
-			driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]")).click();
+			driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
 
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
@@ -2171,7 +2233,7 @@ public class GSTRegistration {
 			element30011.sendKeys("VASU");
 
 			Thread.sleep(3000);
-			WebElement element300111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element300111 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
 			executor300111.executeScript("arguments[0].click();", element300111);
 			Thread.sleep(8000);
@@ -2276,7 +2338,7 @@ public class GSTRegistration {
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
 
-			driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]")).click();
+			driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
 
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
@@ -2296,7 +2358,7 @@ public class GSTRegistration {
 			element30011.sendKeys("VASU");
 
 			Thread.sleep(3000);
-			WebElement element300111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element300111 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
 			executor300111.executeScript("arguments[0].click();", element300111);
 			Thread.sleep(8000);
@@ -2400,7 +2462,7 @@ public class GSTRegistration {
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
 
-			driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]")).click();
+			driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
 
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
@@ -2518,7 +2580,7 @@ public class GSTRegistration {
 			executor30011.executeScript("arguments[0].click();", element30011);
 
 			Thread.sleep(3000);
-			WebElement element30011111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element30011111 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor30011111 = (JavascriptExecutor) driver;
 			executor30011111.executeScript("arguments[0].click();", element30011111);
 			Thread.sleep(8000);
@@ -2735,7 +2797,7 @@ public class GSTRegistration {
 			element300111.sendKeys("IBO");
 
 			Thread.sleep(3000);
-			WebElement element30011111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element30011111 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor30011111 = (JavascriptExecutor) driver;
 			executor30011111.executeScript("arguments[0].click();", element30011111);
 			Thread.sleep(8000);
@@ -2748,7 +2810,7 @@ public class GSTRegistration {
 					.findElement(By.xpath("//li[contains(text(),'Electrical and Electronics')]"));
 			electricalindustrytype.click();
 			Thread.sleep(3000);
-			WebElement element3001111112 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element3001111112 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor3001111112 = (JavascriptExecutor) driver;
 			executor3001111112.executeScript("arguments[0].click();", element3001111112);
 			Thread.sleep(8000);
@@ -2820,7 +2882,7 @@ public class GSTRegistration {
 			Thread.sleep(4000);
 			Thread.sleep(8000);
 
-			driver.findElement(By.xpath("(//input[@type='text'])[1]")).sendKeys("chen");
+			driver.findElement(By.xpath("(//p[@type='text'])[1]")).sendKeys("chen");
 
 			Thread.sleep(8000);
 			Robot robot = new Robot();
@@ -2841,7 +2903,7 @@ public class GSTRegistration {
 			WebElement element30011 = driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
 			JavascriptExecutor executor30011 = (JavascriptExecutor) driver;
 			executor30011.executeScript("arguments[0].click();", element30011);
-			WebElement element300111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element300111 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
 			executor300111.executeScript("arguments[0].click();", element300111);
 			Thread.sleep(3500);
@@ -2958,7 +3020,7 @@ public class GSTRegistration {
 			WebElement element30011 = driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
 			JavascriptExecutor executor30011 = (JavascriptExecutor) driver;
 			executor30011.executeScript("arguments[0].click();", element30011);
-			WebElement element300111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element300111 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
 			executor300111.executeScript("arguments[0].click();", element300111);
 			Thread.sleep(3500);
@@ -3184,7 +3246,7 @@ public class GSTRegistration {
 			WebElement element30011 = driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
 			JavascriptExecutor executor30011 = (JavascriptExecutor) driver;
 			executor30011.executeScript("arguments[0].click();", element30011);
-			WebElement element300111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element300111 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
 			executor300111.executeScript("arguments[0].click();", element300111);
 			Thread.sleep(3500);
@@ -3300,14 +3362,14 @@ public class GSTRegistration {
 			executor300119.executeScript("arguments[0].click();", element300119);
 			Thread.sleep(3500);
 			driver.findElement(By.xpath("(//input[@type='radio'])[1]")).click();
-			driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]")).click();
+			driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
 			Thread.sleep(3500);
 			driver.findElement(By.xpath("//input[@placeholder='Enter your partnership firm name']"))
 					.sendKeys("Testing");
-			driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]")).click();
+			driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
 			Thread.sleep(3500);
 			driver.findElement(By.xpath("//input[@placeholder='Select option']")).sendKeys("Testing");
-			driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]")).click();
+			driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
 			Thread.sleep(3500);
 
 			long start11 = System.currentTimeMillis();
@@ -3419,7 +3481,7 @@ public class GSTRegistration {
 			robot.keyRelease(KeyEvent.VK_ENTER);
 
 			Thread.sleep(3000);
-			WebElement element300111 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element300111 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
 			executor300111.executeScript("arguments[0].click();", element300111);
 			Thread.sleep(1500);
@@ -3436,7 +3498,7 @@ public class GSTRegistration {
 			robot.keyRelease(KeyEvent.VK_ENTER);
 
 			Thread.sleep(3000);
-			WebElement element3001114 = driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]"));
+			WebElement element3001114 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor3001114 = (JavascriptExecutor) driver;
 			executor3001114.executeScript("arguments[0].click();", element3001114);
 			Thread.sleep(1500);
