@@ -106,7 +106,7 @@ public class slack {
 		messageInput.click();
 		messageinput(robot, messageInputdata);
 		
-		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_CONTROL); 
 		robot.keyPress(KeyEvent.VK_U);
 		robot.keyRelease(KeyEvent.VK_U);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
