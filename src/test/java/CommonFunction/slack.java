@@ -100,10 +100,13 @@ public class slack {
 	
 		channelElement.click();
 		WebElement messageInput = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ql-placeholder']")));
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='ql-placeholder'])[1]")));
 	
 		messageInput.sendKeys(messageInputdata);
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("(//div[@class='ql-editor'])[1]")).click();
 		Thread.sleep(7000);
+		
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_U);
 		robot.keyRelease(KeyEvent.VK_U);
@@ -137,6 +140,7 @@ Thread.sleep(6000);
 		sendButton.click();
 	}
 	private void uploadFileWithRobot(Robot robot, String screenshotLocation) throws InterruptedException {
+	
 		for (char c : screenshotLocation.toCharArray()) {
 			int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
 			robot.keyPress(keyCode);
@@ -147,7 +151,10 @@ Thread.sleep(6000);
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 		Thread.sleep(8000);
+		
+	
 	}
+
 	private void uploadFileWithRobot1(Robot robot, String extentreportLocation) throws InterruptedException {
 		for (char c : extentreportLocation.toCharArray()) {
 			int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
