@@ -103,13 +103,11 @@ public class slack {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ql-placeholder']")));
 	
 		messageInput.sendKeys(messageInputdata);
-		WebElement uploadButton1 = wait.until(ExpectedConditions
-				.elementToBeClickable(By.xpath("//button[@class='c-button-unstyled c-icon_button c-icon_button--size_small c-wysiwyg_container__button c-wysiwyg_container__button--shortcuts p-shortcuts_menu_trigger_button--composer_ia c-icon_button--default']")));
-		uploadButton1.click();
-		
-		WebElement uploadButton = wait.until(ExpectedConditions
-				.elementToBeClickable(By.xpath("//span[contains(text(),'Upload from your computer')]")));
-		uploadButton.click();
+		Thread.sleep(7000);
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_U);
+		robot.keyRelease(KeyEvent.VK_U);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
 Thread.sleep(6000);
 		// Add dynamic file path or make it configurable
 		
