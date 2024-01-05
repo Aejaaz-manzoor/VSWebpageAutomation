@@ -1352,19 +1352,19 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			
 			
 			
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']")));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[1]")));
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			System.out.println("Total Time for page load - " + totalTime);
 			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
-			WebElement findElement2 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']"));
+			WebElement findElement2 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[1]"));
 
 			findElement2.click();
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
-			WebElement findElement2122 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr ']"));
+			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[2]"));
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -1598,19 +1598,19 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			executor30011111.executeScript("arguments[0].click();", element30011111);
 			
 			
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']")));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[1]")));
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			System.out.println("Total Time for page load - " + totalTime);
 			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
-			WebElement findElement2 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']"));
+			WebElement findElement2 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[1]"));
 
 			findElement2.click();
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
-			WebElement findElement2122 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr ']"));
+			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[2]"));
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -1731,19 +1731,19 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			executor30011111.executeScript("arguments[0].click();", element30011111);
 			
 			
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']")));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[1]")));
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			System.out.println("Total Time for page load - " + totalTime);
 			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
-			WebElement findElement2 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']"));
+			WebElement findElement2 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[1]"));
 
 			findElement2.click();
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
-			WebElement findElement2122 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr ']"));
+			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[2]"));
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -1872,19 +1872,19 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			executor30011111.executeScript("arguments[0].click();", element30011111);
 			
 			
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']")));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[1]")));
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			System.out.println("Total Time for page load - " + totalTime);
 			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
-			WebElement findElement2 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']"));
+			WebElement findElement2 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[1]"));
 
 			findElement2.click();
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
-			WebElement findElement2122 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr ']"));
+			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[2]"));
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
