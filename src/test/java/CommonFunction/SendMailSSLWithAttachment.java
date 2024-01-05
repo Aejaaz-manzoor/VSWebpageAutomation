@@ -42,7 +42,7 @@ public void main(String extentreportLocation,String messageInputdata,String Date
 		props.put("mail.smtp.host", "sandbox.smtp.mailtrap.io");
 		//props.put("mail.smtp.host", "smtp.gmail.com");
 		// set the port of socket factory 
-		props.put("mail.smtp.socketFactory.port", "2525");
+		props.put("mail.smtp.socketFactory.port", "2525"); 
 
 		// set socket factory
 		props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
