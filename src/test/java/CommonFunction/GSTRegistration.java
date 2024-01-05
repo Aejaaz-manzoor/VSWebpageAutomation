@@ -45,7 +45,7 @@ public class GSTRegistration {
 	public void GstRegistration(WebDriver driver, String Username, String Mobilenumber, String Date11,
 			ExtentReports extentreport) throws InterruptedException, AWTException, IOException {
 		    PageFactory.initElements(driver, LoginPageobjects.class);
-		    sendStatusToGoogleChat("Onboarding Automation Started");
+		    sendStatusToGoogleChat("Onboarding Test Automation Started");
 		try {
 			SimpleDateFormat dateFormat1GstRegistration = new SimpleDateFormat("wwmmyyyyhhmm");
 			String Date1GstRegistration = dateFormat1GstRegistration.format(new Date());
