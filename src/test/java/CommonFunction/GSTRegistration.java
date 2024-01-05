@@ -449,7 +449,7 @@ public class GSTRegistration {
 
 		} catch (Exception PVTFAILED) {
 			sendStatusToGoogleChat("PVT onboarding failed ---------"+PVTFAILED);
-			screenshot.screenshot40(driver, extentreport);
+			screenshot.screenshot14(driver, extentreport);
 			System.out.println(PVTFAILED);
 			test.log(Status.WARNING, PVTFAILED);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
@@ -723,7 +723,13 @@ public class GSTRegistration {
 
 				driver.findElement(By.xpath("(//input[@placeholder='Enter your industry (e.g.food, E-commerce)'])[1]"))
 						.sendKeys("Foodball");
-				driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]")).click();
+				try {
+					driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]")).click();
+				} catch (Exception e) {
+					driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
+				
+				}
+				
 				Thread.sleep(3000);
 				wait.until(ExpectedConditions
 						.elementToBeClickable(By.xpath("//div[@class=' css-1xc3v61-indicatorContainer']")));
@@ -737,11 +743,20 @@ public class GSTRegistration {
 						"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot25.png",
 						"Onboarding QA 2").build());
 
-				driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]")).click();
+				try {
+					driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]")).click();
+				} catch (Exception e) {
+					driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
+				
+				}
 				Thread.sleep(3000);
 				driver.findElement(By.xpath("(//input[@type='radio'])[1]")).click();
-				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(text(),'Next')])[1]")));
-				driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]")).click();
+				try {
+					driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]")).click();
+				} catch (Exception e) {
+					driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
+				
+				}
 				screenshot.screenshot26(driver, extentreport);
 				test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 						"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot26.png",
@@ -763,7 +778,7 @@ public class GSTRegistration {
 
 		} catch (Exception GSTFILINGFAILED) {
 			sendStatusToGoogleChat("GSTFILING onboarding failed ---------"+GSTFILINGFAILED);
-			screenshot.screenshot42(driver, extentreport);
+			screenshot.screenshot27(driver, extentreport);
 			System.out.println(GSTFILINGFAILED);
 			test.log(Status.WARNING, GSTFILINGFAILED);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
@@ -906,7 +921,7 @@ public class GSTRegistration {
 
 		} catch (Exception TTLAWER) {
 			sendStatusToGoogleChat("TTLAWER onboarding failed ---------"+TTLAWER);
-			screenshot.screenshot43(driver, extentreport);
+			screenshot.screenshot30(driver, extentreport);
 			System.out.println(TTLAWER);
 			test.log(Status.WARNING, TTLAWER);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
@@ -1203,21 +1218,21 @@ public class GSTRegistration {
 			
 			
 			
+			Thread.sleep(4000);
 			
-			
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']")));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[1]")));
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			System.out.println("Total Time for page load - " + totalTime);
 			test.log(Status.PASS, "NGO page redirection" + totalTime);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
-			WebElement findElement2 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr styles_errorInput__70KLz']"));
+			WebElement findElement2 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[1]"));
 
 			findElement2.click();
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
-			WebElement findElement2122 = driver.findElement(By.xpath("//p[@class='styles_inputBoxContainer__i6Mgr ']"));
+			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[2]"));
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -1296,9 +1311,9 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			System.out.println("Total Time for page load - ");
 			Thread.sleep(6500);
 			test.log(Status.PASS, "What’s your annual turnover?" );
-			screenshot.screenshot41(driver, extentreport);
+			screenshot.screenshot44(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot41.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot44.png",
 					"What’s your annual turnover?").build());
 
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[1]")));
@@ -1380,9 +1395,9 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			
 
-			screenshot.screenshot42(driver, extentreport);
+			screenshot.screenshot44(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot42.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot44.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
@@ -1398,11 +1413,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 		} catch (Exception NGO) {
 			sendStatusToGoogleChat("NGO onboarding failed ---------"+NGO);
-			screenshot.screenshot46(driver, extentreport);
+			screenshot.screenshot45(driver, extentreport);
 			System.out.println(NGO);
 			test.log(Status.WARNING, NGO);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot46.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot45.png",
 					"NGO Onboarding failed").build());
 		}
 	}
@@ -1422,9 +1437,9 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			driver.findElement(By.xpath("(//p[contains(text(),'NGO')])[1]")).click();
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("(//a[contains(text(),'Trust Registration')])[1]")).click();
-			screenshot.screenshot47(driver, extentreport);
+			screenshot.screenshot46(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot47.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot46.png",
 					"TrustRegistration HomePage").build());
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='service_form_primary_email']")));
 			long finish = System.currentTimeMillis();
@@ -1549,9 +1564,9 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			System.out.println("Total Time for page load - ");
 			Thread.sleep(6500);
 			test.log(Status.PASS, "What’s your annual turnover?" );
-			screenshot.screenshot41(driver, extentreport);
+			screenshot.screenshot52(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot41.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot52.png",
 					"What’s your annual turnover?").build());
 
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[1]")));
@@ -1611,9 +1626,9 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 
 			long start1 = System.currentTimeMillis();
-			screenshot.screenshot40(driver, extentreport);
+			screenshot.screenshot53(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot40.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot53.png",
 					"LeadCreation").build());
 			WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
@@ -1626,9 +1641,9 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			
 
-			screenshot.screenshot42(driver, extentreport);
+			screenshot.screenshot54(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot42.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot54.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
@@ -1682,9 +1697,9 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			System.out.println("Total Time for page load - ");
 			Thread.sleep(6500);
 			test.log(Status.PASS, "What’s your annual turnover?" );
-			screenshot.screenshot41(driver, extentreport);
+			screenshot.screenshot56(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot41.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot56.png",
 					"What’s your annual turnover?").build());
 
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[1]")));
@@ -1744,9 +1759,9 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 
 			long start1 = System.currentTimeMillis();
-			screenshot.screenshot40(driver, extentreport);
+			screenshot.screenshot57(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot40.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot57.png",
 					"LeadCreation").build());
 			WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
@@ -1759,9 +1774,9 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			
 
-			screenshot.screenshot42(driver, extentreport);
+			screenshot.screenshot58(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot42.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot58.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
@@ -1813,9 +1828,9 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			System.out.println("Total Time for page load - ");
 			Thread.sleep(6500);
 			test.log(Status.PASS, "What’s your annual turnover?" );
-			screenshot.screenshot41(driver, extentreport);
+			screenshot.screenshot61(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot41.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot61.png",
 					"What’s your annual turnover?").build());
 
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder='Enter your old name']")));
@@ -1885,9 +1900,9 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 
 			long start1 = System.currentTimeMillis();
-			screenshot.screenshot40(driver, extentreport);
+			screenshot.screenshot62(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot40.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot62.png",
 					"LeadCreation").build());
 			WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
@@ -1900,9 +1915,9 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			
 
-			screenshot.screenshot42(driver, extentreport);
+			screenshot.screenshot63(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot42.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot63.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
@@ -3559,8 +3574,8 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 		RequestSpecification httpRequest = RestAssured.given();
 		JsonObject requestParams = new JsonObject();
 		requestParams.addProperty("text", message);
-		httpRequest.queryParam("key", "AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI");
-		httpRequest.queryParam("token", "HeCoHncsuLF5PBkuf7D08IGuRZT396EfyDIGKPRDSUI");
+		httpRequest.queryParam("key", "AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHV");//I
+		httpRequest.queryParam("token", "HeCoHncsuLF5PBkuf7D08IGuRZT396EfyDIGKPRDSUV");
 		httpRequest.header("Content-Type", "application/json");
 		httpRequest.body(requestParams.toString());
 		Response response = httpRequest.request(Method.POST);
