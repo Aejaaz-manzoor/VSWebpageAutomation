@@ -22,9 +22,14 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
+import com.google.gson.JsonObject;
 
 import PageFactory.HelpdeskPageobject;
 import PageFactory.LoginPageobjects;
+import io.restassured.RestAssured;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
 public class GSTRegistration {
 
@@ -40,7 +45,7 @@ public class GSTRegistration {
 	public void GstRegistration(WebDriver driver, String Username, String Mobilenumber, String Date11,
 			ExtentReports extentreport) throws InterruptedException, AWTException, IOException {
 		    PageFactory.initElements(driver, LoginPageobjects.class);
-		    
+		    sendStatusToGoogleChat("Onboarding Automation Started");
 		try {
 			SimpleDateFormat dateFormat1GstRegistration = new SimpleDateFormat("wwmmyyyyhhmm");
 			String Date1GstRegistration = dateFormat1GstRegistration.format(new Date());
@@ -285,6 +290,7 @@ public class GSTRegistration {
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot9.png",
 					"Start application").build());
 		} catch (Exception GSTFailed) {
+			sendStatusToGoogleChat("GSTRegistration onboarding failed ---------"+GSTFailed);
 			screenshot.screenshot9(driver, extentreport);
 			System.out.println(GSTFailed);
 			test.log(Status.WARNING, GSTFailed);
@@ -442,6 +448,7 @@ public class GSTRegistration {
 			test.log(Status.PASS, "PaymentPage redirection " + totalTime2111 + "ms");
 
 		} catch (Exception PVTFAILED) {
+			sendStatusToGoogleChat("PVT onboarding failed ---------"+PVTFAILED);
 			screenshot.screenshot40(driver, extentreport);
 			System.out.println(PVTFAILED);
 			test.log(Status.WARNING, PVTFAILED);
@@ -616,6 +623,7 @@ public class GSTRegistration {
 					"Cart page").build());
 		
 		} catch (Exception TMfailed) {
+			sendStatusToGoogleChat("TM onboarding failed ---------"+TMfailed);
 			screenshot.screenshot21(driver, extentreport);
 			System.out.println(TMfailed);
 			test.log(Status.WARNING, TMfailed);
@@ -754,6 +762,7 @@ public class GSTRegistration {
 			}
 
 		} catch (Exception GSTFILINGFAILED) {
+			sendStatusToGoogleChat("GSTFILING onboarding failed ---------"+GSTFILINGFAILED);
 			screenshot.screenshot42(driver, extentreport);
 			System.out.println(GSTFILINGFAILED);
 			test.log(Status.WARNING, GSTFILINGFAILED);
@@ -896,6 +905,7 @@ public class GSTRegistration {
 			}
 
 		} catch (Exception TTLAWER) {
+			sendStatusToGoogleChat("TTLAWER onboarding failed ---------"+TTLAWER);
 			screenshot.screenshot43(driver, extentreport);
 			System.out.println(TTLAWER);
 			test.log(Status.WARNING, TTLAWER);
@@ -1007,6 +1017,7 @@ public class GSTRegistration {
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 		} catch (Exception TTCA) {
+			sendStatusToGoogleChat("TTCA onboarding failed ---------"+TTCA);
 			screenshot.screenshot34(driver, extentreport);
 			System.out.println(TTCA);
 			test.log(Status.WARNING, TTCA);
@@ -1118,6 +1129,7 @@ public class GSTRegistration {
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 
 		} catch (Exception TTCS) {
+			sendStatusToGoogleChat("TTCS onboarding failed ---------"+TTCS);
 			screenshot.screenshot38(driver, extentreport);
 			System.out.println(TTCS);
 			test.log(Status.WARNING, TTCS);
@@ -1248,10 +1260,11 @@ public class GSTRegistration {
 
 			test.log(Status.PASS, "Pament page Redirection ");
 
-		} catch (Exception TTCS) {
+		} catch (Exception FSSAI) {
+			sendStatusToGoogleChat("FSSAI onboarding failed ---------"+FSSAI);
 			screenshot.screenshot42(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(FSSAI);
+			test.log(Status.WARNING, FSSAI);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot42.png",
 					"FSSAI Onboarding failed").build());
@@ -1383,10 +1396,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			test.log(Status.PASS, "Pament page Redirection " );
 
-		} catch (Exception TTCS) {
+		} catch (Exception NGO) {
+			sendStatusToGoogleChat("NGO onboarding failed ---------"+NGO);
 			screenshot.screenshot46(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(NGO);
+			test.log(Status.WARNING, NGO);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot46.png",
 					"NGO Onboarding failed").build());
@@ -1497,10 +1511,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 
-		} catch (Exception TTCS) {
+		} catch (Exception TrustRegistration) {
+			sendStatusToGoogleChat("TrustRegistration onboarding failed ---------"+TrustRegistration);
 			screenshot.screenshot50(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(TrustRegistration);
+			test.log(Status.WARNING, TrustRegistration);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot50.png",
 					"TrustRegistration Onboarding failed").build());
@@ -1630,10 +1645,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			
 
 
-		} catch (Exception TTCS) {
+		} catch (Exception PFRegistration) {
+			sendStatusToGoogleChat("PFRegistration onboarding failed ---------"+PFRegistration);
 			screenshot.screenshot54(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(PFRegistration);
+			test.log(Status.WARNING, PFRegistration);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot54.png",
 					"PFRegistration onboarding failed").build());
@@ -1760,10 +1776,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			test.log(Status.PASS, "Pament page Redirection " );
 			
 
-		} catch (Exception TTCS) {
+		} catch (Exception ESIRegistration) {
+			sendStatusToGoogleChat("ESIRegistration onboarding failed ---------"+ESIRegistration);
 			screenshot.screenshot59(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(ESIRegistration);
+			test.log(Status.WARNING, ESIRegistration);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot59.png",
 					"ESIRegistration Onboarding failed").build());
@@ -1898,10 +1915,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " );
-		} catch (Exception TTCS) {
+		} catch (Exception ApplyForNameChange) {
+			sendStatusToGoogleChat("ApplyForNameChange onboarding failed ---------"+ApplyForNameChange);
 			screenshot.screenshot64(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(ApplyForNameChange);
+			test.log(Status.WARNING, ApplyForNameChange);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot64.png",
 					"ApplyForNameChange Onboarding failed").build());
@@ -2014,10 +2032,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 
-		} catch (Exception TTCS) {
+		} catch (Exception ImportExportCode) {
+			sendStatusToGoogleChat("ImportExportCode onboarding failed ---------"+ImportExportCode);
 			screenshot.screenshot69(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(ImportExportCode);
+			test.log(Status.WARNING, ImportExportCode);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot69.png",
 					"ImportExportCode onboarding failed").build());
@@ -2137,10 +2156,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 
-		} catch (Exception TTCS) {
+		} catch (Exception Section8Company) {
+			sendStatusToGoogleChat("Section8Company onboarding failed ---------"+Section8Company);
 			screenshot.screenshot73(driver, extentreport);
-			test.log(Status.WARNING, TTCS);
-			System.out.println(TTCS);
+			test.log(Status.WARNING, Section8Company);
+			System.out.println(Section8Company);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot73.png",
 					"Section8Company Onboarding failed").build());
@@ -2253,10 +2273,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 
-		} catch (Exception TTCS) {
+		} catch (Exception MarriageRegistration) {
+			sendStatusToGoogleChat("MarriageRegistration onboarding failed ---------"+MarriageRegistration);
 			screenshot.screenshot78(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(MarriageRegistration);
+			test.log(Status.WARNING, MarriageRegistration);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot78.png",
 					"MarriageRegistration onboarding failed").build());
@@ -2378,10 +2399,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 
-		} catch (Exception TTCS) {
+		} catch (Exception ChequeBounceNotice) {
+			sendStatusToGoogleChat("ChequeBounceNotice onboarding failed ---------"+ChequeBounceNotice);
 			screenshot.screenshot82(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(ChequeBounceNotice);
+			test.log(Status.WARNING, ChequeBounceNotice);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot82.png",
 					"ChequeBounceNotice Onboarding failed").build());
@@ -2490,10 +2512,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 
-		} catch (Exception TTCS) {
+		} catch (Exception SoleProprietorshipRegistration) {
+			sendStatusToGoogleChat("SoleProprietorshipRegistration onboarding failed ---------"+SoleProprietorshipRegistration);
 			screenshot.screenshot86(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(SoleProprietorshipRegistration);
+			test.log(Status.WARNING, SoleProprietorshipRegistration);
 			test.log(Status.FAIL,
 					MediaEntityBuilder
 							.createScreenCaptureFromPath("\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\"
@@ -2603,10 +2626,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 
-		} catch (Exception TTCS) {
+		} catch (Exception ShopandEstablishmentAct) {
+			sendStatusToGoogleChat("ShopandEstablishmentAct onboarding failed ---------"+ShopandEstablishmentAct);
 			screenshot.screenshot90(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(ShopandEstablishmentAct);
+			test.log(Status.WARNING, ShopandEstablishmentAct);
 			test.log(Status.FAIL,
 					MediaEntityBuilder
 							.createScreenCaptureFromPath("\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\"
@@ -2710,10 +2734,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 
-		} catch (Exception TTCS) {
+		} catch (Exception LLPPartnershipRegistration) {
+			sendStatusToGoogleChat("LLPPartnershipRegistration onboarding failed ---------"+LLPPartnershipRegistration);
 			screenshot.screenshot94(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(LLPPartnershipRegistration);
+			test.log(Status.WARNING, LLPPartnershipRegistration);
 			test.log(Status.FAIL,
 					MediaEntityBuilder
 							.createScreenCaptureFromPath("\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\"
@@ -2834,10 +2859,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 
-		} catch (Exception TTCS) {
+		} catch (Exception RespondtoTMObjection) {
+			sendStatusToGoogleChat("RespondtoTMObjection onboarding failed ---------"+RespondtoTMObjection);
 			screenshot.screenshot100(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(RespondtoTMObjection);
+			test.log(Status.WARNING, RespondtoTMObjection);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot100.png",
 					"RespondtoTMObjection Onboarding failed").build());
@@ -2951,10 +2977,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 
-		} catch (Exception TTCS) {
+		} catch (Exception PatentRegistration) {
+			sendStatusToGoogleChat("PatentRegistration onboarding failed ---------"+PatentRegistration);
 			screenshot.screenshot106(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(PatentRegistration);
+			test.log(Status.WARNING, PatentRegistration);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot106.png",
 					"PatentRegistration Onboarding failed").build());
@@ -3068,10 +3095,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 
-		} catch (Exception TTCS) {
+		} catch (Exception ProvisionalPatentRegistration) {
+			sendStatusToGoogleChat("ProvisionalPatentRegistration onboarding failed ---------"+ProvisionalPatentRegistration);
 			screenshot.screenshot112(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(ProvisionalPatentRegistration);
+			test.log(Status.WARNING, ProvisionalPatentRegistration);
 			test.log(Status.FAIL,
 					MediaEntityBuilder
 							.createScreenCaptureFromPath("\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\"
@@ -3175,10 +3203,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 
-		} catch (Exception TTCS) {
+		} catch (Exception LLPPartnershipRegistration) {
+			sendStatusToGoogleChat("LLPPartnershipRegistration onboarding failed ---------"+LLPPartnershipRegistration);
 			screenshot.screenshot115(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(LLPPartnershipRegistration);
+			test.log(Status.WARNING, LLPPartnershipRegistration);
 			test.log(Status.FAIL,
 					MediaEntityBuilder
 							.createScreenCaptureFromPath("\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\"
@@ -3294,10 +3323,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 
-		} catch (Exception TTCS) {
+		} catch (Exception PatentSearch) {
+			sendStatusToGoogleChat("PatentSearch onboarding failed ---------"+PatentSearch);
 			screenshot.screenshot121(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(PatentSearch);
+			test.log(Status.WARNING, PatentSearch);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot121.png",
 					"PatentSearch Onboarding failed").build());
@@ -3387,10 +3417,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 
-		} catch (Exception TTCS) {
+		} catch (Exception PatnershipFirm) {
+			sendStatusToGoogleChat("PatnershipFirm onboarding failed ---------"+PatnershipFirm);
 			screenshot.screenshot125(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(PatnershipFirm);
+			test.log(Status.WARNING, PatnershipFirm);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot125.png",
 					"PatnershipFirm Onboarding failed").build());
@@ -3512,13 +3543,31 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			test.log(Status.PASS, "Pament page Redirection ");
 
-		} catch (Exception TTCS) {
+		} catch (Exception MSMERegistration) {
+			sendStatusToGoogleChat("MSMERegistration onboarding failed ---------"+MSMERegistration);
 			screenshot.screenshot130(driver, extentreport);
-			System.out.println(TTCS);
-			test.log(Status.WARNING, TTCS);
+			System.out.println(MSMERegistration);
+			test.log(Status.WARNING, MSMERegistration);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot130.png",
 					"MSMERegistration Onboarding failed").build());
 		}
 	}
+	private void sendStatusToGoogleChat(String message) {
+		String k = "https://chat.googleapis.com/v1/spaces/AAAAltTt55M/messages";
+		RestAssured.baseURI = k;
+		RequestSpecification httpRequest = RestAssured.given();
+		JsonObject requestParams = new JsonObject();
+		requestParams.addProperty("text", message);
+		httpRequest.queryParam("key", "AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI");
+		httpRequest.queryParam("token", "IS9TRk_kE3aSPbwA79mtZqk5Z0xcJfjFYs8h6P04Ltw");
+		httpRequest.header("Content-Type", "application/json");
+		httpRequest.body(requestParams.toString());
+		Response response = httpRequest.request(Method.POST);
+		System.out.println(response.asPrettyString());
 }
+	
+	
+}
+
+
