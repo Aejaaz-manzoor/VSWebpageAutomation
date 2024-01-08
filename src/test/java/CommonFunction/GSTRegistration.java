@@ -344,19 +344,9 @@ public class GSTRegistration {
 			phonenumber.sendKeys("91" + Date12);
 			Thread.sleep(5000);
 
-			// LoginPageobjects.City.click();
-			robot.keyPress(KeyEvent.VK_TAB);
-			robot.keyRelease(KeyEvent.VK_TAB);
-			robot.keyPress(KeyEvent.VK_C);
-			robot.keyRelease(KeyEvent.VK_C);
-			robot.keyPress(KeyEvent.VK_H);
-			robot.keyRelease(KeyEvent.VK_H);
-			robot.keyPress(KeyEvent.VK_E);
-			robot.keyRelease(KeyEvent.VK_E);
-			robot.keyPress(KeyEvent.VK_N);
-			robot.keyRelease(KeyEvent.VK_N);
-	
-			
+			LoginPageobjects.City.click();
+			Thread.sleep(5000);
+			LoginPageobjects.City.sendKeys("chennai");
 			Thread.sleep(10000);
 			wait.until(
 					ExpectedConditions.elementToBeClickable(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu')]")))
