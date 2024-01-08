@@ -130,8 +130,7 @@ Thread.sleep(6000);
 		
 		// Perform file upload actions using Robot class
 		uploadFileWithRobot1(robot, extentreportLocation);
-		WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-			"//button[@aria-label='Send now']")));
+		Thread.sleep(5000);
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 		//sendButton.click();
