@@ -46,7 +46,8 @@ public class GSTRegistration {
 			ExtentReports extentreport) throws InterruptedException, AWTException, IOException {
 		    PageFactory.initElements(driver, LoginPageobjects.class);
 		    sendStatusToGoogleChat("Onboarding Test Automation Started");
-		try {
+		    
+		try { 
 			SimpleDateFormat dateFormat1GstRegistration = new SimpleDateFormat("wwmmyyyyhhmm");
 			String Date1GstRegistration = dateFormat1GstRegistration.format(new Date());
 			test = extentreport.createTest("GST Registration");
@@ -289,6 +290,7 @@ public class GSTRegistration {
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot9.png",
 					"Start application").build());
+			sendStatusToGoogleChat("GstRegistration Passed");
 		} catch (Exception GSTFailed) {
 			sendStatusToGoogleChat("GSTRegistration onboarding failed ---------"+GSTFailed);
 			screenshot.screenshot9(driver, extentreport);
@@ -353,9 +355,8 @@ public class GSTRegistration {
 			robot.keyRelease(KeyEvent.VK_E);
 			robot.keyPress(KeyEvent.VK_N);
 			robot.keyRelease(KeyEvent.VK_N);
-			wait.until(
-					ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='text'])[1]")))
-					.click();
+	
+			
 			Thread.sleep(10000);
 			wait.until(
 					ExpectedConditions.elementToBeClickable(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu')]")))
@@ -446,7 +447,7 @@ public class GSTRegistration {
 			System.out.println("Total Time for page load - " + totalTime21);
 
 			test.log(Status.PASS, "PaymentPage redirection " + totalTime2111 + "ms");
-
+			sendStatusToGoogleChat("PVT Registration Passed");
 		} catch (Exception PVTFAILED) {
 			sendStatusToGoogleChat("PVT onboarding failed ---------"+PVTFAILED);
 			screenshot.screenshot14(driver, extentreport);
@@ -621,7 +622,7 @@ public class GSTRegistration {
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot21.png",
 					"Cart page").build());
-		
+			sendStatusToGoogleChat("TM Registration Passed");
 		} catch (Exception TMfailed) {
 			sendStatusToGoogleChat("TM onboarding failed ---------"+TMfailed);
 			screenshot.screenshot21(driver, extentreport);
@@ -749,7 +750,7 @@ public class GSTRegistration {
 					driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
 				
 				}
-				Thread.sleep(3000);
+				Thread.sleep(6000);
 				driver.findElement(By.xpath("(//input[@type='radio'])[1]")).click();
 				try {
 					driver.findElement(By.xpath("(//div[contains(text(),'Next')])[1]")).click();
@@ -775,7 +776,7 @@ public class GSTRegistration {
 				System.out.println(Gstfiling);
 				test.log(Status.FAIL, Gstfiling);
 			}
-
+			sendStatusToGoogleChat("GST FIling Passed");
 		} catch (Exception GSTFILINGFAILED) {
 			sendStatusToGoogleChat("GSTFILING onboarding failed ---------"+GSTFILINGFAILED);
 			screenshot.screenshot27(driver, extentreport);
@@ -918,7 +919,7 @@ public class GSTRegistration {
 				robot.keyRelease(KeyEvent.VK_R);
 				robot.keyRelease(KeyEvent.VK_CONTROL);
 			}
-
+			sendStatusToGoogleChat("Talk To lawyer Passed");
 		} catch (Exception TTLAWER) {
 			sendStatusToGoogleChat("TTLAWER onboarding failed ---------"+TTLAWER);
 			screenshot.screenshot30(driver, extentreport);
@@ -1031,6 +1032,7 @@ public class GSTRegistration {
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
+			sendStatusToGoogleChat("Talk To CA Passed");
 		} catch (Exception TTCA) {
 			sendStatusToGoogleChat("TTCA onboarding failed ---------"+TTCA);
 			screenshot.screenshot34(driver, extentreport);
@@ -1142,7 +1144,7 @@ public class GSTRegistration {
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
-
+			sendStatusToGoogleChat("TalkToCS Passed");
 		} catch (Exception TTCS) {
 			sendStatusToGoogleChat("TTCS onboarding failed ---------"+TTCS);
 			screenshot.screenshot38(driver, extentreport);
@@ -1239,8 +1241,10 @@ public class GSTRegistration {
 			Thread.sleep(4000);
 			Thread.sleep(8000);
 
-			driver.findElement(By.xpath("//div[contains(text(),'City')]")).sendKeys("chen");
-
+			WebElement FSSAICity = driver.findElement(By.xpath("//div[contains(text(),'City')]"));
+			JavascriptExecutor FSSAICity1 = (JavascriptExecutor) driver;
+			FSSAICity1.executeScript("arguments[0].click();", FSSAICity);
+			FSSAICity.sendKeys("chen");
 			Thread.sleep(8000);
 			Robot robot = new Robot();
 
@@ -1274,7 +1278,7 @@ public class GSTRegistration {
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection ");
-
+			sendStatusToGoogleChat("FSSAI Passed");
 		} catch (Exception FSSAI) {
 			sendStatusToGoogleChat("FSSAI onboarding failed ---------"+FSSAI);
 			screenshot.screenshot42(driver, extentreport);
@@ -1371,7 +1375,10 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(4000);
 			Thread.sleep(8000);
 
-			driver.findElement(By.xpath("//div[contains(text(),'City')]")).sendKeys("chen");
+			WebElement NGOCity = driver.findElement(By.xpath("//div[contains(text(),'City')]"));
+			JavascriptExecutor NGOCity1 = (JavascriptExecutor) driver;
+			NGOCity1.executeScript("arguments[0].click();", NGOCity);
+			NGOCity.sendKeys("chen");
 
 			Thread.sleep(8000);
 			Robot robot = new Robot();
@@ -1380,10 +1387,10 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 
 			long start1 = System.currentTimeMillis();
-			screenshot.screenshot40(driver, extentreport);
-			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot40.png",
-					"LeadCreation").build());
+		//	screenshot.screenshot45(driver, extentreport);
+		//	test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+			//		"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot45.png",
+		//			"LeadCreation").build());
 			WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
@@ -1395,9 +1402,9 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			
 
-			screenshot.screenshot44(driver, extentreport);
+			screenshot.screenshot45(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot44.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot45.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
@@ -1525,7 +1532,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
-
+			sendStatusToGoogleChat("TrustRegistration Passed");
 		} catch (Exception TrustRegistration) {
 			sendStatusToGoogleChat("TrustRegistration onboarding failed ---------"+TrustRegistration);
 			screenshot.screenshot50(driver, extentreport);
@@ -1581,17 +1588,8 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(1500);
 
 			long start11 = System.currentTimeMillis();
-
-			WebElement element3001111 = driver.findElement(By.xpath("//div[contains(text(),'Select option')]"));
-			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
-			executor3001111.executeScript("arguments[0].click();", element3001111);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_DOWN);
-			robot.keyRelease(KeyEvent.VK_DOWN);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
-			Thread.sleep(3000);
+			findAndSelectValueByPartialText(driver, "//div[contains(text(),'Select option')]", "Person Company");
+			
 
 			WebElement element30011111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor30011111 = (JavascriptExecutor) driver;
@@ -1658,7 +1656,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			test.log(Status.PASS, "Pament page Redirection " );
 			
 			
-
+			sendStatusToGoogleChat("PFRegistration Passed");
 
 		} catch (Exception PFRegistration) {
 			sendStatusToGoogleChat("PFRegistration onboarding failed ---------"+PFRegistration);
@@ -1714,17 +1712,8 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(1500);
 
 			long start11 = System.currentTimeMillis();
-
-			WebElement element3001111 = driver.findElement(By.xpath("//div[contains(text(),'Select option')]"));
-			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
-			executor3001111.executeScript("arguments[0].click();", element3001111);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_DOWN);
-			robot.keyRelease(KeyEvent.VK_DOWN);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
-			Thread.sleep(3000);
+			findAndSelectValueByPartialText(driver, "//div[contains(text(),'Select option')]", "Person Company");
+			
 
 			WebElement element30011111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor30011111 = (JavascriptExecutor) driver;
@@ -1789,7 +1778,8 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " );
-			
+			sendStatusToGoogleChat("ESIRegistration Passed");
+
 
 		} catch (Exception ESIRegistration) {
 			sendStatusToGoogleChat("ESIRegistration onboarding failed ---------"+ESIRegistration);
@@ -1839,7 +1829,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			executor30011.executeScript("arguments[0].click();", element30011);
 			element30011.sendKeys("selvam");
 			
-			WebElement element300111 = driver.findElement(By.xpath("//input[@placeholder='Enter your old name']"));
+			WebElement element300111 = driver.findElement(By.xpath("//input[@placeholder='Enter your new name']"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
 			executor300111.executeScript("arguments[0].click();", element300111);
 	     	element300111.sendKeys("balpam");
@@ -1930,6 +1920,8 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " );
+			
+			sendStatusToGoogleChat("ApplyForNameChange Passed");
 		} catch (Exception ApplyForNameChange) {
 			sendStatusToGoogleChat("ApplyForNameChange onboarding failed ---------"+ApplyForNameChange);
 			screenshot.screenshot64(driver, extentreport);
@@ -2046,7 +2038,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
-
+			sendStatusToGoogleChat("ImportExportCode Passed");
 		} catch (Exception ImportExportCode) {
 			sendStatusToGoogleChat("ImportExportCode onboarding failed ---------"+ImportExportCode);
 			screenshot.screenshot69(driver, extentreport);
@@ -2170,7 +2162,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
-
+			sendStatusToGoogleChat("Section8Company Passed");
 		} catch (Exception Section8Company) {
 			sendStatusToGoogleChat("Section8Company onboarding failed ---------"+Section8Company);
 			screenshot.screenshot73(driver, extentreport);
@@ -2244,7 +2236,10 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 					.findElement(By.xpath("(//button[contains(text(),'Talk to our expert')])[1]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
+			
+			
 			Thread.sleep(3500);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@placeholder='e.g. Mumbai, Chennai, New Delhi'])[1]"))).click();
 			driver.findElement(By.xpath("(//input[@placeholder='e.g. Mumbai, Chennai, New Delhi'])[1]"))
 					.sendKeys("Testing");
 
@@ -2287,7 +2282,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
-
+			sendStatusToGoogleChat("MarriageRegistration Passed");
 		} catch (Exception MarriageRegistration) {
 			sendStatusToGoogleChat("MarriageRegistration onboarding failed ---------"+MarriageRegistration);
 			screenshot.screenshot78(driver, extentreport);
@@ -2413,7 +2408,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
-
+			sendStatusToGoogleChat("ChequeBounceNotice Passed");
 		} catch (Exception ChequeBounceNotice) {
 			sendStatusToGoogleChat("ChequeBounceNotice onboarding failed ---------"+ChequeBounceNotice);
 			screenshot.screenshot82(driver, extentreport);
@@ -2526,7 +2521,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
-
+			sendStatusToGoogleChat("SoleProprietorshipRegistration Passed");
 		} catch (Exception SoleProprietorshipRegistration) {
 			sendStatusToGoogleChat("SoleProprietorshipRegistration onboarding failed ---------"+SoleProprietorshipRegistration);
 			screenshot.screenshot86(driver, extentreport);
@@ -2559,32 +2554,32 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot87.png",
 					"ShopandEstablishmentAct HomePage").build());
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='service_form_primary_email']")));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@id='email'])[1]")));
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			System.out.println("Total Time for page load - " + totalTime);
 			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
-			WebElement findElement2 = driver.findElement(By.xpath("//input[@id='service_form_primary_email']"));
+			WebElement findElement2 = driver.findElement(By.xpath("(//input[@id='email'])[1]"));
 
 			findElement2.click();
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver
-					.findElement(By.xpath("(//input[@id='service_form_primary_mobile_number'])[1]"));
+					.findElement(By.xpath("(//input[@id='phone'])[1]"));
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
 			Thread.sleep(4000);
 			Thread.sleep(8000);
 
-			driver.findElement(By.xpath("(//input[@placeholder='City'])[1]")).sendKeys("chen");
+			driver.findElement(By.xpath("(//input[@type='text'])[1]")).sendKeys("chen");
 
 			Thread.sleep(8000);
 			Robot robot = new Robot();
 
-			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamil Nadu')]")).click();
+			driver.findElement(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu')]")).click();
 			Thread.sleep(3000);
 
 			long start1 = System.currentTimeMillis();
@@ -2640,7 +2635,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
-
+			sendStatusToGoogleChat("ShopandEstablishmentAct Passed");
 		} catch (Exception ShopandEstablishmentAct) {
 			sendStatusToGoogleChat("ShopandEstablishmentAct onboarding failed ---------"+ShopandEstablishmentAct);
 			screenshot.screenshot90(driver, extentreport);
@@ -2748,7 +2743,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
-
+			sendStatusToGoogleChat("LLPPartnershipRegistration Passed");
 		} catch (Exception LLPPartnershipRegistration) {
 			sendStatusToGoogleChat("LLPPartnershipRegistration onboarding failed ---------"+LLPPartnershipRegistration);
 			screenshot.screenshot94(driver, extentreport);
@@ -2873,7 +2868,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
-
+			sendStatusToGoogleChat("RespondtoTMObjection Passed");
 		} catch (Exception RespondtoTMObjection) {
 			sendStatusToGoogleChat("RespondtoTMObjection onboarding failed ---------"+RespondtoTMObjection);
 			screenshot.screenshot100(driver, extentreport);
@@ -2954,11 +2949,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			industryname.sendKeys("IT");
 			Thread.sleep(3000);
 
-			executor300111.executeScript("arguments[0].click();", element300111);
+			driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
 			Thread.sleep(3500);
 			driver.findElement(By.xpath("(//input[@type='radio'])[1]")).click();
 
-			executor300111.executeScript("arguments[0].click();", element300111);
+			driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
 			Thread.sleep(8000);
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
@@ -2991,7 +2986,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
-
+			sendStatusToGoogleChat("PatentRegistration Passed");
 		} catch (Exception PatentRegistration) {
 			sendStatusToGoogleChat("PatentRegistration onboarding failed ---------"+PatentRegistration);
 			screenshot.screenshot106(driver, extentreport);
@@ -3072,11 +3067,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			industryname.sendKeys("IT");
 			Thread.sleep(3000);
 
-			executor300111.executeScript("arguments[0].click();", element300111);
+			driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
 			Thread.sleep(3500);
 			driver.findElement(By.xpath("(//input[@type='radio'])[1]")).click();
 
-			executor300111.executeScript("arguments[0].click();", element300111);
+			driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
 			Thread.sleep(8000);
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
@@ -3109,7 +3104,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
-
+			sendStatusToGoogleChat("ProvisionalPatentRegistration Passed");
 		} catch (Exception ProvisionalPatentRegistration) {
 			sendStatusToGoogleChat("ProvisionalPatentRegistration onboarding failed ---------"+ProvisionalPatentRegistration);
 			screenshot.screenshot112(driver, extentreport);
@@ -3217,7 +3212,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
-
+			sendStatusToGoogleChat("LLPPartnershipRegistration Passed");
 		} catch (Exception LLPPartnershipRegistration) {
 			sendStatusToGoogleChat("LLPPartnershipRegistration onboarding failed ---------"+LLPPartnershipRegistration);
 			screenshot.screenshot115(driver, extentreport);
@@ -3300,11 +3295,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			industryname.sendKeys("IT");
 			Thread.sleep(3000);
 
-			executor300111.executeScript("arguments[0].click();", element300111);
+			driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
 			Thread.sleep(3500);
 			driver.findElement(By.xpath("(//input[@type='radio'])[1]")).click();
-
-			executor300111.executeScript("arguments[0].click();", element300111);
+			Thread.sleep(3500);
+			driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
 			Thread.sleep(8000);
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
@@ -3337,7 +3332,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
-
+			sendStatusToGoogleChat("PatentSearch Passed");
 		} catch (Exception PatentSearch) {
 			sendStatusToGoogleChat("PatentSearch onboarding failed ---------"+PatentSearch);
 			screenshot.screenshot121(driver, extentreport);
@@ -3431,7 +3426,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
-
+			sendStatusToGoogleChat("PatnershipFirm Passed");
 		} catch (Exception PatnershipFirm) {
 			sendStatusToGoogleChat("PatnershipFirm onboarding failed ---------"+PatnershipFirm);
 			screenshot.screenshot125(driver, extentreport);
@@ -3512,36 +3507,19 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot128.png",
 					"Date selection").build());
-
+			Thread.sleep(3000);
+			findAndSelectValueByPartialText(driver, "//div[@class=' css-19bb58m']","LLP" );
 			Thread.sleep(3500);
-			robot.keyPress(KeyEvent.VK_TAB);
-			robot.keyRelease(KeyEvent.VK_TAB);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_SPACE);
-			robot.keyRelease(KeyEvent.VK_SPACE);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_DOWN);
-			robot.keyRelease(KeyEvent.VK_DOWN);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
+			
 
-			Thread.sleep(3000);
+		
 			WebElement element300111 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
 			executor300111.executeScript("arguments[0].click();", element300111);
 			Thread.sleep(1500);
-			Thread.sleep(5000);
+			Thread.sleep(3000);
+			findAndSelectValueByPartialText(driver, "//div[@class=' css-19bb58m']","Less than 10 lakhs" );
 			Thread.sleep(3500);
-		
-			robot.keyPress(KeyEvent.VK_SPACE);
-			robot.keyRelease(KeyEvent.VK_SPACE);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_DOWN);
-			robot.keyRelease(KeyEvent.VK_DOWN);
-			Thread.sleep(3000);
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
 
 			Thread.sleep(3000);
 			WebElement element3001114 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
@@ -3554,10 +3532,10 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot129.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
-			driver.findElement(By.xpath("//span[contains(text(),'Proceed to pay')]")).click();
+			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
 
 			test.log(Status.PASS, "Pament page Redirection ");
-
+			sendStatusToGoogleChat("MSMERegistration Passed");
 		} catch (Exception MSMERegistration) {
 			sendStatusToGoogleChat("MSMERegistration onboarding failed ---------"+MSMERegistration);
 			screenshot.screenshot130(driver, extentreport);
@@ -3582,7 +3560,49 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 		System.out.println(response.asPrettyString());
 }
 	
+	private void findAndSelectValueByPartialText(final WebDriver driver, String xpath, String value) throws Exception {
+		 boolean found =false;
+		isElementClickable(driver, xpath);
+		WebDriverWait wait = new WebDriverWait(driver, 3);
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(xpath)));
+		WebElement element = driver.findElement(By.xpath(xpath));
+		scrollToElement(driver, element);
+		List<WebElement> options = driver.findElements(By.xpath(xpath+"/option"));
+		for (WebElement option : options) {
+		    if ((option.getText().toUpperCase()).contains(value.toUpperCase())) {
+		        option.click();
+		        found =true;
+		        break;
+		    }
+		}
+		 if(found==false) {
+		    	throw new IOException("Value not available");  
+		    }
+	}
+	public Boolean isElementClickable(final WebDriver driver, String xpath) {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		boolean flag;
+		try {
+			WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
+			element.click();
+			flag = true;
+		} catch (Exception e) {
+			flag = false;
+			// TODO: handle exception
+		}
+		return flag;
+	}
 	
+	public static void scrollToElement(WebDriver driver, WebElement element) {
+		try {
+			int x = element.getLocation().getX();
+			int y = element.getLocation().getY();
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("window.scrollBy(" + (x - 200) + "," + (y - 200) + ")");
+		} catch (Exception e) {
+			System.err.println("Scrolling to element is not working ");
+		}
+	}
 }
 
 
