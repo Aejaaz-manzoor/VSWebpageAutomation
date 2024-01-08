@@ -23,6 +23,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.google.gson.JsonObject;
+import com.google.gson.annotations.Until;
 
 import PageFactory.HelpdeskPageobject;
 import PageFactory.LoginPageobjects;
@@ -1211,7 +1212,7 @@ public class GSTRegistration {
 			
 			
 			Thread.sleep(4000);
-			
+			Robot robot = new Robot();
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[1]")));
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
@@ -1229,16 +1230,30 @@ public class GSTRegistration {
 			findElement2122.sendKeys("91" + Date12);
 
 			Thread.sleep(4000);
-			Thread.sleep(8000);
-
-			WebElement FSSAICity = driver.findElement(By.xpath("//div[contains(text(),'City')]"));
-			JavascriptExecutor FSSAICity1 = (JavascriptExecutor) driver;
-			FSSAICity1.executeScript("arguments[0].click();", FSSAICity);
-			FSSAICity.sendKeys("chen");
-			Thread.sleep(8000);
-			Robot robot = new Robot();
-
-			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamil Nadu')]")).click();
+			try {
+				FindAndAddElementByJS(driver, "//input[@id='react-select-2-input']/parent::div", "chen");
+				Thread.sleep(8000);
+				
+				
+				clickElementByJS(driver, "//div[contains(text(),'Chennai, Tamil Nadu')]");
+				Thread.sleep(3000);
+			}catch(Exception gio) {
+				
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_C);
+				robot.keyRelease(KeyEvent.VK_C);
+				robot.keyPress(KeyEvent.VK_H);
+				robot.keyRelease(KeyEvent.VK_H);
+				robot.keyPress(KeyEvent.VK_E);
+				robot.keyRelease(KeyEvent.VK_E);
+				robot.keyPress(KeyEvent.VK_N);
+				robot.keyRelease(KeyEvent.VK_N);
+				Thread.sleep(3000);
+				robot.keyPress(KeyEvent.VK_ENTER);
+				robot.keyRelease(KeyEvent.VK_ENTER);
+				
+			}
 			Thread.sleep(3000);
 
 			long start1 = System.currentTimeMillis();
@@ -1246,12 +1261,18 @@ public class GSTRegistration {
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot40.png",
 					"LeadCreation").build());
-			WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
-			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
-			executor300119.executeScript("arguments[0].click();", element300119);
+			try {
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Submit')]")));
+				WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
+				JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
+				executor300119.executeScript("arguments[0].click();", element300119);
+			} catch (Exception e) {
+				robot.keyPress(KeyEvent.VK_ENTER);
+				robot.keyRelease(KeyEvent.VK_ENTER);
+			}
+			
 
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
+		
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
 
@@ -1261,8 +1282,8 @@ public class GSTRegistration {
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot42.png",
 					"OTP verification").build());
-			Thread.sleep(2500);
-			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]"))).click();
+			
 			
 			System.out.println("Pament page Redirection ");
 			Thread.sleep(3500);
@@ -1309,7 +1330,6 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot44.png",
 					"What’s your annual turnover?").build());
-
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[1]")));
 			WebElement element30011 = driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
 			JavascriptExecutor executor30011 = (JavascriptExecutor) driver;
@@ -1336,7 +1356,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			
 			
 			
-			
+			Thread.sleep(5000);
 			
 			
 			
@@ -1361,32 +1381,47 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[2]"));
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
-
-			Thread.sleep(4000);
-			Thread.sleep(8000);
-
-			WebElement NGOCity = driver.findElement(By.xpath("//div[contains(text(),'City')]"));
-			JavascriptExecutor NGOCity1 = (JavascriptExecutor) driver;
-			NGOCity1.executeScript("arguments[0].click();", NGOCity);
-			NGOCity.sendKeys("chen");
-
-			Thread.sleep(8000);
 			Robot robot = new Robot();
-
-			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamil Nadu')]")).click();
+			Thread.sleep(4000);
+		try {
+			FindAndAddElementByJS(driver, "//input[@id='react-select-2-input']/parent::div", "chen");
+			Thread.sleep(8000);
+			
+			
+			clickElementByJS(driver, "//div[contains(text(),'Chennai, Tamil Nadu')]");
 			Thread.sleep(3000);
-
+		}catch(Exception gio) {
+			
+			robot.keyPress(KeyEvent.VK_TAB);
+			robot.keyRelease(KeyEvent.VK_TAB);
+			robot.keyPress(KeyEvent.VK_C);
+			robot.keyRelease(KeyEvent.VK_C);
+			robot.keyPress(KeyEvent.VK_H);
+			robot.keyRelease(KeyEvent.VK_H);
+			robot.keyPress(KeyEvent.VK_E);
+			robot.keyRelease(KeyEvent.VK_E);
+			robot.keyPress(KeyEvent.VK_N);
+			robot.keyRelease(KeyEvent.VK_N);
+			
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			
+		}
 			long start1 = System.currentTimeMillis();
 		//	screenshot.screenshot45(driver, extentreport);
 		//	test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 			//		"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot45.png",
 		//			"LeadCreation").build());
-			WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
-			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
-			executor300119.executeScript("arguments[0].click();", element300119);
-
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
+			try {
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Submit')]")));
+				WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
+				JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
+				executor300119.executeScript("arguments[0].click();", element300119);
+			} catch (Exception e) {
+				robot.keyPress(KeyEvent.VK_ENTER);
+				robot.keyRelease(KeyEvent.VK_ENTER);
+			}
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
 
@@ -1396,9 +1431,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot45.png",
 					"OTP verification").build());
-			Thread.sleep(2500);
-			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
-			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]"))).click();
 			System.out.println("Pament page Redirection ");
 			Thread.sleep(3500);
 
@@ -1578,7 +1611,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(1500);
 
 			long start11 = System.currentTimeMillis();
-			findAndSelectValueByPartialText(driver, "//div[contains(text(),'Select option')]", "Person Company");
+			findAndSelectValueByPartialText(driver, "//div[contains(text(),'Select option')]", "llp");
 			
 
 			WebElement element30011111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
@@ -1702,7 +1735,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(1500);
 
 			long start11 = System.currentTimeMillis();
-			findAndSelectValueByPartialText(driver, "//div[contains(text(),'Select option')]", "Person Company");
+			findAndSelectValueByPartialText(driver, "//div[contains(text(),'Select option')]", "llp");
 			
 
 			WebElement element30011111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
@@ -1828,14 +1861,14 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			WebElement element300111y = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor300111y = (JavascriptExecutor) driver;
 			executor300111y.executeScript("arguments[0].click();", element300111y);
-			Thread.sleep(1500);
-
-			long start11 = System.currentTimeMillis();
-
-			WebElement element3001111 = driver.findElement(By.xpath("//div[contains(text(),'Select option')]"));
-			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
-			executor3001111.executeScript("arguments[0].click();", element3001111);
+			
 			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_TAB);
+			robot.keyRelease(KeyEvent.VK_TAB);
+			
+			robot.keyPress(KeyEvent.VK_SPACE);
+			robot.keyRelease(KeyEvent.VK_SPACE);
+			
 			robot.keyPress(KeyEvent.VK_DOWN);
 			robot.keyRelease(KeyEvent.VK_DOWN);
 			
@@ -1869,27 +1902,46 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			findElement2122.sendKeys("91" + Date12);
 
 			Thread.sleep(4000);
-			Thread.sleep(8000);
-
-			driver.findElement(By.xpath("//div[contains(text(),'City')]")).sendKeys("chen");
-
-			Thread.sleep(8000);
-		
-
-			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamil Nadu')]")).click();
-			Thread.sleep(3000);
-
-			long start1 = System.currentTimeMillis();
-			screenshot.screenshot62(driver, extentreport);
-			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot62.png",
-					"LeadCreation").build());
-			WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
-			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
-			executor300119.executeScript("arguments[0].click();", element300119);
-
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
+			try {
+				FindAndAddElementByJS(driver, "//input[@id='react-select-2-input']/parent::div", "chen");
+				Thread.sleep(8000);
+				
+				
+				clickElementByJS(driver, "//div[contains(text(),'Chennai, Tamil Nadu')]");
+				Thread.sleep(3000);
+			}catch(Exception gio) {
+				
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_C);
+				robot.keyRelease(KeyEvent.VK_C);
+				robot.keyPress(KeyEvent.VK_H);
+				robot.keyRelease(KeyEvent.VK_H);
+				robot.keyPress(KeyEvent.VK_E);
+				robot.keyRelease(KeyEvent.VK_E);
+				robot.keyPress(KeyEvent.VK_N);
+				robot.keyRelease(KeyEvent.VK_N);
+				
+				Thread.sleep(3000);
+				robot.keyPress(KeyEvent.VK_ENTER);
+				robot.keyRelease(KeyEvent.VK_ENTER);
+				
+			}
+			Thread.sleep(4000);
+				long start1 = System.currentTimeMillis();
+			//	screenshot.screenshot45(driver, extentreport);
+			//	test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+				//		"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot45.png",
+			//			"LeadCreation").build());
+				try {
+					WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
+					JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
+					executor300119.executeScript("arguments[0].click();", element300119);
+				} catch (Exception e) {
+					Thread.sleep(2000);
+					robot.keyPress(KeyEvent.VK_ENTER);
+					robot.keyRelease(KeyEvent.VK_ENTER);
+				}
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
 
@@ -1899,7 +1951,8 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot63.png",
 					"OTP verification").build());
-			Thread.sleep(2500);
+			Thread.sleep(5500);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")));
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
 			
 			System.out.println("Pament page Redirection ");
@@ -2097,15 +2150,13 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
 			Thread.sleep(3500);
-			WebElement element3001111 = driver.findElement(By.xpath("(//div[@class=' css-19bb58m'])[1]"));
-			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
-			executor3001111.executeScript("arguments[0].click();", element3001111);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h1[contains(text(),'What is your primary objective?')]")));
 			Thread.sleep(3500);
 			robot.keyPress(KeyEvent.VK_TAB);
 			robot.keyRelease(KeyEvent.VK_TAB);
 			Thread.sleep(3000);
 			robot.keyPress(KeyEvent.VK_SPACE);
-			robot.keyRelease(KeyEvent.VK_SPACE);
+			robot.keyRelease(KeyEvent.VK_SPACE);	
 			Thread.sleep(3000);
 			robot.keyPress(KeyEvent.VK_DOWN);
 			robot.keyRelease(KeyEvent.VK_DOWN);
@@ -2145,6 +2196,9 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot73.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(
+					By.xpath("(//span[contains(text(),'Proceed to pay')])[2]")));
+
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[2]")).click();
 			long finish11 = System.currentTimeMillis();
 			long totalTime11 = finish11 - start11;
@@ -2343,15 +2397,13 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
 			Thread.sleep(3500);
-			WebElement element3001111 = driver.findElement(By.xpath("(//div[@class='styles_label__JD1A8'])[1]"));
-			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
-			executor3001111.executeScript("arguments[0].click();", element3001111);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h1[contains(text(),'What’s the primary reason for cheque bounce?')]")));
 			Thread.sleep(3500);
 			robot.keyPress(KeyEvent.VK_TAB);
 			robot.keyRelease(KeyEvent.VK_TAB);
 			Thread.sleep(3000);
 			robot.keyPress(KeyEvent.VK_SPACE);
-			robot.keyRelease(KeyEvent.VK_SPACE);
+			robot.keyRelease(KeyEvent.VK_SPACE);	
 			Thread.sleep(3000);
 			robot.keyPress(KeyEvent.VK_DOWN);
 			robot.keyRelease(KeyEvent.VK_DOWN);
@@ -2467,7 +2519,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			WebElement element300119 = driver.findElement(By.xpath("(//button[contains(text(),'Get Started')])[1]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
-			Thread.sleep(3500);
+			Thread.sleep(5500);
 			WebElement element3001111 = driver.findElement(By.xpath("//span[contains(text(),' Skip it for now')]"));
 			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
 			executor3001111.executeScript("arguments[0].click();", element3001111);
@@ -2694,11 +2746,17 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			WebElement element300119 = driver.findElement(By.xpath("(//button[contains(text(),'Get Started')])[1]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
-			Thread.sleep(3500);
+			Thread.sleep(6000);
+			
+			
 			WebElement element3001111 = driver.findElement(By.xpath("//span[contains(text(),'Skip it for now')]"));
 			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
 			executor3001111.executeScript("arguments[0].click();", element3001111);
 			Thread.sleep(3500);
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h1[contains(text(),'Age of business')]")));
+			Thread.sleep(3500);
+			
 			robot.keyPress(KeyEvent.VK_TAB);
 			robot.keyRelease(KeyEvent.VK_TAB);
 			Thread.sleep(3000);
@@ -2726,6 +2784,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot93.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")));
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
 			long finish11 = System.currentTimeMillis();
 			long totalTime11 = finish11 - start11;
@@ -2815,6 +2874,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot97.png",
 					"Date selection").build());
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@placeholder='Enter the brand name'])[1]")));
 			WebElement element300111 = driver
 					.findElement(By.xpath("(//input[@placeholder='Enter the brand name'])[1]"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
@@ -2874,6 +2934,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			throws InterruptedException, AWTException, IOException {
 		test = extentreport.createTest("PatentRegistration");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
+		Robot robot = new Robot();
 		Thread.sleep(2000);
 		try {
 			driver.get("https://vakilsearch.com/");
@@ -2908,13 +2969,13 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(4000);
 			Thread.sleep(8000);
 
-			driver.findElement(By.xpath("(//p[@type='text'])[1]")).sendKeys("chen");
-
-			Thread.sleep(8000);
-			Robot robot = new Robot();
-
-			driver.findElement(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu')]")).click();
+			LoginPageobjects.City.click();
 			Thread.sleep(5000);
+			LoginPageobjects.City.sendKeys("chennai");
+			Thread.sleep(10000);
+			wait.until(
+					ExpectedConditions.elementToBeClickable(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu')]")))
+					.click();
 
 			long start1 = System.currentTimeMillis();
 			screenshot.screenshot102(driver, extentreport);
@@ -3110,7 +3171,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 	public void OnepersonCompany(WebDriver driver, String Username, String Mobilenumber, ExtentReports extentreport)
 			throws InterruptedException, AWTException, IOException {
-		test = extentreport.createTest("LLPPartnershipRegistration");
+		test = extentreport.createTest("OnepersonCompany");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		Thread.sleep(2000);
 		try {
@@ -3202,7 +3263,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3500);
 
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
-			sendStatusToGoogleChat("LLPPartnershipRegistration Passed");
+			sendStatusToGoogleChat("OnepersonCompany Passed");
 		} catch (Exception LLPPartnershipRegistration) {
 			sendStatusToGoogleChat("LLPPartnershipRegistration onboarding failed ---------"+LLPPartnershipRegistration);
 			screenshot.screenshot115(driver, extentreport);
@@ -3569,7 +3630,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 		    	throw new IOException("Value not available");  
 		    }
 	}
-	public Boolean isElementClickable(final WebDriver driver, String xpath) {
+	private Boolean isElementClickable(final WebDriver driver, String xpath) {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		boolean flag;
 		try {
@@ -3583,7 +3644,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 		return flag;
 	}
 	
-	public static void scrollToElement(WebDriver driver, WebElement element) {
+	private static void scrollToElement(WebDriver driver, WebElement element) {
 		try {
 			int x = element.getLocation().getX();
 			int y = element.getLocation().getY();
@@ -3592,6 +3653,21 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 		} catch (Exception e) {
 			System.err.println("Scrolling to element is not working ");
 		}
+	}
+	
+	private void clickElementByJS(final WebDriver driver, String elementPath) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		WebElement targetElement = driver.findElement(By.xpath(elementPath));
+		js.executeScript("arguments[0].scrollIntoView(true);", targetElement);
+		js.executeScript("arguments[0].click();", targetElement);
+	}
+	public void FindAndAddElementByJS(final WebDriver driver, String elementPath,String input) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		WebElement targetElement = driver.findElement(By.xpath(elementPath));
+		js.executeScript("arguments[0].scrollIntoView(true);", targetElement);
+		
+	
+		targetElement.sendKeys(input);
 	}
 }
 
