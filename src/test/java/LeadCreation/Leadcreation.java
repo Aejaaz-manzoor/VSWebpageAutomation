@@ -122,27 +122,27 @@ public class Leadcreation {
 
 	@Test(dataProvider = "itemsdata")
 	public void Customercreation100(String Username, String Mobilenumber, String Helpdeskuserid,
-			String helpdeskpassword, String notesname, String notedescrption, String QNameOfCustomer, String qaddress,
-			String qpincode, String Professionalfees, String assignedtoName, String BDAgentName, String CrossSaleName,
-			String GRCMobileNumber, String GRCNewCompanyName, String CINNumber, String CrmUsernames,
-			String CrmUserpassword) throws Exception {
+		String helpdeskpassword, String notesname, String notedescrption, String QNameOfCustomer, String qaddress,
+		String qpincode, String Professionalfees, String assignedtoName, String BDAgentName, String CrossSaleName,
+		String GRCMobileNumber, String GRCNewCompanyName, String CINNumber, String CrmUsernames,
+		String CrmUserpassword) throws Exception {
 		PageFactory.initElements(driver, LoginPageobjects.class);
 		ScreenShot screenshot = new ScreenShot();
 		SimpleDateFormat dateFormat1 = new SimpleDateFormat("MMddyyHHMMSSSS");
 		String Date11 = dateFormat1.format(new Date());
 		Base base = new Base();
 		
-		 GSTRegistration gstregistration = new GSTRegistration();
+		GSTRegistration gstregistration = new GSTRegistration();
 
-//		 base.BaseQE(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//	     gstregistration.GstRegistration(driver, Username, Mobilenumber, Date11, extentreport);
-//	     Thread.sleep(3000);
-//	     base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//	     gstregistration.PrivateLimited(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//     	 Thread.sleep(3000);
-//       base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
-//       gstregistration.TrademarkRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
-// 	     Thread.sleep(3000);
+//		base.BaseQE(driver, CrmUsernames, GRCMobileNumber, extentreport);
+//	    gstregistration.GstRegistration(driver, Username, Mobilenumber, Date11, extentreport);
+//	    Thread.sleep(3000);
+//	    base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+//	    gstregistration.PrivateLimited(driver, CrmUsernames, GRCMobileNumber, extentreport);
+//     	Thread.sleep(3000);
+//      base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
+//      gstregistration.TrademarkRegistration(driver, CrmUsernames, GRCMobileNumber, extentreport);
+// 	    Thread.sleep(3000);
 //		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
 //		gstregistration.GstFiling(driver, CrmUsernames, GRCMobileNumber, extentreport);
 //		Thread.sleep(3000);
