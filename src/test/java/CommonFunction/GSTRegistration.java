@@ -1548,6 +1548,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot50.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
+			
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[2]")).click();
 			long finish11 = System.currentTimeMillis();
 			long totalTime11 = finish11 - start11;
@@ -1651,13 +1652,30 @@ Thread.sleep(4000);
 
 			Thread.sleep(4000);
 			Thread.sleep(8000);
-
-			driver.findElement(By.xpath("//div[contains(text(),'City')]")).sendKeys("chen");
-
-			Thread.sleep(8000);
-		
-
-			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamil Nadu')]")).click();
+			try {
+				FindAndAddElementByJS(driver, "//input[@id='react-select-2-input']/parent::div", "chen");
+				Thread.sleep(8000);
+				
+				
+				clickElementByJS(driver, "//div[contains(text(),'Chennai, Tamil Nadu')]");
+				Thread.sleep(3000);
+			}catch(Exception gio) {
+				
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_C);
+				robot.keyRelease(KeyEvent.VK_C);
+				robot.keyPress(KeyEvent.VK_H);
+				robot.keyRelease(KeyEvent.VK_H);
+				robot.keyPress(KeyEvent.VK_E);
+				robot.keyRelease(KeyEvent.VK_E);
+				robot.keyPress(KeyEvent.VK_N);
+				robot.keyRelease(KeyEvent.VK_N);
+				Thread.sleep(3000);
+				robot.keyPress(KeyEvent.VK_ENTER);
+				robot.keyRelease(KeyEvent.VK_ENTER);
+				
+			}
 			Thread.sleep(3000);
 
 			long start1 = System.currentTimeMillis();
@@ -1681,6 +1699,7 @@ Thread.sleep(4000);
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot54.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")));
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
 			
 			System.out.println("Pament page Redirection ");
@@ -1788,12 +1807,30 @@ Thread.sleep(4000);
 			Thread.sleep(4000);
 			Thread.sleep(8000);
 
-			driver.findElement(By.xpath("//div[contains(text(),'City')]")).sendKeys("chen");
-
-			Thread.sleep(8000);
-		
-
-			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamil Nadu')]")).click();
+			try {
+				FindAndAddElementByJS(driver, "//input[@id='react-select-2-input']/parent::div", "chen");
+				Thread.sleep(8000);
+				
+				
+				clickElementByJS(driver, "//div[contains(text(),'Chennai, Tamil Nadu')]");
+				Thread.sleep(3000);
+			}catch(Exception gio) {
+				
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_C);
+				robot.keyRelease(KeyEvent.VK_C);
+				robot.keyPress(KeyEvent.VK_H);
+				robot.keyRelease(KeyEvent.VK_H);
+				robot.keyPress(KeyEvent.VK_E);
+				robot.keyRelease(KeyEvent.VK_E);
+				robot.keyPress(KeyEvent.VK_N);
+				robot.keyRelease(KeyEvent.VK_N);
+				Thread.sleep(3000);
+				robot.keyPress(KeyEvent.VK_ENTER);
+				robot.keyRelease(KeyEvent.VK_ENTER);
+				
+			}
 			Thread.sleep(3000);
 
 			long start1 = System.currentTimeMillis();
@@ -1817,6 +1854,7 @@ Thread.sleep(4000);
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot58.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")));
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
 			
 			System.out.println("Pament page Redirection ");
@@ -1977,6 +2015,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot63.png",
 					"OTP verification").build());
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")));
 			Thread.sleep(5500);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")));
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
