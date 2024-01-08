@@ -251,9 +251,9 @@ public class Leadcreation {
 			 
 			
 			SendMailSSLWithAttachment Mail = new SendMailSSLWithAttachment();
-			//Mail.main(extentreportLocation, messageInputdata,Date1);
+			Mail.main(extentreportLocation, messageInputdata,Date1);
 		    slack slackmsg = new slack();
-			//slackmsg.slackMessageTest(driver, screenshotLocation, extentreportLocation, messageInputdata);
+			slackmsg.slackMessageTest(driver, screenshotLocation, extentreportLocation, messageInputdata);
 
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
