@@ -3552,8 +3552,8 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 		RequestSpecification httpRequest = RestAssured.given();
 		JsonObject requestParams = new JsonObject();
 		requestParams.addProperty("text", message);
-		httpRequest.queryParam("key", "AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHV");//I
-		httpRequest.queryParam("token", "HeCoHncsuLF5PBkuf7D08IGuRZT396EfyDIGKPRDSUV");
+		httpRequest.queryParam("key", "AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI");
+		httpRequest.queryParam("token", "HeCoHncsuLF5PBkuf7D08IGuRZT396EfyDIGKPRDSUI");
 		httpRequest.header("Content-Type", "application/json");
 		httpRequest.body(requestParams.toString());
 		Response response = httpRequest.request(Method.POST);
