@@ -3559,20 +3559,53 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot128.png",
 					"Date selection").build());
 			Thread.sleep(3000);
-			findAndSelectValueByPartialText(driver, "//div[@class=' css-19bb58m']","LLP" );
-			Thread.sleep(3500);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[contains(text(),'Please select your entity type?')]")));
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_TAB);
+			robot.keyRelease(KeyEvent.VK_TAB);
 			
+			robot.keyPress(KeyEvent.VK_SPACE);
+			robot.keyRelease(KeyEvent.VK_SPACE);
+			
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			Thread.sleep(3000);
 
 		
 			WebElement element300111 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
 			executor300111.executeScript("arguments[0].click();", element300111);
-			Thread.sleep(1500);
+			
+		
 			Thread.sleep(3000);
-			findAndSelectValueByPartialText(driver, "//div[@class=' css-19bb58m']","Less than 10 lakhs" );
-			Thread.sleep(3500);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[contains(text(),'What’s the annual turnover of your company?')]")));
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_TAB);
+			robot.keyRelease(KeyEvent.VK_TAB);
+			
+			robot.keyPress(KeyEvent.VK_SPACE);
+			robot.keyRelease(KeyEvent.VK_SPACE);
+			
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			Thread.sleep(3000);
 
-			Thread.sleep(3000);
+
+		
 			WebElement element3001114 = driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor3001114 = (JavascriptExecutor) driver;
 			executor3001114.executeScript("arguments[0].click();", element3001114);
@@ -3583,6 +3616,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot129.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")));
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
 
 			test.log(Status.PASS, "Pament page Redirection ");
