@@ -1611,9 +1611,23 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(1500);
 
 			long start11 = System.currentTimeMillis();
-			findAndSelectValueByPartialText(driver, "//div[contains(text(),'Select option')]", "llp");
 			
-
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[contains(text(),'What is the nature of your business')]")));
+			Thread.sleep(3500);
+			
+			robot.keyPress(KeyEvent.VK_TAB);
+			robot.keyRelease(KeyEvent.VK_TAB);
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_SPACE);
+			robot.keyRelease(KeyEvent.VK_SPACE);
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			
+Thread.sleep(4000);
 			WebElement element30011111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor30011111 = (JavascriptExecutor) driver;
 			executor30011111.executeScript("arguments[0].click();", element30011111);
@@ -1732,11 +1746,23 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			WebElement element300111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
 			executor300111.executeScript("arguments[0].click();", element300111);
-			Thread.sleep(1500);
-
-			long start11 = System.currentTimeMillis();
-			findAndSelectValueByPartialText(driver, "//div[contains(text(),'Select option')]", "llp");
+			Thread.sleep(4500);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[contains(text(),'What is the nature of your business')]")));
+			Thread.sleep(3500);
 			
+			robot.keyPress(KeyEvent.VK_TAB);
+			robot.keyRelease(KeyEvent.VK_TAB);
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_SPACE);
+			robot.keyRelease(KeyEvent.VK_SPACE);
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			
+Thread.sleep(4000);
 
 			WebElement element30011111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor30011111 = (JavascriptExecutor) driver;
