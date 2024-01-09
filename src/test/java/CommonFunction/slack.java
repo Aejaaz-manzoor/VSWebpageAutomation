@@ -113,9 +113,7 @@ Thread.sleep(6000);
 		
 		// Perform file upload actions using Robot class
 		uploadFileWithRobot(robot, screenshotLocation);
-//		WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-//				"//button[@class='c-button-unstyled c-icon_button c-icon_button--size_small c-wysiwyg_container__button c-wysiwyg_container__button--send c-wysiwyg_container__button--disabled c-button--disabled c-icon_button--default']")));
-//		sendButton.click();
+
 	
 		
 			Thread.sleep(4000);
@@ -131,8 +129,7 @@ Thread.sleep(6000);
 		// Perform file upload actions using Robot class
 		uploadFileWithRobot1(robot, extentreportLocation);
 		Thread.sleep(5000);
-		WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-				"//button[@aria-label='Send now']")));
+		WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@aria-label='Send now']")));
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 		sendButton.click();
