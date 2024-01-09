@@ -88,13 +88,14 @@ public class GSTRegistration {
 
 			findElement2.sendKeys("chen");
 			Thread.sleep(10000);
+			
 			try {
 			WebElement findElement222 = driver.findElement(By.xpath("//li[@class='hover:clib-bg-[#E6EAEE] clib-cursor-pointer clib-px-3 clib-py-2 clib-text-black']"));
 			findElement222.click();
 			}catch (Exception selection) {
-				WebElement findElement222 = driver.findElement(By.xpath("//li[contains(text(),'Chengalpattu, Tamil Nadu')]"));
-				findElement222.click();
-				
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu')]")));
+			WebElement findElement222 = driver.findElement(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu')]"));
+			findElement222.click();				
 			}
 
 			Robot robot = new Robot();
