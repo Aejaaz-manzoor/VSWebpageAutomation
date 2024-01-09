@@ -2461,6 +2461,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot80.png",
 					"LeadCreation").build());
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(text(),'Consult an Expert')])[1]")));
 			WebElement element300119 = driver
 					.findElement(By.xpath("(//button[contains(text(),'Consult an Expert')])[1]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
