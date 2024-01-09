@@ -2000,6 +2000,8 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 				//		"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot45.png",
 			//			"LeadCreation").build());
 				try {
+					wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Submit')]")));
+
 					WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
 					JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 					executor300119.executeScript("arguments[0].click();", element300119);
