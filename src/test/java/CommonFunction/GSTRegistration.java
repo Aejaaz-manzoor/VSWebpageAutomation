@@ -1684,12 +1684,13 @@ Thread.sleep(4000);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot53.png",
 					"LeadCreation").build());
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Submit')]")));
+
 			WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
 
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
+		
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
 
@@ -1839,12 +1840,12 @@ Thread.sleep(4000);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot57.png",
 					"LeadCreation").build());
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Submit')]")));
 			WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
 
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
+			
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
 
