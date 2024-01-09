@@ -38,7 +38,7 @@ public class slack {
 	
 	
 	public void loginToSlack(WebDriver driver) {
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebDriverWait wait = new WebDriverWait(driver, 30);
 		driver.get("https://slack.com/intl/en-in");
 		WebElement signInLink = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("(//a[contains(text(),'Sign in')])[1]")));
@@ -131,6 +131,8 @@ Thread.sleep(6000);
 		// Perform file upload actions using Robot class
 		uploadFileWithRobot1(robot, extentreportLocation);
 		Thread.sleep(5000);
+		WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
+				"//button[@aria-label='Send now']")));
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 		//sendButton.click();
