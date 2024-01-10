@@ -42,7 +42,8 @@ public class GSTRegistration {
 	String Date11 = dateFormat1.format(new Date());
 	SimpleDateFormat dateFormat = new SimpleDateFormat("MMddyyyy");
 	String Date1 = dateFormat.format(new Date());
-	
+public Robot robot ;
+
 	public void GstRegistration(WebDriver driver, String Username, String Mobilenumber, String Date11,
 			ExtentReports extentreport) throws InterruptedException, AWTException, IOException {
 		    PageFactory.initElements(driver, LoginPageobjects.class);
@@ -1643,11 +1644,19 @@ Thread.sleep(4000);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[1]"));
-
-			findElement2.click();
+			if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[2]"));
+			findElement2122.clear();
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -1798,12 +1807,22 @@ Thread.sleep(4000);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[1]"));
-
-			findElement2.click();
+		
+		  
+		    if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
+		   
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[2]"));
-			findElement2122.click();
+			Thread.sleep(4000);
 			findElement2122.sendKeys("91" + Date12);
 
 			Thread.sleep(4000);
@@ -1959,11 +1978,19 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[1]"));
-
-			findElement2.click();
+			if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@class='styles_inputBox__5uNS_'])[2]"));
+			findElement2122.clear();
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -2072,11 +2099,19 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("//input[@id='email']"));
-
-			findElement2.click();
+			if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@id='phone'])[1]"));
+			findElement2122.clear();
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -2189,12 +2224,21 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("//input[@id='inputForEmail']"));
-
-			findElement2.click();
+			if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver
 					.findElement(By.xpath("(//input[@id='service_form_primary_mobile_number'])[1]"));
+			findElement2122.clear();
+
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -2328,12 +2372,21 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("//input[@id='service_form_primary_email']"));
-
-			findElement2.click();
+			if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver
 					.findElement(By.xpath("(//input[@id='service_form_primary_mobile_number'])[1]"));
+			findElement2122.clear();
+
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -2438,12 +2491,21 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("//input[@id='service_form_primary_email']"));
-
-			findElement2.click();
+			if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver
 					.findElement(By.xpath("(//input[@id='service_form_primary_mobile_number'])[1]"));
+			findElement2122.clear();
+
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -2563,11 +2625,20 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("(//input[@id='email'])[1]"));
-
-			findElement2.click();
+			if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@id='phone'])[1]"));
+			findElement2122.clear();
+
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -2674,12 +2745,21 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("(//input[@id='email'])[1]"));
-
-			findElement2.click();
+			if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver
 					.findElement(By.xpath("(//input[@id='phone'])[1]"));
+			findElement2122.clear();
+
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -2790,11 +2870,20 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("(//input[@id='email'])[1]"));
-
-			findElement2.click();
+			if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@id='phone'])[1]"));
+			findElement2122.clear();
+
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -2903,11 +2992,20 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("(//input[@id='email'])[1]"));
-
-			findElement2.click();
+			if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@id='phone'])[1]"));
+			findElement2122.clear();
+
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -3028,11 +3126,20 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("(//input[@id='email'])[1]"));
-
-			findElement2.click();
+			if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@id='phone'])[1]"));
+			findElement2122.clear();
+
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -3146,11 +3253,20 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("(//input[@id='email'])[1]"));
-
-			findElement2.click();
+			if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@id='phone'])[1]"));
+			findElement2122.clear();
+
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -3268,11 +3384,20 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("(//input[@id='email'])[1]"));
-
-			findElement2.click();
+			if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@id='phone'])[1]"));
+			findElement2122.clear();
+
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -3374,11 +3499,20 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("(//input[@id='email'])[1]"));
-
-			findElement2.click();
+			if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@id='phone'])[1]"));
+			findElement2122.clear();
+
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -3495,11 +3629,20 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("(//input[@id='email'])[1]"));
-
-			findElement2.click();
+			if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@id='phone'])[1]"));
+			findElement2122.clear();
+
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
@@ -3586,12 +3729,21 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("//input[@id='service_form_primary_email']"));
-
-			findElement2.click();
+			if (findElement2.isEnabled()) {
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_A);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				
+				robot.keyPress(KeyEvent.VK_DELETE);
+				robot.keyRelease(KeyEvent.VK_DELETE);
+		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver
 					.findElement(By.xpath("(//input[@id='service_form_primary_mobile_number'])[1]"));
+			findElement2122.clear();
+
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
