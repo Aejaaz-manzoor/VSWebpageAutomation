@@ -91,6 +91,7 @@ public class slack {
 		
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
+		
 		wait.until(
 				ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'use Slack in your browser')]")))
 				.click();
