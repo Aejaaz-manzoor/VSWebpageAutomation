@@ -133,7 +133,7 @@ public class Leadcreation {
 
 		GSTRegistration gstregistration = new GSTRegistration();
 
-		base.BaseQE(driver, CrmUsernames, GRCMobileNumber, extentreport);
+		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
 		gstregistration.GstRegistration(driver, Username, Mobilenumber, Date11, extentreport);
 		Thread.sleep(3000);
 		base.Base1(driver, CrmUsernames, GRCMobileNumber, extentreport);
