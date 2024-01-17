@@ -1236,7 +1236,7 @@ public class GSTRegistration {
 				Thread.sleep(8000);
 				
 				
-				clickElementByJS(driver, "//div[contains(text(),'Chennai, Tamil Nadu')]");
+				clickElementByJS(driver, "//li[contains(text(),'Chennai, Tamil Nadu')]");
 				Thread.sleep(3000);
 			}catch(Exception gio) {
 				
@@ -1389,7 +1389,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(8000);
 			
 			
-			clickElementByJS(driver, "//div[contains(text(),'Chennai, Tamil Nadu')]");
+			clickElementByJS(driver, "//li[contains(text(),'Chennai, Tamil Nadu')]");
 			Thread.sleep(3000);
 		}catch(Exception gio) {
 			
@@ -1999,7 +1999,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 				Thread.sleep(8000);
 				
 				
-				clickElementByJS(driver, "//div[contains(text(),'Chennai, Tamil Nadu')]");
+				clickElementByJS(driver, "//li[contains(text(),'Chennai, Tamil Nadu')]");
 				Thread.sleep(3000);
 			}catch(Exception gio) {
 				
@@ -2073,6 +2073,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 	public void ImportExportCode(WebDriver driver, String Username, String Mobilenumber, ExtentReports extentreport)
 			throws InterruptedException, AWTException, IOException {
+		Robot robot = new Robot();
 		test = extentreport.createTest("ImportExportCode");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		Thread.sleep(2000);
@@ -2121,7 +2122,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 					.sendKeys("chen");
 
 			Thread.sleep(8000);
-			Robot robot = new Robot();
+		
 
 			driver.findElement(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu')]")).click();
 			Thread.sleep(3000);
@@ -2200,6 +2201,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			throws InterruptedException, AWTException, IOException {
 		test = extentreport.createTest("Section8Company");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
+		Robot robot = new Robot();
 		Thread.sleep(2000);
 		try {
 			driver.get("https://vakilsearch.com/");
@@ -2247,7 +2249,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			driver.findElement(By.xpath("//input[@placeholder='City']")).sendKeys("chen");
 
 			Thread.sleep(8000);
-			Robot robot = new Robot();
+			
 
 			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamil Nadu')]")).click();
 			Thread.sleep(3000);
@@ -2334,6 +2336,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			throws InterruptedException, AWTException, IOException {
 		test = extentreport.createTest("Marriage Registration");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
+		Robot robot = new Robot();
 		Thread.sleep(2000);
 		try {
 			driver.get("https://vakilsearch.com/");
@@ -2345,7 +2348,6 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			driver.findElement(By.xpath("(//p[contains(text(),'Property & Personal')])[1]")).click();
 			Thread.sleep(3000);
 
-			Robot robot = new Robot();
 			robot.keyPress(KeyEvent.VK_CONTROL);
 			robot.keyPress(KeyEvent.VK_MINUS);
 			robot.keyRelease(KeyEvent.VK_MINUS);
@@ -2721,6 +2723,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			ExtentReports extentreport) throws InterruptedException, AWTException, IOException {
 		test = extentreport.createTest("ShopandEstablishmentAct");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
+		Robot robot = new Robot();
 		Thread.sleep(2000);
 		try {
 			driver.get("https://vakilsearch.com/");
@@ -2768,7 +2771,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			driver.findElement(By.xpath("(//input[@type='text'])[1]")).sendKeys("chen");
 
 			Thread.sleep(8000);
-			Robot robot = new Robot();
+			
 
 			driver.findElement(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu')]")).click();
 			Thread.sleep(3000);
@@ -2844,6 +2847,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			ExtentReports extentreport) throws InterruptedException, AWTException, IOException {
 		test = extentreport.createTest("LLPPartnershipRegistration");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
+		Robot robot = new Robot();
 		Thread.sleep(2000);
 		try {
 			driver.get("https://vakilsearch.com/");
@@ -2855,7 +2859,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			driver.findElement(By.xpath("(//a[contains(text(),'Limited Liability Partnership')])[1]")).click();
 			Thread.sleep(3000);
 
-			Robot robot = new Robot();
+			
 
 			screenshot.screenshot91(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
@@ -2968,6 +2972,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			throws InterruptedException, AWTException, IOException {
 		test = extentreport.createTest("RespondtoTMObjection");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
+		Robot robot = new Robot();
 		Thread.sleep(2000);
 		try {
 			driver.get("https://vakilsearch.com/");
@@ -3014,7 +3019,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			driver.findElement(By.xpath("(//input[@type='text'])[1]")).sendKeys("chen");
 
 			Thread.sleep(8000);
-			Robot robot = new Robot();
+			
 
 			driver.findElement(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu')]")).click();
 			Thread.sleep(3000);
@@ -3229,6 +3234,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			ExtentReports extentreport) throws InterruptedException, AWTException, IOException {
 		test = extentreport.createTest("ProvisionalPatentRegistration");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
+		Robot robot = new Robot();
 		Thread.sleep(2000);
 		try {
 			driver.get("https://vakilsearch.com/");
@@ -3275,7 +3281,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			driver.findElement(By.xpath("(//input[@type='text'])[1]")).sendKeys("chen");
 
 			Thread.sleep(8000);
-			Robot robot = new Robot();
+		
 
 			driver.findElement(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu')]")).click();
 			Thread.sleep(5000);
@@ -3475,6 +3481,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			throws InterruptedException, AWTException, IOException {
 		test = extentreport.createTest("PatentSearch");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
+		Robot robot = new Robot();
 		Thread.sleep(2000);
 		try {
 			driver.get("https://vakilsearch.com/");
@@ -3521,7 +3528,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			driver.findElement(By.xpath("(//input[@type='text'])[1]")).sendKeys("chen");
 
 			Thread.sleep(8000);
-			Robot robot = new Robot();
+		
 
 			driver.findElement(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu')]")).click();
 			Thread.sleep(5000);
