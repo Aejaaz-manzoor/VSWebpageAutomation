@@ -42,8 +42,7 @@ public class GSTRegistration {
 	String Date11 = dateFormat1.format(new Date());
 	SimpleDateFormat dateFormat = new SimpleDateFormat("MMddyyyy");
 	String Date1 = dateFormat.format(new Date());
-public Robot robot ;
-
+    public Robot robot ;
 	public void GstRegistration(WebDriver driver, String Username, String Mobilenumber, String Date11,
 			ExtentReports extentreport) throws InterruptedException, AWTException, IOException {
 		    PageFactory.initElements(driver, LoginPageobjects.class);
@@ -441,11 +440,11 @@ public Robot robot ;
 
 			test.log(Status.PASS, "PaymentPage redirection " + totalTime2111 + "ms");
 			sendStatusToGoogleChat("PVT Registration Passed");
-		} catch (Exception PVTFAILED) {
-			sendStatusToGoogleChat("PVT onboarding failed ---------"+PVTFAILED);
+		} catch (Exception PVT_FAILED) {
+			sendStatusToGoogleChat("PVT onboarding failed ---------"+PVT_FAILED);
 			screenshot.screenshot14(driver, extentreport);
-			System.out.println(PVTFAILED);
-			test.log(Status.WARNING, PVTFAILED);
+			System.out.println(PVT_FAILED);
+			test.log(Status.WARNING, PVT_FAILED);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot14.png",
 					"PVT Registration failed").build());
@@ -3856,7 +3855,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 					"MSMERegistration Onboarding failed").build());
 		}
 	}
-	private void sendStatusToGoogleChat(String message) {
+	private static void sendStatusToGoogleChat(String message) {
 		String k = "https://chat.googleapis.com/v1/spaces/AAAAgosrJz0/messages";
 		RestAssured.baseURI = k;
 		RequestSpecification httpRequest = RestAssured.given();
@@ -3870,7 +3869,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 		System.out.println(response.asPrettyString());
 }
 	
-	private void findAndSelectValueByPartialText(final WebDriver driver, String xpath, String value) throws Exception {
+	private static void findAndSelectValueByPartialText(final WebDriver driver, String xpath, String value) throws Exception {
 		 boolean found =false;
 		isElementClickable(driver, xpath);
 		WebDriverWait wait = new WebDriverWait(driver, 3);
@@ -3889,7 +3888,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 		    	throw new IOException("Value not available");  
 		    }
 	}
-	private Boolean isElementClickable(final WebDriver driver, String xpath) {
+	private static Boolean isElementClickable(final WebDriver driver, String xpath) {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		boolean flag;
 		try {
@@ -3914,13 +3913,13 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 		}
 	}
 	
-	private void clickElementByJS(final WebDriver driver, String elementPath) {
+	private static void clickElementByJS(final WebDriver driver, String elementPath) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		WebElement targetElement = driver.findElement(By.xpath(elementPath));
 		js.executeScript("arguments[0].scrollIntoView(true);", targetElement);
 		js.executeScript("arguments[0].click();", targetElement);
 	}
-	public void FindAndAddElementByJS(final WebDriver driver, String elementPath,String input) {
+	public static void FindAndAddElementByJS(final WebDriver driver, String elementPath,String input) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		WebElement targetElement = driver.findElement(By.xpath(elementPath));
 		js.executeScript("arguments[0].scrollIntoView(true);", targetElement);
