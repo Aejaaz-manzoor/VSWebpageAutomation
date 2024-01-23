@@ -2091,14 +2091,14 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot65.png",
 					"ImportExportCode HomePage").build());
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='email']")));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//p[contains(text(),'Get Started!')]//parent::form/child::input)[1]")));
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			System.out.println("Total Time for page load - " + totalTime);
 			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
-			WebElement findElement2 = driver.findElement(By.xpath("//input[@id='email']"));
+			WebElement findElement2 = driver.findElement(By.xpath("(//p[contains(text(),'Get Started!')]//parent::form/child::input)[1]"));
 			if (findElement2.isEnabled()) {
 		    	robot.keyPress(KeyEvent.VK_CONTROL);
 				robot.keyPress(KeyEvent.VK_A);
@@ -2110,7 +2110,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 		    }
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
-			WebElement findElement2122 = driver.findElement(By.xpath("(//input[@id='phone'])[1]"));
+			WebElement findElement2122 = driver.findElement(By.xpath("(//p[contains(text(),'Get Started!')]//parent::form/child::input)[2]"));
 			findElement2122.clear();
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
@@ -2118,13 +2118,12 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			Thread.sleep(4000);
 			Thread.sleep(8000);
 
-			driver.findElement(By.xpath("(//div[@class='clib-relative']/child::div)[3]/following-sibling::input"))
-					.sendKeys("chen");
+			driver.findElement(By.xpath("//p[contains(text(),'Get Started!')]/parent::form/child::div/child::div/child::input")).sendKeys("chen");
 
 			Thread.sleep(8000);
-		
+			
 
-			driver.findElement(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu')]")).click();
+			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamilnadu')]")).click();
 			Thread.sleep(3000);
 
 			long start1 = System.currentTimeMillis();
@@ -2365,14 +2364,14 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot74.png",
 					"Marriage Registration HomePage").build());
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='service_form_primary_email']")));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//p[contains(text(),'Get Started!')]//parent::form/child::input)[1]")));
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			System.out.println("Total Time for page load - " + totalTime);
 			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
-			WebElement findElement2 = driver.findElement(By.xpath("//input[@id='service_form_primary_email']"));
+			WebElement findElement2 = driver.findElement(By.xpath("(//p[contains(text(),'Get Started!')]//parent::form/child::input)[1]"));
 			if (findElement2.isEnabled()) {
 		    	robot.keyPress(KeyEvent.VK_CONTROL);
 				robot.keyPress(KeyEvent.VK_A);
@@ -2385,16 +2384,22 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver
-					.findElement(By.xpath("(//input[@id='service_form_primary_mobile_number'])[1]"));
+					.findElement(By.xpath("(//p[contains(text(),'Get Started!')]//parent::form/child::input)[2]"));
 			findElement2122.clear();
 
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
 			Thread.sleep(4000);
+			
+			
+			
+			Thread.sleep(3500);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[contains(text(),'Get Started!')]/parent::form/child::div/child::div/child::input"))).click();
+			driver.findElement(By.xpath("//p[contains(text(),'Get Started!')]/parent::form/child::div/child::div/child::input"))
+					.sendKeys("Chen");
 			Thread.sleep(8000);
-
-			long start1 = System.currentTimeMillis();
+			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamilnadu')]")).click();			long start1 = System.currentTimeMillis();
 			screenshot.screenshot75(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot75.png",
@@ -2403,13 +2408,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 					.findElement(By.xpath("(//button[contains(text(),'Talk to our expert')])[1]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
-			
-			
-			Thread.sleep(3500);
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@placeholder='e.g. Mumbai, Chennai, New Delhi'])[1]"))).click();
-			driver.findElement(By.xpath("(//input[@placeholder='e.g. Mumbai, Chennai, New Delhi'])[1]"))
-					.sendKeys("Testing");
 
+			
+			driver.findElement(By.xpath("//h1[contains(text(),'Which location did you register your marriage?')]/parent::section/child::div/child::input"))
+			.sendKeys("Chennai");
+			
 			driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
 
 			long finish1 = System.currentTimeMillis();
