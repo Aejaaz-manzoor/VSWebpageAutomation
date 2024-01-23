@@ -1662,11 +1662,11 @@ Thread.sleep(4000);
 			Thread.sleep(4000);
 			Thread.sleep(8000);
 			try {
-				FindAndAddElementByJS(driver, "//input[@id='react-select-2-input']/parent::div", "chen");
+				FindAndAddElementByJS(driver, "//p[contains(text(),'Enter the basic information to get started ')]/parent::div/child::div/child::div/child::div/child::input", "chen");
 				Thread.sleep(8000);
 				
 				
-				clickElementByJS(driver, "//div[contains(text(),'Chennai, Tamil Nadu')]");
+				clickElementByJS(driver, "//li[contains(text(),'Chennai, Tamil Nadu, India')]");
 				Thread.sleep(3000);
 			}catch(Exception gio) {
 				
@@ -1828,11 +1828,11 @@ Thread.sleep(4000);
 			Thread.sleep(8000);
 
 			try {
-				FindAndAddElementByJS(driver, "//input[@id='react-select-2-input']/parent::div", "chen");
+				FindAndAddElementByJS(driver, "//p[contains(text(),'Enter the basic information to get started ')]/parent::div/child::div/child::div/child::div/child::input", "chen");
 				Thread.sleep(8000);
 				
 				
-				clickElementByJS(driver, "//div[contains(text(),'Chennai, Tamil Nadu')]");
+				clickElementByJS(driver, "//li[contains(text(),'Chennai, Tamil Nadu, India')]");
 				Thread.sleep(3000);
 			}catch(Exception gio) {
 				
@@ -1995,11 +1995,11 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 
 			Thread.sleep(4000);
 			try {
-				FindAndAddElementByJS(driver, "//input[@id='react-select-2-input']/parent::div", "chen");
+				FindAndAddElementByJS(driver, "//p[contains(text(),'Enter the basic information to get started ')]/parent::div/child::div/child::div/child::div/child::input", "chen");
 				Thread.sleep(8000);
 				
 				
-				clickElementByJS(driver, "//li[contains(text(),'Chennai, Tamil Nadu')]");
+				clickElementByJS(driver, "//li[contains(text(),'Chennai, Tamil Nadu, India')]");
 				Thread.sleep(3000);
 			}catch(Exception gio) {
 				
