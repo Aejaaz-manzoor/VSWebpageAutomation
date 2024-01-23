@@ -57,10 +57,10 @@ public class HomescreenPageobject extends NewCRMPageobject {
 	@FindBy(xpath = "//div[@class='switch_bg bg-success']")
 	public static WebElement whatsapptogleoffGSTRegistration ;
 	
-	@FindBy(xpath = "//label[contains(text(),'No, I don’t have a company name')]")
+	@FindBy(xpath = "//label[contains(text(),'No, I donâ€™t have a company name')]")
 	public static WebElement noidonthaveacompanyNameGSTRig ;
 	
-	@FindBy(xpath = "//label[contains(text(),'No, I don’t have a company name')]")
+	@FindBy(xpath = "//label[contains(text(),'No, I donâ€™t have a company name')]")
 	public static WebElement NextGSTReg ;
 	
 	@FindBy(xpath = "(//p[contains(text(),'Trademark & IP')])[1]")

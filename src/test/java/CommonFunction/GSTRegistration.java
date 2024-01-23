@@ -166,7 +166,7 @@ public class GSTRegistration {
 				Thread.sleep(4000);
 				System.out.println(e);
 				wait.until(ExpectedConditions
-						.elementToBeClickable(By.xpath("//label[contains(text(),'No, I don�t have a company name')]")));
+						.elementToBeClickable(By.xpath("//label[contains(text(),'No, I don’t have a company name')]")));
 
 				JavascriptExecutor executor34 = (JavascriptExecutor) driver;
 				executor34.executeScript("arguments[0].click();", LoginPageobjects.noidonthaveacompanyNameGSTRig);
@@ -1232,11 +1232,11 @@ public class GSTRegistration {
 
 			Thread.sleep(4000);
 			try {
-				FindAndAddElementByJS(driver, "//input[@id='react-select-2-input']/parent::div", "chen");
+				FindAndAddElementByJS(driver, "//p[contains(text(),'Enter the basic information to get started ')]/parent::div/child::div/child::div/child::div/child::input", "chen");
 				Thread.sleep(8000);
 				
 				
-				clickElementByJS(driver, "//li[contains(text(),'Chennai, Tamil Nadu')]");
+				clickElementByJS(driver, "//li[contains(text(),'Chennai, Tamil Nadu, India')]");
 				Thread.sleep(3000);
 			}catch(Exception gio) {
 				
@@ -1384,14 +1384,14 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			findElement2122.sendKeys("91" + Date12);
 			Robot robot = new Robot();
 			Thread.sleep(4000);
-		try {
-			FindAndAddElementByJS(driver, "//input[@id='react-select-2-input']/parent::div", "chen");
-			Thread.sleep(8000);
-			
-			
-			clickElementByJS(driver, "//li[contains(text(),'Chennai, Tamil Nadu')]");
-			Thread.sleep(3000);
-		}catch(Exception gio) {
+			try {
+				FindAndAddElementByJS(driver, "//p[contains(text(),'Enter the basic information to get started ')]/parent::div/child::div/child::div/child::div/child::input", "chen");
+				Thread.sleep(8000);
+				
+				
+				clickElementByJS(driver, "//li[contains(text(),'Chennai, Tamil Nadu, India')]");
+				Thread.sleep(3000);
+			}catch(Exception gio) {
 			
 			robot.keyPress(KeyEvent.VK_TAB);
 			robot.keyRelease(KeyEvent.VK_TAB);
@@ -1472,32 +1472,32 @@ wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot46.png",
 					"TrustRegistration HomePage").build());
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='service_form_primary_email']")));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//p[contains(text(),'Get Started!')]//parent::form/child::input)[1]")));
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			System.out.println("Total Time for page load - " + totalTime);
 			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
-			WebElement findElement2 = driver.findElement(By.xpath("//input[@id='service_form_primary_email']"));
+			WebElement findElement2 = driver.findElement(By.xpath("(//p[contains(text(),'Get Started!')]//parent::form/child::input)[1]"));
 
 			findElement2.click();
 			findElement2.sendKeys("shakthi" + Date11 + "@yopmail.com");
 
 			WebElement findElement2122 = driver
-					.findElement(By.xpath("(//input[@id='service_form_primary_mobile_number'])[1]"));
+					.findElement(By.xpath("(//p[contains(text(),'Get Started!')]//parent::form/child::input)[2]"));
 			findElement2122.click();
 			findElement2122.sendKeys("91" + Date12);
 
 			Thread.sleep(4000);
 			Thread.sleep(8000);
 
-			driver.findElement(By.xpath("(//input[@placeholder='Select City'])[1]")).sendKeys("chen");
+			driver.findElement(By.xpath("//p[contains(text(),'Get Started!')]/parent::form/child::div/child::div/child::input")).sendKeys("chen");
 
 			Thread.sleep(8000);
 			Robot robot = new Robot();
 
-			driver.findElement(By.xpath("//div[@role='option']")).click();
+			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamilnadu')]")).click();
 			Thread.sleep(3000);
 
 			long start1 = System.currentTimeMillis();
