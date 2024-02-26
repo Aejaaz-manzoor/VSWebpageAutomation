@@ -98,7 +98,7 @@ public class Leadcreation {
 	public void Max() throws InterruptedException, AWTException {
 
 		System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+       driver = new ChromeDriver();
 		driver.manage().window().maximize();
 
 	}
