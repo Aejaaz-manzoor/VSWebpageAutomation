@@ -51,8 +51,8 @@ public class HomescreenPageobject extends NewCRMPageobject {
 	@FindBy(xpath = "(//p[contains(text(),'Tax & Compliance')])[1]")
 	public static WebElement TaxCompliance ;
 	
-	@FindBy(xpath = "(//a[contains(text(),'GST Registration')])[1]")
-	public static WebElement GSTRegistration ;
+	@FindBy(xpath = "//a[@href='gst-registration']")
+	public static WebElement GSTRegistration ;	
 	
 	@FindBy(xpath = "//div[@class='switch_bg bg-success']")
 	public static WebElement whatsapptogleoffGSTRegistration ;

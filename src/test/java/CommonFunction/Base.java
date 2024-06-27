@@ -40,7 +40,7 @@ public class Base extends HelpdeskPageobject {
 	SimpleDateFormat dateFormat2 = new SimpleDateFormat("wwyyyyhh");
 	String Date12 = dateFormat2.format(new Date());
 
-	public void Base1(WebDriver driver, String Username, String Mobilenumber, ExtentReports extentreport)
+	public void x(WebDriver driver, String Username, String Mobilenumber, ExtentReports extentreport)
 			throws InterruptedException, AWTException, IOException {
 	//	test = extentreport.createTest("Vakilsearch website landing");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
