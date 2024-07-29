@@ -15,6 +15,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -38,7 +39,7 @@ public class GSTRegistration extends HomescreenPageobject {
 
 	ExtentTest test;
 	SimpleDateFormat dateFormat2 = new SimpleDateFormat("ddsshhmm");
-	String Date12 = dateFormat2.format(new Date());
+	String Date12 = dateFormat2.format(new Date()); 
 	ScreenShot screenshot = new ScreenShot();
 	SimpleDateFormat dateFormat1 = new SimpleDateFormat("MMddyyHHMMSSSS");
 	String Date11 = dateFormat1.format(new Date());
@@ -53,7 +54,7 @@ public class GSTRegistration extends HomescreenPageobject {
 	public void GstRegistration(WebDriver driver, String Username, String Mobilenumber, String Date11,
 			ExtentReports extentreport) throws InterruptedException, AWTException, IOException {
 		    PageFactory.initElements(driver, LoginPageobjects.class);
-		    sendStatusToGoogleChat("Onboarding Test Automation Started");
+		    
 		    
 		try {
 			SimpleDateFormat dateFormat1GstRegistration = new SimpleDateFormat("wwmmyyyyhhmm");
@@ -64,7 +65,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			// HelpdeskPageobject.TaxCompliance.click();
 			long start = System.currentTimeMillis();
 		//	HomescreenPageobject.GSTRegistration.click();
-			driver.get("https://qe.vakilsearch.com/gst/registration");
+			driver.get("https://vakilsearch.com/gst/registration");
 			screenshot.screenshot1(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot1.png",
@@ -105,17 +106,18 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(3000);
 			
 			
-			try {
-			
-			LoginPageobjects.OTPtextbox.click();
-			Thread.sleep(3000);
-			LoginPageobjects.OTPtextbox.sendKeys("000000");
-			Thread.sleep(5000);
-			  } catch(Exception e) {
-				  
+
+			 try {
+					for (int i = 1; i < 7; i++) {
 					
-				  
-			  }
+					driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
+					}
+					
+					Thread.sleep(5000);
+					  } catch (Exception e) {
+						  
+						  
+					  }
 				  
 			
 //			-------------------------------------------On boarding starts
@@ -189,7 +191,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot6.png",
 					"GST PayU page redirection").build());
-			sendStatusToGoogleChat("GstRegistration Passed");
+			sendStatusToGoogleChat("GST Registration Passed");
 		} catch (Exception GSTFailed) {
 			sendStatusToGoogleChat("GSTRegistration onboarding failed ---------"+GSTFailed);
 			screenshot.screenshot7(driver, extentreport);
@@ -210,11 +212,12 @@ public class GSTRegistration extends HomescreenPageobject {
 		SimpleDateFormat dateFormat1PrivateLimited = new SimpleDateFormat("wwyyyyhhmm");
 		String Date11PrivateLimited = dateFormat1PrivateLimited.format(new Date());
 		test = extentreport.createTest("Private Limited Company");
+		sendStatusToGoogleChat(" Production Onboarding Test Automation Started");
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 30);
 			Thread.sleep(3000);
 			long start = System.currentTimeMillis();
-			driver.get("https://vakilsearch.com/selfserve-company-registration");
+			driver.get("https://vakilsearch.com/company-registration/private-limited");
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			
@@ -255,16 +258,17 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("(((//button[@type='submit'])[1])[1])[1]")).click();
 			System.out.println("succes1");
 			Thread.sleep(5000);
+
 			 try {
+					for (int i = 1; i < 7; i++) {
 					
-					LoginPageobjects.OTPtextbox.click();
-					Thread.sleep(3000);
-					LoginPageobjects.OTPtextbox.sendKeys("000000");
-					Thread.sleep(4000);
+					driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
+					}
 					
-					  } catch(Exception e) {
+					Thread.sleep(5000);
+					  } catch (Exception e) {
 						  
-					
+						  
 					  }
 			 
 			 long finish1 = System.currentTimeMillis();
@@ -373,7 +377,6 @@ public class GSTRegistration extends HomescreenPageobject {
 		String Date1TrademarkRegistration = dateFormat1TrademarkRegistration.format(new Date());
 		test = extentreport.createTest("Trademark Registration");
 		Robot robot = new Robot();
-		sendStatusToGoogleChat("TM Registration Started");
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 30);
 			
@@ -441,15 +444,20 @@ public class GSTRegistration extends HomescreenPageobject {
 			executor501011.executeScript("arguments[0].click();", element501011);
 			
 			Thread.sleep(3000);
-			try {
-			LoginPageobjects.OTPtextbox.click();
-			Thread.sleep(3000);
-			LoginPageobjects.OTPtextbox.sendKeys("000000");
-			Thread.sleep(5000);
-			} catch (Exception e) {
 
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[@type='radio'])[2]")));
-			}
+			 try {
+					for (int i = 1; i < 7; i++) {
+					
+					driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
+					}
+					
+					Thread.sleep(5000);
+					  } catch (Exception e) {
+						  
+						  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[@type='radio'])[2]")));
+					  }
+				
+			
 			long finish2 = System.currentTimeMillis();
 			long totalTime2 = finish2 - start2;
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[@type='radio'])[2]"))).click();
@@ -593,7 +601,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(2000);
 			try {
 				long start = System.currentTimeMillis();
-				driver.get("https://qe.vakilsearch.com/gst/return-filing");
+				driver.get("https://vakilsearch.com/gst/return-filing");
 				long finish = System.currentTimeMillis();
 				long totalTime = finish - start;
 				screenshot.screenshot23(driver, extentreport);
@@ -640,15 +648,20 @@ public class GSTRegistration extends HomescreenPageobject {
 				JavascriptExecutor executor3003 = (JavascriptExecutor) driver;
 				executor3003.executeScript("arguments[0].click();", element3003);
 				Thread.sleep(3000);
-				try {
-				LoginPageobjects.OTPtextbox.click();
-				Thread.sleep(3000);
-				LoginPageobjects.OTPtextbox.sendKeys("000000");
-				Thread.sleep(5000);
-				} catch (Exception e) {
-					wait.until(ExpectedConditions.visibilityOfElementLocated(
-							By.xpath("(//input[@placeholder='Enter your industry (e.g.food, E-commerce)'])[1]")));
-				}
+				 try {
+						for (int i = 1; i < 7; i++) {
+						
+						driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
+						}
+						
+						Thread.sleep(5000);
+						  } catch (Exception e) {
+							  wait.until(ExpectedConditions.visibilityOfElementLocated(
+										By.xpath("(//input[@placeholder='Enter your industry (e.g.food, E-commerce)'])[1]")));
+							  
+						  }
+					
+				
 				long finish1 = System.currentTimeMillis();
 				long totalTime1 = finish1 - start1;
 				
@@ -758,7 +771,7 @@ public class GSTRegistration extends HomescreenPageobject {
 		Robot robot = new Robot();
 		try {
 			long start = System.currentTimeMillis();
-			driver.get("https://qe.vakilsearch.com/talk-to-a-lawyer");
+			driver.get("https://vakilsearch.com/talk-to-a-lawyer");
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			
@@ -767,10 +780,8 @@ public class GSTRegistration extends HomescreenPageobject {
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot30.png",
 					"TTL Home page").build());
 			test.log(Status.PASS, "TTL Homepage Load time " + totalTime);
+			Thread.sleep(5000);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='email']"))).click();
-
-			long seconds = TimeUnit.MILLISECONDS.toSeconds(totalTime);
-			test.log(Status.PASS, "Talk to lawyer page redirection " + seconds);
 			driver.findElement(By.xpath("//input[@id='email']")).sendKeys("shakthi" + Date11 + "@yopmail.com");
 			WebElement findElement = driver.findElement(By.xpath("//input[@id='phone']"));
 			findElement.click();
@@ -794,8 +805,8 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("//li[contains(text(),'Legal Notices')]")).click();
 			Thread.sleep(5000);
-			LoginPageobjects.whatsapptogleoff.click();;
-			Thread.sleep(3000);
+//			LoginPageobjects.whatsapptogleoff.click();;
+//			Thread.sleep(3000);
 
 			
 			
@@ -804,15 +815,17 @@ public class GSTRegistration extends HomescreenPageobject {
 			JavascriptExecutor executor300121 = (JavascriptExecutor) driver;
 			executor300121.executeScript("arguments[0].click();", element300121);
 			Thread.sleep(5000);
-			try {
-			LoginPageobjects.OTPtextbox.click();
-			Thread.sleep(3000);
-			LoginPageobjects.OTPtextbox.sendKeys("000000");
-			Thread.sleep(5000);
-			}catch (Exception e) {
-				
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[contains(text(),'Tomorrow')]")));
-		}
+			 try {
+					for (int i = 1; i < 7; i++) {
+					
+					driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
+					}
+					
+					Thread.sleep(5000);
+					  } catch (Exception e) {
+						  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[contains(text(),'Tomorrow')]")));
+						  
+					  }
 			
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
@@ -822,13 +835,7 @@ public class GSTRegistration extends HomescreenPageobject {
 					"TTL Slots Redirection").build());
 			test.log(Status.PASS, "TTL Slots page Load time " + totalTime1);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[contains(text(),'Tomorrow')]"))).click();
-			Thread.sleep(3000);
 			
-			System.out.println("Total Time for page load - " + totalTime1);
-			Thread.sleep(3500);
-
-			test.log(Status.PASS, "Date form page Redirection " + totalTime1);
-
 			Thread.sleep(5000);
 			WebElement element300111 = driver.findElement(By.xpath("//p[contains(text(),'10:00 AM')]"));
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
@@ -849,8 +856,8 @@ public class GSTRegistration extends HomescreenPageobject {
 			screenshot.screenshot32(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot32.png",
-					"TTL Slots Redirection").build());
-			test.log(Status.PASS, "TTL Slots page Load time " + totalTime2);
+					"TTL Info page Redirection").build());
+			test.log(Status.PASS, "TTL Info page Load time " + totalTime2);
 			Thread.sleep(90000);
 			
 			
@@ -866,17 +873,17 @@ public class GSTRegistration extends HomescreenPageobject {
 				
 			}
 			
-			
-			try {
-				LoginPageobjects.OTPtextbox.click();
-				Thread.sleep(3000);
-				LoginPageobjects.OTPtextbox.sendKeys("000000");
-				Thread.sleep(6000);
-				
-				}catch (Exception e1) {
+			 try {
+					for (int i = 1; i < 7; i++) {
 					
-						
-				}
+					driver.findElement(By.xpath("//h2[contains(text(),'Confirmation code required')]/parent::div/following-sibling::div/child::section/child::input["+i+"]")).sendKeys("0");
+					}
+					
+					Thread.sleep(5000);
+					  } catch (Exception e1) {
+						  
+						  
+					  }
 			long finish3 = System.currentTimeMillis();
 			long totalTime3 = finish3 - start3;
 			screenshot.screenshot33(driver, extentreport);
@@ -912,10 +919,10 @@ public class GSTRegistration extends HomescreenPageobject {
 		Thread.sleep(2000);
 		try {
 			long start = System.currentTimeMillis();
-			driver.get("https://qe.vakilsearch.com/online-chartered-accountant-services-india");
+			driver.get("https://vakilsearch.com/online-chartered-accountant-services-india");
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
-			screenshot.screenshot30(driver, extentreport);
+			screenshot.screenshot35(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot35.png",
 					"TT CA Homepage").build());
@@ -924,8 +931,6 @@ public class GSTRegistration extends HomescreenPageobject {
 			
 			
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='email']")));
-			System.out.println("Total Time for page load - " + totalTime);
-			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("//input[@id='email']"));
@@ -956,14 +961,14 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("//li[contains(text(),'Auditing & Taxation')]")).click();
 			Thread.sleep(3000);
-			screenshot.screenshot32(driver, extentreport);
+			screenshot.screenshot36(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot36.png",
 					"LeadCreation").build());
 			
 			Thread.sleep(5000);
-			LoginPageobjects.whatsapptogleoff.click();
-			Thread.sleep(3000);
+//			LoginPageobjects.whatsapptogleoff.click();
+//			Thread.sleep(3000);
 			
 			
 			
@@ -974,22 +979,22 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(5000);
 
 			try {
-				LoginPageobjects.OTPtextbox.click();
-				Thread.sleep(3000);
-				LoginPageobjects.OTPtextbox.sendKeys("000000");
-				Thread.sleep(5000);
-				}catch (Exception e) {
-					
-					wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[contains(text(),'Tomorrow')]")));
-					
-					
+				for (int i = 1; i < 7; i++) {
+				
+				driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
 				}
+				
+				Thread.sleep(5000);
+				  } catch (Exception e1) {
+					  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[contains(text(),'Tomorrow')]")));
+					  
+				  }
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
 
 			Thread.sleep(6500);
 			
-			screenshot.screenshot33(driver, extentreport);
+			screenshot.screenshot37(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot37.png",
 					"TT CA slots selection page redirection").build());
@@ -1004,14 +1009,30 @@ public class GSTRegistration extends HomescreenPageobject {
 			JavascriptExecutor executor300111 = (JavascriptExecutor) driver;
 			executor300111.executeScript("arguments[0].click();", element300111);
 			Thread.sleep(1500);
+			
+			
+			
+			long start2 = System.currentTimeMillis();
 			WebElement element3001111 = driver.findElement(By.xpath("(//button[contains(text(),'Next')])[1]"));
 			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
 			executor3001111.executeScript("arguments[0].click();", element3001111);
-			
-		
 			Thread.sleep(3000);
-			LoginPageobjects.Additinalinfo.sendKeys("This is a test");			
+			long finish2 = System.currentTimeMillis();
+			long totalTime2 = finish2 - start2;
+			Thread.sleep(3000);
+			LoginPageobjects.Additinalinfo.sendKeys("This is a test");	
+			Thread.sleep(3000);
+			screenshot.screenshot174(driver, extentreport);
+			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot174.png",
+					"TT CA Info page redirection").build());
+			test.log(Status.PASS, "TT CA Info page Loadtime" + totalTime2);
 			Thread.sleep(90000);
+			
+			
+			
+			
+			
 			long start3 = System.currentTimeMillis();
 			try {
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(text(),'Confirm')])[1]")));
@@ -1026,19 +1047,19 @@ public class GSTRegistration extends HomescreenPageobject {
 		
 			
 			try {
-				LoginPageobjects.OTPtextbox.click();
-				Thread.sleep(3000);
-				LoginPageobjects.OTPtextbox.sendKeys("000000");
-				Thread.sleep(6000);
+				for (int i = 1; i < 7; i++) {
 				
-				}catch (Exception e) {
-					
-					
-						
+				driver.findElement(By.xpath("//h2[contains(text(),'Confirmation code required')]/parent::div/following-sibling::div/child::section/child::input["+i+"]")).sendKeys("0");
 				}
+				
+				Thread.sleep(5000);
+				  } catch (Exception e1) {
+					  
+					  
+				  }
 			long finish3 = System.currentTimeMillis();
 			long totalTime3 = finish3 - start3;
-			screenshot.screenshot33(driver, extentreport);
+			screenshot.screenshot38(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot38.png",
 					"TT CA Payment page Redirection").build());
@@ -1047,7 +1068,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			
 		} catch (Exception TTCA) {
 			sendStatusToGoogleChat("TTCA onboarding failed ---------"+TTCA);
-			screenshot.screenshot34(driver, extentreport);
+			screenshot.screenshot39(driver, extentreport);
 			System.out.println(TTCA);
 			test.log(Status.WARNING, TTCA);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
@@ -1069,11 +1090,11 @@ public class GSTRegistration extends HomescreenPageobject {
 		Thread.sleep(2000);
 		try {
 			long start = System.currentTimeMillis();
-			driver.get("https://qe.vakilsearch.com/company-secretary-services-near-me");
+			driver.get("https://vakilsearch.com/company-secretary-services-near-me");
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			Thread.sleep(4000);
-			screenshot.screenshot35(driver, extentreport);
+			screenshot.screenshot40(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot40.png",
 					"TalkToCS HomePage").build());
@@ -1081,9 +1102,6 @@ public class GSTRegistration extends HomescreenPageobject {
 			
 			
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='email']")));
-			
-			System.out.println("Total Time for page load - " + totalTime);
-			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("(//input[@id='email'])[1]"));
@@ -1096,7 +1114,6 @@ public class GSTRegistration extends HomescreenPageobject {
 			findElement2122.sendKeys("8056016697");
 
 			Thread.sleep(4000);
-			Thread.sleep(8000);
 
 			driver.findElement(By.xpath("(//input[@type='text'])[1]")).sendKeys("chen");
 
@@ -1114,11 +1131,11 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("//li[contains(text(),'Annual Compliances')]")).click();
 			Thread.sleep(5000);
-			LoginPageobjects.whatsapptogleoff.click();
+//			LoginPageobjects.whatsapptogleoff.click();
 			
 			
 			long start1 = System.currentTimeMillis();
-			screenshot.screenshot36(driver, extentreport);
+			screenshot.screenshot41(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot41.png",
 					"LeadCreation").build());
@@ -1128,20 +1145,20 @@ public class GSTRegistration extends HomescreenPageobject {
 			
 			Thread.sleep(5000);
 			try {
-				LoginPageobjects.OTPtextbox.click();
-				Thread.sleep(3000);
-				LoginPageobjects.OTPtextbox.sendKeys("000000");
-				Thread.sleep(6000);
+				for (int i = 1; i < 7; i++) {
 				
-				}catch (Exception e) {
-					
-					wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[contains(text(),'Tomorrow')]")));
-						
+				driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
 				}
+				
+				Thread.sleep(5000);
+				  } catch (Exception e1) {
+					  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[contains(text(),'Tomorrow')]")));
+					  
+				  }
 			
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
-			screenshot.screenshot37(driver, extentreport);
+			screenshot.screenshot42(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot42.png",
 					"TT CA Slot selection page Redirection").build());
@@ -1179,20 +1196,20 @@ public class GSTRegistration extends HomescreenPageobject {
 				
 			}
 			
-			
 			try {
-				LoginPageobjects.OTPtextbox.click();
-				Thread.sleep(3000);
-				LoginPageobjects.OTPtextbox.sendKeys("000000");
-				Thread.sleep(6000);
+				for (int i = 1; i < 7; i++) {
 				
-				}catch (Exception e) {
-						
-						
+				driver.findElement(By.xpath("//h2[contains(text(),'Confirmation code required')]/parent::div/following-sibling::div/child::section/child::input["+i+"]")).sendKeys("0");
 				}
+				
+				Thread.sleep(5000);
+				  } catch (Exception e1) {
+					 
+					  
+				  }
 			long finish3 = System.currentTimeMillis();
 			long totalTime3 = finish3 - start3;
-			screenshot.screenshot33(driver, extentreport);
+			screenshot.screenshot43(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot43.png",
 					"TT CA Payment page Redirection").build());
@@ -1201,7 +1218,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			sendStatusToGoogleChat("TalkToCS Passed");
 		} catch (Exception TTCS) {
 			sendStatusToGoogleChat("TTCS onboarding failed ---------"+TTCS);
-			screenshot.screenshot38(driver, extentreport);
+			screenshot.screenshot44(driver, extentreport);
 			System.out.println(TTCS);
 			test.log(Status.WARNING, TTCS);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
@@ -1224,11 +1241,11 @@ public class GSTRegistration extends HomescreenPageobject {
 		try {
 
 			long start = System.currentTimeMillis();
-			driver.get("https://qe.vakilsearch.com/fssai-registration");
+			driver.get("https://vakilsearch.com/fssai-registration");
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			Thread.sleep(4000);
-			screenshot.screenshot39(driver, extentreport);
+			screenshot.screenshot45(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot45.png",
 					"FSSAI HomePage").build());
@@ -1246,7 +1263,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			WebElement element30011 = driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
 			JavascriptExecutor executor30011 = (JavascriptExecutor) driver;
 			executor30011.executeScript("arguments[0].click();", element30011);
-			screenshot.screenshot41(driver, extentreport);
+			screenshot.screenshot46(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot46.png",
 					"FSSAI Step1 redirection").build());
@@ -1265,7 +1282,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			WebElement element3001111 = driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
 			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
 			executor3001111.executeScript("arguments[0].click();", element3001111);
-			screenshot.screenshot41(driver, extentreport);
+			screenshot.screenshot47(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot47.png",
 					"FSSAI Step2 redirection").build());
@@ -1284,7 +1301,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			WebElement element300111111= driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
 			JavascriptExecutor executor300111111 = (JavascriptExecutor) driver;
 			executor300111111.executeScript("arguments[0].click();", element300111111);
-			screenshot.screenshot41(driver, extentreport);
+			screenshot.screenshot48(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot48.png",
 					"FSSAI Step3 redirection").build());
@@ -1337,7 +1354,7 @@ public class GSTRegistration extends HomescreenPageobject {
 				
 			}
 			Thread.sleep(3000);
-			screenshot.screenshot41(driver, extentreport);
+			screenshot.screenshot49(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot49.png",
 					"FSSAI Step4 redirection").build());
@@ -1348,7 +1365,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			
 			
 			long start6 = System.currentTimeMillis();
-			screenshot.screenshot40(driver, extentreport);
+			screenshot.screenshot50(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot50.png",
 					"LeadCreation").build());
@@ -1365,7 +1382,7 @@ public class GSTRegistration extends HomescreenPageobject {
 
 			long finish6 = System.currentTimeMillis();
 			long totalTime6 = finish6 - start6;
-			screenshot.screenshot42(driver, extentreport);
+			screenshot.screenshot51(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot51.png",
 					"Thank you page Redirection").build());
@@ -1376,7 +1393,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			sendStatusToGoogleChat("FSSAI Passed");
 		} catch (Exception FSSAI) {
 			sendStatusToGoogleChat("FSSAI onboarding failed ---------"+FSSAI);
-			screenshot.screenshot42(driver, extentreport);
+			screenshot.screenshot52(driver, extentreport);
 			System.out.println(FSSAI);
 			test.log(Status.WARNING, FSSAI);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
@@ -1406,7 +1423,13 @@ public class GSTRegistration extends HomescreenPageobject {
 			
 
 			long start = System.currentTimeMillis();
-			driver.get("https://qe.vakilsearch.com/ngo/registration");
+			driver.get("https://vakilsearch.com/ngo/registration");
+			Thread.sleep(3000);
+			WebElement element3001191 = driver
+					.findElement(By.xpath("(//button[contains(text(),'Get Started')])[1]"));
+			JavascriptExecutor executor3001191 = (JavascriptExecutor) driver;
+			executor3001191.executeScript("arguments[0].click();", element3001191);
+			
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			Thread.sleep(6500);
@@ -1415,7 +1438,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			JavascriptExecutor executor30011 = (JavascriptExecutor) driver;
 			executor30011.executeScript("arguments[0].click();", element30011);
 			Thread.sleep(3000);
-			screenshot.screenshot44(driver, extentreport);
+			screenshot.screenshot54(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot54.png",
 					"NGO step1 redirection").build());
@@ -1436,7 +1459,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
 			executor3001111.executeScript("arguments[0].click();", element3001111);
 			Thread.sleep(60000);
-			screenshot.screenshot44(driver, extentreport);
+			screenshot.screenshot55(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot55.png",
 					"NGO step2 redirection").build());
@@ -1453,7 +1476,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(5000);
 			long finish3 = System.currentTimeMillis();
 			long totalTime3 = finish3 - start3;
-			screenshot.screenshot44(driver, extentreport);
+			screenshot.screenshot56(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot56.png",
 					"NGO step3 redirection").build());
@@ -1489,7 +1512,8 @@ public class GSTRegistration extends HomescreenPageobject {
 					
 					 long finish4 = System.currentTimeMillis();
 					 long totalTime4 = finish4 - start4;
-					 screenshot.screenshot44(driver, extentreport);
+					 Thread.sleep(5000);
+					 screenshot.screenshot57(driver, extentreport);
 						test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 								"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot57.png",
 								"NGO Bundle page redirection").build());
@@ -1548,11 +1572,12 @@ public class GSTRegistration extends HomescreenPageobject {
 				executor300119.executeScript("arguments[0].click();", element300119);
 				long finish4 = System.currentTimeMillis();
 				 long totalTime4 = finish4 - start4;
-					screenshot.screenshot44(driver, extentreport);
+				 Thread.sleep(5000);
+				 screenshot.screenshot58(driver, extentreport);
 					test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 							"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot58.png",
-							"NGO step3 redirection").build());
-					test.log(Status.PASS, "NGO step3 redirection Loadtime" + totalTime4 );
+							"NGO Bundle page redirection").build());
+					test.log(Status.PASS, "NGO Bundle page redirection" + totalTime4 );
 			} catch (Exception e) {
 				robot.keyPress(KeyEvent.VK_ENTER);
 				robot.keyRelease(KeyEvent.VK_ENTER);
@@ -1564,7 +1589,8 @@ public class GSTRegistration extends HomescreenPageobject {
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]"))).click();
 			long finish5 = System.currentTimeMillis();
 			 long totalTime5 = finish5 - start5;
-			 screenshot.screenshot44(driver, extentreport);
+			 Thread.sleep(5000);
+			 screenshot.screenshot59(driver, extentreport);
 				test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 						"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot59.png",
 						"NGO Payment page Redirection").build());
@@ -1578,14 +1604,17 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(3000);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@type='submit']"))).click();
 			Thread.sleep(5000);
-			test.log(Status.PASS, "Pament page Redirection ");
+			 screenshot.screenshot59(driver, extentreport);
+				test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+						"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot59.png",
+						"NGO PayU page Redirection").build());
 			Thread.sleep(3500);
 			sendStatusToGoogleChat("NGO Passed");
 
 
 		} catch (Exception NGO) {
 			sendStatusToGoogleChat("NGO onboarding failed ---------"+NGO);
-			screenshot.screenshot45(driver, extentreport);
+			screenshot.screenshot60(driver, extentreport);
 			System.out.println(NGO);
 			test.log(Status.WARNING, NGO);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
@@ -1613,10 +1642,10 @@ public class GSTRegistration extends HomescreenPageobject {
 		try {
 			
 			long start = System.currentTimeMillis();
-			driver.get("https://qe.vakilsearch.com/ngo/registration/trust");
+			driver.get("https://vakilsearch.com/ngo/registration/trust");
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
-			screenshot.screenshot46(driver, extentreport);
+			screenshot.screenshot61(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot61.png",
 					"TrustRegistration HomePage").build());
@@ -1644,12 +1673,12 @@ public class GSTRegistration extends HomescreenPageobject {
 			wait.until(ExpectedConditions.
 					elementToBeClickable(By.xpath("//li[contains(text(),'Chennai, Tamilnadu')]"))).click();
 			Thread.sleep(5000);
-			LoginPageobjects.whatsapptogleoff.click();
-			
-			Thread.sleep(3000);
+//			LoginPageobjects.whatsapptogleoff.click();
+//			
+//			Thread.sleep(3000);
 
 			long start1 = System.currentTimeMillis();
-			screenshot.screenshot48(driver, extentreport);
+			screenshot.screenshot62(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot62.png",
 					"LeadCreation").build());
@@ -1658,16 +1687,17 @@ public class GSTRegistration extends HomescreenPageobject {
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
 			Thread.sleep(3000);
-			try { 
-			LoginPageobjects.OTPtextbox.click();
-			Thread.sleep(3000);
-			LoginPageobjects.OTPtextbox.sendKeys("000000");
-			Thread.sleep(5000);
-			
-			} catch (Exception e5){ 
+			try {
+				for (int i = 1; i < 7; i++) {
 				
-				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[1]")));
-			}
+				driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
+				}
+				
+				Thread.sleep(5000);
+				  } catch (Exception e1) {
+					 
+					  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[1]")));
+				  }
 
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
@@ -1675,7 +1705,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			WebElement element30011 = driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
 			JavascriptExecutor executor30011 = (JavascriptExecutor) driver;
 			executor30011.executeScript("arguments[0].click();", element30011);
-			screenshot.screenshot49(driver, extentreport);
+			screenshot.screenshot63(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot63.png",
 					"TrustRegistartion Step1 redirection").build());
@@ -1694,7 +1724,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			WebElement element3001111 = driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
 			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
 			executor3001111.executeScript("arguments[0].click();", element3001111);
-			screenshot.screenshot49(driver, extentreport);
+			screenshot.screenshot64(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot64.png",
 					"TrustRegistartion Step2 redirection").build());
@@ -1709,7 +1739,8 @@ public class GSTRegistration extends HomescreenPageobject {
 			executor30011111.executeScript("arguments[0].click();", element30011111);
 			long finish3 = System.currentTimeMillis();
 			long totalTime3 = finish3 - start3;
-			screenshot.screenshot50(driver, extentreport);
+			Thread.sleep(5000);
+			screenshot.screenshot65(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot65.png",
 					"TrustRegistartion Bundle page redirection").build());
@@ -1722,7 +1753,8 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[2]")).click();
 			long finish4 = System.currentTimeMillis();
 			long totalTime4 = finish4 - start4;
-			screenshot.screenshot50(driver, extentreport);
+			Thread.sleep(5000);
+			screenshot.screenshot66(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot66.png",
 					"TrustRegistartion Payment page redirection").build());
@@ -1741,7 +1773,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			sendStatusToGoogleChat("TrustRegistration Passed");
 		} catch (Exception TrustRegistration) {
 			sendStatusToGoogleChat("TrustRegistration onboarding failed ---------"+TrustRegistration);
-			screenshot.screenshot50(driver, extentreport);
+			screenshot.screenshot67(driver, extentreport);
 			System.out.println(TrustRegistration);
 			test.log(Status.WARNING, TrustRegistration);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
@@ -1768,8 +1800,8 @@ public class GSTRegistration extends HomescreenPageobject {
 			
 			
 			long start = System.currentTimeMillis();
-			driver.get("https://qe.vakilsearch.com/pf-registration");
-			screenshot.screenshot51(driver, extentreport);
+			driver.get("https://vakilsearch.com/pf-registration");
+			screenshot.screenshot68(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot68.png",
 					"PFRegistration HomePage").build());
@@ -1777,10 +1809,8 @@ public class GSTRegistration extends HomescreenPageobject {
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(text(),'Get Started')])[1]"))).click();
 			
 			
-			System.out.println("Total Time for page load - ");
-			Thread.sleep(6500);
 			test.log(Status.PASS, "What’s your annual turnover?" );
-			screenshot.screenshot52(driver, extentreport);
+			screenshot.screenshot69(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot69.png",
 					"What’s your annual turnover?").build());
@@ -1890,7 +1920,7 @@ public class GSTRegistration extends HomescreenPageobject {
 				Thread.sleep(3000);
 
 				
-				screenshot.screenshot53(driver, extentreport);
+				screenshot.screenshot70(driver, extentreport);
 				test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 						"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot70.png",
 						"LeadCreation").build());
@@ -1909,7 +1939,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
 
-			screenshot.screenshot54(driver, extentreport);
+			screenshot.screenshot71(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot71.png",
 					"OTP verification").build());
@@ -1936,7 +1966,7 @@ public class GSTRegistration extends HomescreenPageobject {
 
 		} catch (Exception PFRegistration) {
 			sendStatusToGoogleChat("PFRegistration onboarding failed ---------"+PFRegistration);
-			screenshot.screenshot54(driver, extentreport);
+			screenshot.screenshot72(driver, extentreport);
 			System.out.println(PFRegistration);
 			test.log(Status.WARNING, PFRegistration);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
@@ -1969,7 +1999,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("(//p[contains(text(),'Labour Compliance')])[1]")).click();
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("(//a[contains(text(),'ESI Registration')])[1]")).click();
-			screenshot.screenshot55(driver, extentreport);
+			screenshot.screenshot73(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot73.png",
 					"ESIRegistration HomePage").build());
@@ -1979,7 +2009,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			System.out.println("Total Time for page load - ");
 			Thread.sleep(6500);
 			test.log(Status.PASS, "What’s your annual turnover?" );
-			screenshot.screenshot56(driver, extentreport);
+			screenshot.screenshot74(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot74.png",
 					"What’s your annual turnover?").build());
@@ -2096,7 +2126,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(3000);
 
 			
-			screenshot.screenshot57(driver, extentreport);
+			screenshot.screenshot75(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot75.png",
 					"LeadCreation").build());
@@ -2111,7 +2141,7 @@ public class GSTRegistration extends HomescreenPageobject {
 
 			
 
-			screenshot.screenshot58(driver, extentreport);
+			screenshot.screenshot76(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot76.png",
 					"OTP verification").build());
@@ -2136,7 +2166,7 @@ public class GSTRegistration extends HomescreenPageobject {
 
 		} catch (Exception ESIRegistration) {
 			sendStatusToGoogleChat("ESIRegistration onboarding failed ---------"+ESIRegistration);
-			screenshot.screenshot59(driver, extentreport);
+			screenshot.screenshot77(driver, extentreport);
 			System.out.println(ESIRegistration);
 			test.log(Status.WARNING, ESIRegistration);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
@@ -2157,13 +2187,14 @@ public class GSTRegistration extends HomescreenPageobject {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		Robot robot = new Robot();
 		Thread.sleep(2000);
+		
 		try {
 			
 			long start = System.currentTimeMillis();
-			driver.get("https://qe.vakilsearch.com/online-name-change");
+			driver.get("https://vakilsearch.com/online-name-change");
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
-			screenshot.screenshot60(driver, extentreport);
+			screenshot.screenshot78(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot78.png",
 					"ApplyForNameChange HomePage").build());
@@ -2197,7 +2228,7 @@ public class GSTRegistration extends HomescreenPageobject {
 	     	element300111.sendKeys("balpam");
 			
 			Thread.sleep(3000);
-			screenshot.screenshot61(driver, extentreport);
+			screenshot.screenshot79(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot79.png",
 					"ApplyForNameChange Step1 Redirection").build());
@@ -2228,7 +2259,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
 			Thread.sleep(3000);
-			screenshot.screenshot61(driver, extentreport);
+			screenshot.screenshot80(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot80.png",
 					"ApplyForNameChange Step2 Redirection").build());
@@ -2240,12 +2271,12 @@ public class GSTRegistration extends HomescreenPageobject {
 			executor30011111.executeScript("arguments[0].click();", element30011111);
 			long finish3 = System.currentTimeMillis();
 			long totalTime3 = finish3 - start3;
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 			
 			
 			
 			 try {
-				     screenshot.screenshot61(driver, extentreport);
+				 screenshot.screenshot81(driver, extentreport);
 					test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 							"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot81.png",
 							"ApplyForNameChange Step3 Redirection").build());
@@ -2275,7 +2306,7 @@ public class GSTRegistration extends HomescreenPageobject {
 				long finish4 = System.currentTimeMillis();
 				Thread.sleep(3000);
 				long totalTime4 = finish4 - start4;
-				screenshot.screenshot63(driver, extentreport);
+				screenshot.screenshot82(driver, extentreport);
 				test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 						"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot82.png",
 						"ApplyForNameChange undle page Loadtime").build());
@@ -2283,9 +2314,9 @@ public class GSTRegistration extends HomescreenPageobject {
 				
 			 } 
 			 catch (Exception d) {
-				    screenshot.screenshot61(driver, extentreport);
+				 screenshot.screenshot178(driver, extentreport);
 					test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-							"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot83.png",
+							"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot178.png",
 							"ApplyForNameChange Step3 Redirection").build());
 					test.log(Status.PASS, "ApplyForNameChange Step3 Loadtime- " + totalTime3);
 					Thread.sleep(3000);
@@ -2347,17 +2378,26 @@ public class GSTRegistration extends HomescreenPageobject {
 					WebElement element300119 = driver.findElement(By.xpath("//button[contains(text(),'Submit')]"));
 					JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 					executor300119.executeScript("arguments[0].click();", element300119);
+					long finish4 = System.currentTimeMillis();
+					long totalTime4 = finish4 - start4;
+					Thread.sleep(5000);
+					screenshot.screenshot174(driver, extentreport);
+					test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+							"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot174.png",
+							"ApplyForNameChange Bundle page Redirection").build());
+					test.log(Status.PASS, "ApplyForNameChange Bundle page Loadtime- " + totalTime4);
 				} catch (Exception e) {
 					Thread.sleep(2000);
 					robot.keyPress(KeyEvent.VK_ENTER);
 					robot.keyRelease(KeyEvent.VK_ENTER);
 					long finish4 = System.currentTimeMillis();
 					long totalTime4 = finish4 - start4;
-					screenshot.screenshot61(driver, extentreport);
+					Thread.sleep(5000);
+					screenshot.screenshot84(driver, extentreport);
 					test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 							"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot84.png",
 							"ApplyForNameChange Bundle page Redirection").build());
-					test.log(Status.PASS, "ApplyForNameChange undle page Loadtime- " + totalTime4);
+					test.log(Status.PASS, "ApplyForNameChange Bundle page Loadtime- " + totalTime4);
 				}
 			 }
 			
@@ -2370,7 +2410,8 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
 			long finish5 = System.currentTimeMillis();
 			long totalTime5 = finish5 - start5;
-			screenshot.screenshot61(driver, extentreport);
+			Thread.sleep(5000);
+			screenshot.screenshot85(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot85.png",
 					"ApplyForNameChange Payemnt page page Redirection").build());
@@ -2390,7 +2431,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			sendStatusToGoogleChat("ApplyForNameChange Passed");
 		} catch (Exception ApplyForNameChange) {
 			sendStatusToGoogleChat("ApplyForNameChange onboarding failed ---------"+ApplyForNameChange);
-			screenshot.screenshot64(driver, extentreport);
+			screenshot.screenshot86(driver, extentreport);
 			System.out.println(ApplyForNameChange);
 			test.log(Status.WARNING, ApplyForNameChange);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
@@ -2412,10 +2453,10 @@ public class GSTRegistration extends HomescreenPageobject {
 		try {
 			
 			long start = System.currentTimeMillis();
-			driver.get("https://qe.vakilsearch.com/import-export-code");
+			driver.get("https://vakilsearch.com/import-export-code");
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
-			screenshot.screenshot65(driver, extentreport);
+			screenshot.screenshot87(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot87.png",
 					"ImportExportCode HomePage").build());
@@ -2449,11 +2490,11 @@ public class GSTRegistration extends HomescreenPageobject {
 			wait.until(ExpectedConditions.
 					elementToBeClickable(By.xpath("//li[contains(text(),'Chennai, Tamilnadu')]"))).click();
 			Thread.sleep(5000);
-			LoginPageobjects.whatsapptogleoff.click();
+//			LoginPageobjects.whatsapptogleoff.click();
+//			
+//			Thread.sleep(3000);
 			
-			Thread.sleep(3000);
-			
-			screenshot.screenshot66(driver, extentreport);
+			screenshot.screenshot88(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot88.png",
 					"LeadCreation").build());
@@ -2470,17 +2511,16 @@ public class GSTRegistration extends HomescreenPageobject {
 			
 
 			try {
-				LoginPageobjects.OTPtextbox.click();
-				Thread.sleep(3000);
-				LoginPageobjects.OTPtextbox.sendKeys("000000");
-				Thread.sleep(5000);
-				}catch (Exception e) {
-					
-					wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[1]")));
-					
-					
+				for (int i = 1; i < 7; i++) {
+				
+				driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
 				}
-			
+				
+				Thread.sleep(5000);
+				  } catch (Exception e1) {
+					 
+					  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@type='radio'])[1]")));
+				  }
 			
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
@@ -2491,7 +2531,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			executor30011.executeScript("arguments[0].click();", element30011);
 			element30011.sendKeys("VASU");
 			Thread.sleep(3000);
-			screenshot.screenshot67(driver, extentreport);
+			screenshot.screenshot89(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot89.png",
 					"ImportExportCode Step1 redirection").build());
@@ -2511,7 +2551,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
 			executor3001111.executeScript("arguments[0].click();", element3001111);
 			Thread.sleep(3500);
-			screenshot.screenshot67(driver, extentreport);
+			screenshot.screenshot90(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot90.png",
 					"ImportExportCode Step2 redirection").build());
@@ -2526,7 +2566,8 @@ public class GSTRegistration extends HomescreenPageobject {
 			executor30011111.executeScript("arguments[0].click();", element30011111);
 			long finish3 = System.currentTimeMillis();
 			long totalTime3 = finish3 - start3;
-			screenshot.screenshot67(driver, extentreport);
+			Thread.sleep(5000);
+			screenshot.screenshot91(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot91.png",
 					"ImportExportCode Bundle page redirection").build());
@@ -2539,7 +2580,8 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
 			long finish4 = System.currentTimeMillis();
 			long totalTime4 = finish4 - start4;
-			screenshot.screenshot67(driver, extentreport);
+			Thread.sleep(5000);
+			screenshot.screenshot92(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot92.png",
 					"ImportExportCode Payment page redirection").build());
@@ -2558,7 +2600,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			sendStatusToGoogleChat("ImportExportCode Passed");
 		} catch (Exception ImportExportCode) {
 			sendStatusToGoogleChat("ImportExportCode onboarding failed ---------"+ImportExportCode);
-			screenshot.screenshot69(driver, extentreport);
+			screenshot.screenshot93(driver, extentreport);
 			System.out.println(ImportExportCode);
 			test.log(Status.WARNING, ImportExportCode);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
@@ -2584,10 +2626,10 @@ public class GSTRegistration extends HomescreenPageobject {
 		Thread.sleep(2000);
 		try {
 			long start = System.currentTimeMillis();
-			driver.get("https://qe.vakilsearch.com/ngo/registration/section-8");
+			driver.get("https://vakilsearch.com/ngo/registration/section-8");
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
-			screenshot.screenshot70(driver, extentreport);
+			screenshot.screenshot94(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot94.png",
 					"Section8Company HomePage").build());
@@ -2627,7 +2669,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("//div[contains(text(),'Chennai, Tamilnadu')]")).click();
 			Thread.sleep(3000);
 
-			screenshot.screenshot71(driver, extentreport);
+			screenshot.screenshot95(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot95.png",
 					"LeadCreation").build());
@@ -2645,16 +2687,16 @@ public class GSTRegistration extends HomescreenPageobject {
 			
 
 			try {
-				LoginPageobjects.OTPtextbox.click();
-				Thread.sleep(3000);
-				LoginPageobjects.OTPtextbox.sendKeys("000000");
-				Thread.sleep(5000);
-				}catch (Exception e) {
-					
-					wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h1[contains(text(),'What is your primary objective?')]")));
-					
-					
+				for (int i = 1; i < 7; i++) {
+				
+				driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
 				}
+				
+				Thread.sleep(5000);
+				  } catch (Exception e1) {
+					 
+					  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h1[contains(text(),'What is your primary objective?')]")));
+				  }
 			
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
@@ -2673,7 +2715,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(3000);
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
-			screenshot.screenshot70(driver, extentreport);
+			screenshot.screenshot96(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot96.png",
 					"Section8Company Step1 redirection ").build());
@@ -2690,7 +2732,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			WebElement element30011 = driver.findElement(By.xpath("(//input[@type='radio'])[1]"));
 			JavascriptExecutor executor30011 = (JavascriptExecutor) driver;
 			executor30011.executeScript("arguments[0].click();", element30011);
-			screenshot.screenshot72(driver, extentreport);
+			screenshot.screenshot97(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot97.png",
 					"Section8Company Step2 redirection").build());
@@ -2707,7 +2749,8 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(8000);
 			long finish3 = System.currentTimeMillis();
 			long totalTime3 = finish3 - start3;
-			screenshot.screenshot72(driver, extentreport);
+			Thread.sleep(5000);
+			screenshot.screenshot98(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot98.png",
 					"Section8Company Bundle page redirection").build());
@@ -2722,7 +2765,8 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[2]")).click();
 			long finish4 = System.currentTimeMillis();
 			long totalTime4 = finish4 - start4;
-			screenshot.screenshot72(driver, extentreport);
+			Thread.sleep(5000);
+			screenshot.screenshot99(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot99.png",
 					"Section8Company Payment page redirection").build());
@@ -2739,7 +2783,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			sendStatusToGoogleChat("Section8Company Passed");
 		} catch (Exception Section8Company) {
 			sendStatusToGoogleChat("Section8Company onboarding failed ---------"+Section8Company);
-			screenshot.screenshot73(driver, extentreport);
+			screenshot.screenshot100(driver, extentreport);
 			test.log(Status.WARNING, Section8Company);
 			System.out.println(Section8Company);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
@@ -2767,10 +2811,10 @@ public class GSTRegistration extends HomescreenPageobject {
 		try {
 			
 			long start = System.currentTimeMillis();
-			driver.get("https://qe.vakilsearch.com/marriage-registration-online");
+			driver.get("https://vakilsearch.com/marriage-registration-online");
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
-			screenshot.screenshot74(driver, extentreport);
+			screenshot.screenshot101(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot101.png",
 					"Marriage Registration HomePage").build());
@@ -2809,13 +2853,13 @@ public class GSTRegistration extends HomescreenPageobject {
 			wait.until(ExpectedConditions.
 					elementToBeClickable(By.xpath("//li[contains(text(),'Chennai, Tamilnadu')]"))).click();
 			Thread.sleep(5000);
-			LoginPageobjects.whatsapptogleoff.click();
+//			LoginPageobjects.whatsapptogleoff.click();
 			
 			
 			
 			
 			long start1 = System.currentTimeMillis();
-			screenshot.screenshot75(driver, extentreport);
+			screenshot.screenshot102(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot102.png",
 					"LeadCreation").build());
@@ -2828,16 +2872,16 @@ public class GSTRegistration extends HomescreenPageobject {
 			
 			
 			try {
-				LoginPageobjects.OTPtextbox.click();
-				Thread.sleep(3000);
-				LoginPageobjects.OTPtextbox.sendKeys("000000");
-				Thread.sleep(5000);
-				}catch (Exception e) {
-					
-					wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@type='text']")));
-					
-					
+				for (int i = 1; i < 7; i++) {
+				
+				driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
 				}
+				
+				Thread.sleep(5000);
+				  } catch (Exception e1) {
+					 
+					  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@type='text']")));
+				  }
 			
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
@@ -2847,7 +2891,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("//input[@type='text']")).sendKeys("Chennai");
 			Thread.sleep(4000);
-			screenshot.screenshot74(driver, extentreport);
+			screenshot.screenshot103(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot103.png",
 					"Marriage Registration Step1 redirection").build());
@@ -2865,7 +2909,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			executor30011.executeScript("arguments[0].click();", element30011);
 			element30011.sendKeys("VASU");
 			Thread.sleep(3000);
-			screenshot.screenshot74(driver, extentreport);
+			screenshot.screenshot104(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot104.png",
 					"Marriage Registration Step2 redirection").build());
@@ -2881,7 +2925,8 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(8000);
 			long finish3 = System.currentTimeMillis();
 			long totalTime3 = finish3 - start3;
-			screenshot.screenshot74(driver, extentreport);
+			Thread.sleep(5000);
+			screenshot.screenshot105(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot105.png",
 					"Marriage Registration Bundle page redirection").build());
@@ -2895,7 +2940,8 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
 			long finish4 = System.currentTimeMillis();
 			long totalTime4 = finish4 - start4;
-			screenshot.screenshot74(driver, extentreport);
+			Thread.sleep(5000);
+			screenshot.screenshot106(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot106.png",
 					"Marriage Registration Bundle page redirection").build());
@@ -2912,14 +2958,18 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(5000);
 
 			sendStatusToGoogleChat("MarriageRegistration Passed");
+			sendStatusToGoogleChat("QE Automation test run Ended");
+			
+			
 		} catch (Exception MarriageRegistration) {
 			sendStatusToGoogleChat("MarriageRegistration onboarding failed ---------"+MarriageRegistration);
-			screenshot.screenshot78(driver, extentreport);
+			screenshot.screenshot107(driver, extentreport);
 			System.out.println(MarriageRegistration);
 			test.log(Status.WARNING, MarriageRegistration);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot107.png",
 					"MarriageRegistration onboarding failed").build());
+			sendStatusToGoogleChat("QE Automation test run Ended");
 		}
 	}
 	
@@ -2937,19 +2987,15 @@ public class GSTRegistration extends HomescreenPageobject {
 		Thread.sleep(2000);
 		try {
 			
-			WebElement element3 = driver.findElement(By.xpath("(//p[contains(text(),'Documentation')])[1]"));
-			JavascriptExecutor executor3 = (JavascriptExecutor) driver;
-			executor3.executeScript("arguments[0].click();", element3);
-		
-			driver.findElement(By.xpath("(//p[contains(text(),'Notices')])[1]")).click();
-			Thread.sleep(3000);
-			Robot robot = new Robot();
-			driver.findElement(By.xpath("(//a[contains(text(),'Cheque Bounce Notice')])[1]")).click();
-			screenshot.screenshot79(driver, extentreport);
+			long start1 = System.currentTimeMillis();
+			driver.get("https://vakilsearch.com/cheque-bounce-case");
+			long finish1 = System.currentTimeMillis();
+			long totalTime1 = finish1 - start1;
+			screenshot.screenshot108(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot108.png",
 					"ChequeBounceNotice  HomePage").build());
-			
+			test.log(Status.PASS, "Pament page Redirection " + totalTime1);
 			
 			Thread.sleep(3000);
 //			robot.keyPress(KeyEvent.VK_CONTROL);
@@ -2981,7 +3027,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();
 			Thread.sleep(5000);
 		
-			screenshot.screenshot81(driver, extentreport);
+			screenshot.screenshot109(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot109.png",
 					"Date selection").build());
@@ -3046,25 +3092,24 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(3000);
 			
 			
-			screenshot.screenshot82(driver, extentreport);
+			screenshot.screenshot110(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot110.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
 			
 			
-			driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
+			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();
 			
 		 }
 			long finish11 = System.currentTimeMillis();
 			long totalTime11 = finish11 - start11;
-			System.out.println("Pament page Redirection " + totalTime11);
 			Thread.sleep(3500);
 			test.log(Status.PASS, "Pament page Redirection " + totalTime11);
 			sendStatusToGoogleChat("ChequeBounceNotice Passed");
 		} catch (Exception ChequeBounceNotice) {
 			sendStatusToGoogleChat("ChequeBounceNotice onboarding failed ---------"+ChequeBounceNotice);
-			screenshot.screenshot82(driver, extentreport);
+			screenshot.screenshot111(driver, extentreport);
 			System.out.println(ChequeBounceNotice);
 			test.log(Status.WARNING, ChequeBounceNotice);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
@@ -3084,10 +3129,14 @@ public class GSTRegistration extends HomescreenPageobject {
 		test = extentreport.createTest("SoleProprietorshipRegistration");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		Thread.sleep(2000);
+		
 		try {
+			
+			try {
+			
 			Robot robot = new Robot();
 			long start = System.currentTimeMillis();
-			driver.get("https://qe.vakilsearch.com/sole-proprietorship-registration");
+			driver.get("https://vakilsearch.com/company-registration/sole-proprietorship");
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			screenshot.screenshot83(driver, extentreport);
@@ -3127,29 +3176,40 @@ public class GSTRegistration extends HomescreenPageobject {
 			
 			
 			
-			long start1 = System.currentTimeMillis();
-			screenshot.screenshot84(driver, extentreport);
+			
+			screenshot.screenshot112(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot112.png",
 					"LeadCreation").build());
 			Thread.sleep(3000);
+			try {
 			
-			WebElement element300119 = driver.findElement(By.xpath("(//button[contains(text(),'Get Started')])[1]"));
-			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
-			executor300119.executeScript("arguments[0].click();", element300119);
-			Thread.sleep(5000);
+				
+				driver.findElement(By.xpath("(//button[@type='submit'])[1 ]")).click();
+				Thread.sleep(5000);
+			} catch (Exception e) {
+				
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB); 
+				robot.keyPress(KeyEvent.VK_ENTER);
+				robot.keyRelease(KeyEvent.VK_ENTER); 
+				Thread.sleep(5000);  
+				  
+			  }
+			long start1 = System.currentTimeMillis();
 			
 			 try {
+					for (int i = 1; i < 7; i++) {
 					
-					LoginPageobjects.OTPtextbox.click();
-					Thread.sleep(3000);
-					LoginPageobjects.OTPtextbox.sendKeys("000000");
+					driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
+					}
+					
 					Thread.sleep(5000);
 					  } catch (Exception e) {
 						  
 						  
 					  }
-			
+			 
 			 
 			 long finish1 = System.currentTimeMillis();
 				long totalTime1 = finish1 - start1;
@@ -3197,7 +3257,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			long finish3 = System.currentTimeMillis();
 			long totalTime3 = finish3 - start3;
 			Thread.sleep(6500);
-			screenshot.screenshot85(driver, extentreport);
+			screenshot.screenshot113(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot113.png",
 					"SoleProprietorshipRegistration Bundle page Redirection").build());
@@ -3210,16 +3270,167 @@ public class GSTRegistration extends HomescreenPageobject {
 			long finish4 = System.currentTimeMillis();
 			long totalTime4 = finish4 - start4;
 			Thread.sleep(6500);
-			screenshot.screenshot85(driver, extentreport);
+			screenshot.screenshot114(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot114.png",
 					"Payment page Redirection").build());
 			test.log(Status.PASS, "Payment page Redirection Loadtime" + totalTime4);
 			sendStatusToGoogleChat("SoleProprietorshipRegistration Passed");
+			sendStatusToGoogleChat("Production Onboarding Automation Ended");
 			
-		} catch (Exception SoleProprietorshipRegistration) {
+			//----------------------------------------------------------------------------------------------------------@2nd flow (Bundle) after direct flow failure
+			
+		}catch (Exception e) {
+			
+			test.log(Status.PASS, "SoleProp Direct lead failed, Hence choosing Bundle Flow" + e);
+			sendStatusToGoogleChat("Sole prop - Chosen Bundle flow");
+			Thread.sleep(3000);
+			Robot robot = new Robot();
+			long start1 = System.currentTimeMillis();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//button[contains(text(),'Get Started')])[4]")));
+			WebElement element3001111 = driver.findElement(By.xpath("(//button[contains(text(),'Get Started')])[3]"));
+			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
+			executor3001111.executeScript("arguments[0].click();", element3001111);
+			long finish1 = System.currentTimeMillis();
+			long totalTime1 = finish1 - start1;
+			Thread.sleep(5000);
+			
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder='Email']")));	
+			WebElement findElement3 = driver.findElement(By.xpath("//input[@placeholder='Email']"));
+			
+			findElement3.sendKeys("shakthi" + Date11 + "@yopmail.com");
+			WebElement findElement2122 = driver
+					.findElement(By.xpath("//input[@placeholder='Mobile Number']"));
+			findElement2122.click();
+			findElement2122.sendKeys("91" + Date11);
+			Thread.sleep(4000);
+			driver.findElement(By.xpath("//input[@placeholder='City']")).sendKeys("chen");
+			Thread.sleep(8000);
+			driver.findElement(By.xpath("//li[contains(text(),'Chennai, Tamil Nadu, India')]")).click();
+			Thread.sleep(3000);
+			screenshot.screenshot175(driver, extentreport);
+			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot175.png",
+					"SoleProprietorshipRegistration Login page redirection").build());
+			test.log(Status.PASS, "SoleProprietorshipRegistration Login page Redirection Load time-" + totalTime1);
+			Thread.sleep(2500);
+			
+			
+			long start2 = System.currentTimeMillis();
+			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();
+			long finish2 = System.currentTimeMillis();
+			long totalTime2 = finish2 - start2;
+			Thread.sleep(5000);
+			screenshot.screenshot176(driver, extentreport);
+			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot176.png",
+					"SoleProprietorshipRegistration step1 redirection").build());
+			test.log(Status.PASS, "SoleProprietorshipRegistration Step1 Redirection Load time-" + totalTime2);
+			Thread.sleep(5000);
+			
+			
+			
+			
+			long start3 = System.currentTimeMillis();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),' Skip it for now')]")));
+			WebElement element30011112 = driver.findElement(By.xpath("//span[contains(text(),' Skip it for now')]"));
+			JavascriptExecutor executor30011112 = (JavascriptExecutor) driver;
+			executor30011112.executeScript("arguments[0].click();", element30011112);
+			Thread.sleep(3500);
+			long finish3 = System.currentTimeMillis();
+			long totalTime3 = finish3 - start3;
+			Thread.sleep(5000);
+			robot.keyPress(KeyEvent.VK_TAB);
+			robot.keyRelease(KeyEvent.VK_TAB);
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_SPACE);
+			robot.keyRelease(KeyEvent.VK_SPACE);
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			screenshot.screenshot178(driver, extentreport);
+			test.log(Status.PASS,
+					MediaEntityBuilder.createScreenCaptureFromPath("\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\"
+									+ Date1 + "\\Screenshot178.png", "SoleProprietorshipRegistration  Step2 Redirection").build());
+			test.log(Status.PASS, "SoleProprietorshipRegistration Step2 Redirection Load time-" + totalTime3);
+			Thread.sleep(5000);
+			
+			
+			
+			
+			long start4 = System.currentTimeMillis();
+			driver.findElement(By.xpath("(//p[contains(text(),'Next')])[1]")).click();
+			long finish4 = System.currentTimeMillis();
+			long totalTime4 = finish4 - start4;
+			Thread.sleep(6500);
+			screenshot.screenshot177(driver, extentreport);
+			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot177.png",
+					"SoleProprietorshipRegistration Pre-Bundle page Redirection").build());
+			test.log(Status.PASS, "SoleProprietorshipRegistration Pre-Bundle page Redirection Load time" + totalTime4);
+			Thread.sleep(5000);
+			
+			
+			
+			try {
+			long start5 = System.currentTimeMillis();
+			driver.findElement(By.xpath("//button[contains(text(),'Change plan')]")).click();
+			long finish5 = System.currentTimeMillis();
+			long totalTime5 = finish5 - start5;
+			Thread.sleep(6500);
+			screenshot.screenshot113(driver, extentreport);
+			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot113.png",
+					"SoleProprietorshipRegistration Pre-Bundle page Redirection").build());
+			test.log(Status.PASS, "SoleProprietorshipRegistration Pre-Bundle page Redirection Load time" + totalTime5);
+			Thread.sleep(5000);
+			}catch(Exception e2) {
+				
+				long start6 = System.currentTimeMillis();
+				driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[2]")).click();
+				long finish6 = System.currentTimeMillis();
+				long totalTime6 = finish6 - start6;
+				Thread.sleep(6500);
+				screenshot.screenshot114(driver, extentreport);
+				test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+						"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot114.png",
+						"Payment page Redirection").build());
+				test.log(Status.PASS, "Payment page Redirection Loadtime" + totalTime6);
+				sendStatusToGoogleChat("SoleProprietorshipRegistration Passed");
+					
+			}
+			
+			try {
+			
+			long start6 = System.currentTimeMillis();
+			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[2]")).click();
+			long finish6 = System.currentTimeMillis();
+			long totalTime6 = finish6 - start6;
+			Thread.sleep(6500);
+			screenshot.screenshot179(driver, extentreport);
+			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot179.png",
+					"Payment page Redirection").build());
+			test.log(Status.PASS, "Payment page Redirection Loadtime" + totalTime6);
+			sendStatusToGoogleChat("SoleProprietorshipRegistration Passed");
+			} catch (Exception e3) {
+				
+				sendStatusToGoogleChat("Production Onboarding Test Automation Ended");
+				
+			}
+			
+		}
+		
+		
+		
+		
+		}catch (Exception SoleProprietorshipRegistration) {
 			sendStatusToGoogleChat("SoleProprietorshipRegistration onboarding failed ---------"+SoleProprietorshipRegistration);
-			screenshot.screenshot86(driver, extentreport);
+			screenshot.screenshot115(driver, extentreport);
 			System.out.println(SoleProprietorshipRegistration);
 			test.log(Status.WARNING, SoleProprietorshipRegistration);
 			test.log(Status.FAIL,
@@ -3227,6 +3438,7 @@ public class GSTRegistration extends HomescreenPageobject {
 							.createScreenCaptureFromPath("\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\"
 									+ Date1 + "\\Screenshot115.png", "SoleProprietorshipRegistration Onboarding failed")
 							.build());
+			sendStatusToGoogleChat("Production Onboarding Test Automation Ended");
 		}
 	}
 	
@@ -3247,10 +3459,10 @@ public class GSTRegistration extends HomescreenPageobject {
 		try {
 			
 			long start = System.currentTimeMillis();
-			driver.get("https://qe.vakilsearch.com/shop-and-establishment-license");
+			driver.get("https://vakilsearch.com/shop-and-establishment-license");
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
-			screenshot.screenshot87(driver, extentreport);
+			screenshot.screenshot116(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot116.png",
 					"ShopandEstablishmentAct HomePage").build());
@@ -3290,7 +3502,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			
 			
 			long start1 = System.currentTimeMillis();
-			screenshot.screenshot88(driver, extentreport);
+			screenshot.screenshot117(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot117.png",
 					"LeadCreation").build());
@@ -3301,11 +3513,13 @@ public class GSTRegistration extends HomescreenPageobject {
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
 			Thread.sleep(5000);
+			
 			 try {
+					for (int i = 1; i < 7; i++) {
 					
-					LoginPageobjects.OTPtextbox.click();
-					Thread.sleep(3000);
-					LoginPageobjects.OTPtextbox.sendKeys("000000");
+					driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
+					}
+					
 					Thread.sleep(5000);
 					  } catch (Exception e) {
 						  
@@ -3314,7 +3528,7 @@ public class GSTRegistration extends HomescreenPageobject {
 	
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
-			screenshot.screenshot89(driver, extentreport);
+			screenshot.screenshot118(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot118.png",
 					"ShopandEstablishmentAct Step1 redirection").build());
@@ -3335,7 +3549,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			JavascriptExecutor executor30011 = (JavascriptExecutor) driver;
 			executor30011.executeScript("arguments[0].click();", element30011);
 			Thread.sleep(3000);
-			screenshot.screenshot89(driver, extentreport);
+			screenshot.screenshot119(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot119.png",
 					"ShopandEstablishmentAct Step2 redirection").build());
@@ -3350,7 +3564,8 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(8000);
 			long finish3 = System.currentTimeMillis();
 			long totalTime3 = finish3 - start3;
-			screenshot.screenshot89(driver, extentreport);
+			Thread.sleep(5000);
+			screenshot.screenshot120(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot120.png",
 					"ShopandEstablishmentAct Bundlepage redirection").build());
@@ -3364,7 +3579,8 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
 			long finish4= System.currentTimeMillis();
 			long totalTime4 = finish4 - start4;
-			screenshot.screenshot89(driver, extentreport);
+			Thread.sleep(5000);
+			screenshot.screenshot121(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot121.png",
 					"ShopandEstablishmentAct Payment page redirection").build());
@@ -3373,7 +3589,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			sendStatusToGoogleChat("ShopandEstablishmentAct Passed");
 		} catch (Exception ShopandEstablishmentAct) {
 			sendStatusToGoogleChat("ShopandEstablishmentAct onboarding failed ---------"+ShopandEstablishmentAct);
-			screenshot.screenshot90(driver, extentreport);
+			screenshot.screenshot122(driver, extentreport);
 			System.out.println(ShopandEstablishmentAct);
 			test.log(Status.WARNING, ShopandEstablishmentAct);
 			test.log(Status.FAIL,
@@ -3402,14 +3618,12 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.get("https://vakilsearch.com/company-registration/llp-registration");
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
-			screenshot.screenshot91(driver, extentreport);
+			screenshot.screenshot123(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot123.png",
 					"LLPPartnershipRegistration  HomePage").build());
 			test.log(Status.PASS, "LLPPartnershipRegistration  HomePage Loadtime" + totalTime);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@id='email'])[1]")));
-			System.out.println("Total Time for page load - " + totalTime);
-			test.log(Status.PASS, "Talk to CA page redirection" + totalTime);
 			Thread.sleep(3000);
 			// HelpdeskPageobject.GSTRegistration.click();
 			WebElement findElement2 = driver.findElement(By.xpath("(//input[@id='email'])[1]"));
@@ -3440,7 +3654,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("//li[contains(text(),'Chennai, Tamilnadu')]")).click();
 			Thread.sleep(3000);
 
-			screenshot.screenshot92(driver, extentreport);
+			screenshot.screenshot124(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot124.png",
 					"LeadCreation").build());
@@ -3453,18 +3667,20 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(6000);
 			long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
+			
 			 try {
+					for (int i = 1; i < 7; i++) {
 					
-					LoginPageobjects.OTPtextbox.click();
-					Thread.sleep(3000);
-					LoginPageobjects.OTPtextbox.sendKeys("000000");
+					driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
+					}
+					
 					Thread.sleep(5000);
 					  } catch (Exception e) {
 						  
 						  
 					  }
 			 
-			 screenshot.screenshot91(driver, extentreport);
+			 screenshot.screenshot125(driver, extentreport);
 				test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 						"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot125.png",
 						"LLP Step1 Redirection").build());
@@ -3496,7 +3712,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
 			
-			screenshot.screenshot91(driver, extentreport);
+			screenshot.screenshot126(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot126.png",
 					"LLP Step2 Redirection").build());
@@ -3510,14 +3726,14 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(3000);
 			long finish3 = System.currentTimeMillis();
 			long totalTime3 = finish3 - start3;
-            
-
-			screenshot.screenshot93(driver, extentreport);
+			screenshot.screenshot127(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot127.png",
 					"LLP Bundle page Redirection").build());
 			test.log(Status.PASS, "LLP SBundle page Loadtime" + totalTime3);
 			Thread.sleep(4000);
+			
+			
 			
 			
 			long start4 = System.currentTimeMillis();
@@ -3528,7 +3744,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			long totalTime4 = finish4 - start4;
 			System.out.println("Pament page Redirection " + totalTime4);
 			Thread.sleep(3500);
-			screenshot.screenshot93(driver, extentreport);
+			screenshot.screenshot128(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot128.png",
 					"Payment page Redirection").build());
@@ -3536,7 +3752,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			sendStatusToGoogleChat("LLPPartnershipRegistration Passed");
 		} catch (Exception LLPPartnershipRegistration) {
 			sendStatusToGoogleChat("LLPPartnershipRegistration onboarding failed ---------"+LLPPartnershipRegistration);
-			screenshot.screenshot94(driver, extentreport);
+			screenshot.screenshot129(driver, extentreport);
 			System.out.println(LLPPartnershipRegistration);
 			test.log(Status.WARNING, LLPPartnershipRegistration);
 			test.log(Status.FAIL,
@@ -3571,7 +3787,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("(//p[contains(text(),'Trademark')])[1]")).click();
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("(//a[contains(text(),'Respond to TM Objection')])[1]")).click();
-			screenshot.screenshot95(driver, extentreport);
+			screenshot.screenshot130(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot130.png",
 					"RespondtoTMObjection HomePage").build());
@@ -3612,7 +3828,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(3000);
 
 			long start1 = System.currentTimeMillis();
-			screenshot.screenshot96(driver, extentreport);
+			screenshot.screenshot131(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot131.png",
 					"LeadCreation").build());
@@ -3622,11 +3838,13 @@ public class GSTRegistration extends HomescreenPageobject {
 			executor300119.executeScript("arguments[0].click();", element300119);
 			Thread.sleep(4000);
 			
+			
 			 try {
+					for (int i = 1; i < 7; i++) {
 					
-					LoginPageobjects.OTPtextbox.click();
-					Thread.sleep(3000);
-					LoginPageobjects.OTPtextbox.sendKeys("000000");
+					driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
+					}
+					
 					Thread.sleep(5000);
 					  } catch (Exception e) {
 						  
@@ -3641,7 +3859,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			System.out.println("Total Time for page load - " + totalTime1);
 			Thread.sleep(6500);
 			test.log(Status.PASS, "Age of Business page redirection" + totalTime);
-			screenshot.screenshot97(driver, extentreport);
+			screenshot.screenshot132(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot132.png",
 					"Date selection").build());
@@ -3677,7 +3895,7 @@ public class GSTRegistration extends HomescreenPageobject {
 
 			long start11 = System.currentTimeMillis();
 
-			screenshot.screenshot98(driver, extentreport);
+			screenshot.screenshot133(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot133.png",
 					"payment verification").build());
@@ -3685,7 +3903,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
 			long finish11 = System.currentTimeMillis();
 			long totalTime11 = finish11 - start11;
-			screenshot.screenshot99(driver, extentreport);
+			screenshot.screenshot134(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
 					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot134.png",
 					"Cart page verification").build());
@@ -3696,7 +3914,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			sendStatusToGoogleChat("RespondtoTMObjection Passed");
 		} catch (Exception RespondtoTMObjection) {
 			sendStatusToGoogleChat("RespondtoTMObjection onboarding failed ---------"+RespondtoTMObjection);
-			screenshot.screenshot100(driver, extentreport);
+			screenshot.screenshot135(driver, extentreport);
 			System.out.println(RespondtoTMObjection);
 			test.log(Status.WARNING, RespondtoTMObjection);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
@@ -3728,9 +3946,9 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("(//p[contains(text(),'Patent')])[1]")).click();
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("(//a[contains(text(),'Patent Registration')])[1]")).click();
-			screenshot.screenshot101(driver, extentreport);
+			screenshot.screenshot136(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot135.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot136.png",
 					"PatentRegistration HomePage").build());
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@id='email'])[1]")));
 			long finish = System.currentTimeMillis();
@@ -3769,20 +3987,22 @@ public class GSTRegistration extends HomescreenPageobject {
 					.click();
 
 			long start1 = System.currentTimeMillis();
-			screenshot.screenshot102(driver, extentreport);
+			screenshot.screenshot137(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot136.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot137.png",
 					"LeadCreation").build());
 			WebElement element300119 = driver.findElement(By.xpath("(//button[contains(text(),'Get Started')])[1]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
 			Thread.sleep(3500);
 			
+			
 			 try {
+					for (int i = 1; i < 7; i++) {
 					
-					LoginPageobjects.OTPtextbox.click();
-					Thread.sleep(3000);
-					LoginPageobjects.OTPtextbox.sendKeys("000000");
+					driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
+					}
+					
 					Thread.sleep(5000);
 					  } catch (Exception e) {
 						  
@@ -3818,24 +4038,24 @@ public class GSTRegistration extends HomescreenPageobject {
 			System.out.println("Total Time for page load - " + totalTime1);
 			Thread.sleep(6500);
 			test.log(Status.PASS, "Age of Business page redirection" + totalTime);
-			screenshot.screenshot103(driver, extentreport);
+			screenshot.screenshot138(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot137.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot138png",
 					"Onboarding section").build());
 
 			long start11 = System.currentTimeMillis();
 
-			screenshot.screenshot104(driver, extentreport);
+			screenshot.screenshot139(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot138.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot139.png",
 					"payment verification").build());
 			Thread.sleep(2500);
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
 			long finish11 = System.currentTimeMillis();
 			long totalTime11 = finish11 - start11;
-			screenshot.screenshot105(driver, extentreport);
+			screenshot.screenshot140(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot139.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot140.png",
 					"Cart page verification").build());
 			System.out.println("Pament page Redirection " + totalTime11);
 			Thread.sleep(3500);
@@ -3844,11 +4064,11 @@ public class GSTRegistration extends HomescreenPageobject {
 			sendStatusToGoogleChat("PatentRegistration Passed");
 		} catch (Exception PatentRegistration) {
 			sendStatusToGoogleChat("PatentRegistration onboarding failed ---------"+PatentRegistration);
-			screenshot.screenshot106(driver, extentreport);
+			screenshot.screenshot141(driver, extentreport);
 			System.out.println(PatentRegistration);
 			test.log(Status.WARNING, PatentRegistration);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot140.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot141.png",
 					"PatentRegistration Onboarding failed").build());
 		}
 	}
@@ -3873,9 +4093,9 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("(//p[contains(text(),'Patent')])[1]")).click();
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("(//a[contains(text(),'Provisional Patent Application ')])[1]")).click();
-			screenshot.screenshot107(driver, extentreport);
+			screenshot.screenshot142(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot141.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot142.png",
 					"ProvisionalPatentRegistration HomePage").build());
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@id='email'])[1]")));
 			long finish = System.currentTimeMillis();
@@ -3914,20 +4134,22 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(5000);
 
 			long start1 = System.currentTimeMillis();
-			screenshot.screenshot108(driver, extentreport);
+			screenshot.screenshot143(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot142.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot143.png",
 					"LeadCreation").build());
 			WebElement element300119 = driver.findElement(By.xpath("(//button[contains(text(),'Get Started')])[1]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
 			Thread.sleep(4000);
 			
+			
 			 try {
+					for (int i = 1; i < 7; i++) {
 					
-					LoginPageobjects.OTPtextbox.click();
-					Thread.sleep(3000);
-					LoginPageobjects.OTPtextbox.sendKeys("000000");
+					driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
+					}
+					
 					Thread.sleep(5000);
 					  } catch (Exception e) {
 						  
@@ -3965,24 +4187,24 @@ public class GSTRegistration extends HomescreenPageobject {
 			System.out.println("Total Time for page load - " + totalTime1);
 			Thread.sleep(6500);
 			test.log(Status.PASS, "Age of Business page redirection" + totalTime);
-			screenshot.screenshot109(driver, extentreport);
+			screenshot.screenshot144(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot143.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot144.png",
 					"Onboarding section").build());
 
 			long start11 = System.currentTimeMillis();
 
-			screenshot.screenshot110(driver, extentreport);
+			screenshot.screenshot145(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot110.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot145.png",
 					"payment verification").build());
 			Thread.sleep(2500);
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
 			long finish11 = System.currentTimeMillis();
 			long totalTime11 = finish11 - start11;
-			screenshot.screenshot111(driver, extentreport);
+			screenshot.screenshot146(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot111.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot146.png",
 					"Cart page verification").build());
 			System.out.println("Pament page Redirection " + totalTime11);
 			Thread.sleep(3500);
@@ -3991,13 +4213,13 @@ public class GSTRegistration extends HomescreenPageobject {
 			sendStatusToGoogleChat("ProvisionalPatentRegistration Passed");
 		} catch (Exception ProvisionalPatentRegistration) {
 			sendStatusToGoogleChat("ProvisionalPatentRegistration onboarding failed ---------"+ProvisionalPatentRegistration);
-			screenshot.screenshot112(driver, extentreport);
+			screenshot.screenshot147(driver, extentreport);
 			System.out.println(ProvisionalPatentRegistration);
 			test.log(Status.WARNING, ProvisionalPatentRegistration);
 			test.log(Status.FAIL,
 					MediaEntityBuilder
 							.createScreenCaptureFromPath("\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\"
-									+ Date1 + "\\Screenshot112.png", "ProvisionalPatentRegistration Onboarding failed")
+									+ Date1 + "\\Screenshot147.png", "ProvisionalPatentRegistration Onboarding failed")
 							.build());
 		}
 	}
@@ -4023,9 +4245,9 @@ public class GSTRegistration extends HomescreenPageobject {
 			long totalTime = finish - start;
 			Robot robot = new Robot();
 
-			screenshot.screenshot113(driver, extentreport);
+			screenshot.screenshot148(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot113.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot148.png",
 					"OPC HomePage Redirection").build());
 			test.log(Status.PASS, "OPC Homepage Loadtime" + totalTime);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@id='email'])[1]")));
@@ -4059,9 +4281,9 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("//li[contains(text(),'Chennai, Tamilnadu')]")).click();
 			Thread.sleep(3000);
 
-			screenshot.screenshot114(driver, extentreport);
+			screenshot.screenshot149(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot114.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot149.png",
 					"LeadCreation").build());
 			
 			long start1 = System.currentTimeMillis();
@@ -4071,10 +4293,11 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(4000);
 			
 			 try {
+					for (int i = 1; i < 7; i++) {
 					
-					LoginPageobjects.OTPtextbox.click();
-					Thread.sleep(3000);
-					LoginPageobjects.OTPtextbox.sendKeys("000000");
+					driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
+					}
+					
 					Thread.sleep(5000);
 					  } catch (Exception e) {
 						  
@@ -4082,9 +4305,9 @@ public class GSTRegistration extends HomescreenPageobject {
 					  }
 			 long finish1 = System.currentTimeMillis();
 			long totalTime1 = finish1 - start1;
-			screenshot.screenshot115(driver, extentreport);
+			screenshot.screenshot150(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot115.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot150.png",
 					"OPC Step1 Redirection").build());
 			test.log(Status.PASS, "OPC Step1 Redirection Loadtime" + totalTime1);
 			
@@ -4095,11 +4318,15 @@ public class GSTRegistration extends HomescreenPageobject {
 			WebElement element3001111 = driver.findElement(By.xpath("//span[contains(text(),'Skip it for now')]"));
 			JavascriptExecutor executor3001111 = (JavascriptExecutor) driver;
 			executor3001111.executeScript("arguments[0].click();", element3001111);
-			Thread.sleep(3500);
+			Thread.sleep(4000);
 			 long finish2 = System.currentTimeMillis();
 			 long totalTime2 = finish2 - start2;
-			 
-			
+			 screenshot.screenshot151(driver, extentreport);
+		      test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
+						"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot151.png",
+						"OPC Step2 Redirection").build());
+			 test.log(Status.PASS, "OPC Step2 Redirection Loadtime" + totalTime2);
+			 Thread.sleep(3000);
 			robot.keyPress(KeyEvent.VK_TAB);
 			robot.keyRelease(KeyEvent.VK_TAB);
 			Thread.sleep(3000);
@@ -4111,11 +4338,7 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(3000);
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
-			screenshot.screenshot116(driver, extentreport);
-			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot116.png",
-					"OPC Step2 Redirection").build());
-			test.log(Status.PASS, "OPC Step2 Redirection Loadtime" + totalTime2);
+			
 			
 
 			
@@ -4125,9 +4348,9 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(5000);
 			long finish3 = System.currentTimeMillis();
 			long totalTime3 = finish3 - start3;
-			screenshot.screenshot117(driver, extentreport);
+			screenshot.screenshot152(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot117.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot152.png",
 					"OPC Bundle page redirection").build());
 			test.log(Status.PASS, "OPC Bundle page redirection Loadtime" + totalTime3);
 			Thread.sleep(2500);
@@ -4139,22 +4362,22 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(5000);
 			long finish4 = System.currentTimeMillis();
 			long totalTime4 = finish4 - start4;
-			screenshot.screenshot118(driver, extentreport);
+			screenshot.screenshot153(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot118.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot153.png",
 					"Payment page Redirection").build());
 			test.log(Status.PASS, "Payment page Redirection Loadtime" + totalTime4);
 			
 			sendStatusToGoogleChat("OnepersonCompany Passed");
 		} catch (Exception OPCRegistration) {
 			sendStatusToGoogleChat("OnepersonCompany onboarding failed ---------"+OPCRegistration);
-			screenshot.screenshot119(driver, extentreport);
+			screenshot.screenshot154(driver, extentreport);
 			System.out.println(OPCRegistration);
 			test.log(Status.WARNING, OPCRegistration);
 			test.log(Status.FAIL,
 					MediaEntityBuilder
 							.createScreenCaptureFromPath("\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\"
-									+ Date1 + "\\Screenshot119.png", "OPCRegistration Onboarding failed")
+									+ Date1 + "\\Screenshot154.png", "OPCRegistration Onboarding failed")
 							.build());
 		}
 	}
@@ -4182,9 +4405,9 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("(//p[contains(text(),'Patent')])[1]")).click();
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("(//a[contains(text(),'Indian Patent Search')])[1]")).click();
-			screenshot.screenshot116(driver, extentreport);
+			screenshot.screenshot155(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot116.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot155.png",
 					"PatentSearch HomePage").build());
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@id='email'])[1]")));
 			long finish = System.currentTimeMillis();
@@ -4223,19 +4446,21 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(5000);
 
 			long start1 = System.currentTimeMillis();
-			screenshot.screenshot117(driver, extentreport);
+			screenshot.screenshot156(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot117.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot156.png",
 					"LeadCreation").build());
 			WebElement element300119 = driver.findElement(By.xpath("(//button[contains(text(),'Get Started')])[1]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
 			Thread.sleep(3500);
+			
 			 try {
+					for (int i = 1; i < 7; i++) {
 					
-					LoginPageobjects.OTPtextbox.click();
-					Thread.sleep(3000);
-					LoginPageobjects.OTPtextbox.sendKeys("000000");
+					driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
+					}
+					
 					Thread.sleep(5000);
 					  } catch (Exception e) {
 						  
@@ -4271,24 +4496,24 @@ public class GSTRegistration extends HomescreenPageobject {
 			System.out.println("Total Time for page load - " + totalTime1);
 			Thread.sleep(6500);
 			test.log(Status.PASS, "Age of Business page redirection" + totalTime);
-			screenshot.screenshot118(driver, extentreport);
+			screenshot.screenshot157(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot118.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot157.png",
 					"Onboarding section").build());
 
 			long start11 = System.currentTimeMillis();
 
-			screenshot.screenshot119(driver, extentreport);
+			screenshot.screenshot158(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot119.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot158.png",
 					"payment verification").build());
 			Thread.sleep(2500);
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
 			long finish11 = System.currentTimeMillis();
 			long totalTime11 = finish11 - start11;
-			screenshot.screenshot120(driver, extentreport);
+			screenshot.screenshot159(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot120.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot159.png",
 					"Cart page verification").build());
 			System.out.println("Pament page Redirection " + totalTime11);
 			Thread.sleep(3500);
@@ -4297,11 +4522,11 @@ public class GSTRegistration extends HomescreenPageobject {
 			sendStatusToGoogleChat("PatentSearch Passed");
 		} catch (Exception PatentSearch) {
 			sendStatusToGoogleChat("PatentSearch onboarding failed ---------"+PatentSearch);
-			screenshot.screenshot121(driver, extentreport);
+			screenshot.screenshot160(driver, extentreport);
 			System.out.println(PatentSearch);
 			test.log(Status.WARNING, PatentSearch);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot121.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot160.png",
 					"PatentSearch Onboarding failed").build());
 		}
 
@@ -4324,13 +4549,13 @@ public class GSTRegistration extends HomescreenPageobject {
 			
 
 			long start = System.currentTimeMillis();
-			driver.get("https://qe.vakilsearch.com/company-registration/partnership-firm");
+			driver.get("https://vakilsearch.com/company-registration/partnership-firm");
 			long finish = System.currentTimeMillis();
 			long totalTime = finish - start;
 			Robot robot = new Robot();
-			screenshot.screenshot122(driver, extentreport);
+			screenshot.screenshot161(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot122.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot161.png",
 					"PatnershipFirm  HomePage").build());
 			test.log(Status.PASS, "Partnership firm HomePage Loadtime " + totalTime);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@id='email'])[1]")));
@@ -4361,19 +4586,21 @@ public class GSTRegistration extends HomescreenPageobject {
 			
 			
 			long start2 = System.currentTimeMillis();
-			screenshot.screenshot123(driver, extentreport);
+			screenshot.screenshot162(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot123.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot162.png",
 					"LeadCreation").build());
 			WebElement element300119 = driver.findElement(By.xpath("(//button[contains(text(),'Get Started')])[1]"));
 			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
 			executor300119.executeScript("arguments[0].click();", element300119);
 			Thread.sleep(3500);
+			
 			 try {
+					for (int i = 1; i < 7; i++) {
 					
-					LoginPageobjects.OTPtextbox.click();
-					Thread.sleep(3000);
-					LoginPageobjects.OTPtextbox.sendKeys("000000");
+					driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
+					}
+					
 					Thread.sleep(5000);
 					  } catch (Exception e) {
 						  
@@ -4381,9 +4608,9 @@ public class GSTRegistration extends HomescreenPageobject {
 					  }
 				long finish2 = System.currentTimeMillis();
 				long totalTime2 = finish2 - start2;
-				screenshot.screenshot122(driver, extentreport);
+				screenshot.screenshot163(driver, extentreport);
 				test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-						"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot122.png",
+						"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot163.png",
 						"PatnershipFirm  Step 1 Rediection").build());
 				test.log(Status.PASS, "Partnership firm Step 1 Rediection Loadtime" + totalTime2);
 				
@@ -4399,9 +4626,9 @@ public class GSTRegistration extends HomescreenPageobject {
 			long totalTime3 = finish3 - start3;
 			driver.findElement(By.xpath("//input[@placeholder='Enter your partnership firm name']"))
 					.sendKeys("Testing");
-			screenshot.screenshot122(driver, extentreport);
+			screenshot.screenshot164(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot122.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot164.png",
 					"PatnershipFirm  Step 2 Rediection").build());
 			test.log(Status.PASS, "Partnership firm Step 2 Rediection Loadtime" + totalTime3);
 			
@@ -4412,9 +4639,9 @@ public class GSTRegistration extends HomescreenPageobject {
 			long finish4 = System.currentTimeMillis();
 			long totalTime4 = finish4 - start4;
 			driver.findElement(By.xpath("//input[@placeholder='Select option']")).sendKeys("Testing");
-			screenshot.screenshot122(driver, extentreport);
+			screenshot.screenshot165(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot122.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot165.png",
 					"PatnershipFirm  Step 3 Rediection").build());
 			test.log(Status.PASS, "Partnership firm Step 3 Rediection Loadtime" + totalTime4);
 			
@@ -4424,9 +4651,10 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(3500);
 			long finish5 = System.currentTimeMillis();
 			long totalTime5 = finish5 - start5;
-			screenshot.screenshot122(driver, extentreport);
+			Thread.sleep(5000);
+			screenshot.screenshot166(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot122.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot166.png",
 					"PatnershipFirm  Bundle page Rediection").build());
 			test.log(Status.PASS, "Partnership firm Bundle page Rediection Loadtime" + totalTime5);
 			Thread.sleep(3500);
@@ -4437,20 +4665,21 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")).click();
 			long finish6 = System.currentTimeMillis();
 			long totalTime6 = finish6 - start6;
-			screenshot.screenshot122(driver, extentreport);
+			Thread.sleep(5000);
+			screenshot.screenshot167(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot122.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot167.png",
 					"Pament page Redirection page Rediection").build());
 			test.log(Status.PASS, "Pament page Redirection " + totalTime6);
 			sendStatusToGoogleChat("PatnershipFirm Passed");
 			
 		} catch (Exception PatnershipFirm) {
 			sendStatusToGoogleChat("PatnershipFirm onboarding failed ---------"+PatnershipFirm);
-			screenshot.screenshot125(driver, extentreport);
+			screenshot.screenshot168(driver, extentreport);
 			System.out.println(PatnershipFirm);
 			test.log(Status.WARNING, PatnershipFirm);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot125.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot168.png",
 					"PatnershipFirm Onboarding failed").build());
 		}
 	}
@@ -4479,9 +4708,9 @@ public class GSTRegistration extends HomescreenPageobject {
 			driver.findElement(By.xpath("(//p[contains(text(),'Licenses & Registrations')])[1]")).click();
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("(//a[contains(text(),'MSME Registration')])[1]")).click();
-			screenshot.screenshot126(driver, extentreport);
+			screenshot.screenshot169(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot126.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot169.png",
 					"MSMERegistration HomePage").build());
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//input[@id='email'])[1]")));
 			long finish = System.currentTimeMillis();
@@ -4518,9 +4747,9 @@ public class GSTRegistration extends HomescreenPageobject {
 			Thread.sleep(3000);
 
 			long start1 = System.currentTimeMillis();
-			screenshot.screenshot127(driver, extentreport);
+			screenshot.screenshot170(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot127.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot170.png",
 					"LeadCreation").build());
 			try {
 			WebElement element300119 = driver.findElement(By.xpath("(//button[contains(text(),'Get Started')])[1]"));
@@ -4532,11 +4761,13 @@ public class GSTRegistration extends HomescreenPageobject {
 				}
 			Thread.sleep(4000);
 			
+			
 			 try {
+					for (int i = 1; i < 7; i++) {
 					
-					LoginPageobjects.OTPtextbox.click();
-					Thread.sleep(3000);
-					LoginPageobjects.OTPtextbox.sendKeys("000000");
+					driver.findElement(By.xpath("//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input["+i+"]")).sendKeys("0");
+					}
+					
 					Thread.sleep(5000);
 					  } catch (Exception e) {
 						  
@@ -4550,9 +4781,9 @@ public class GSTRegistration extends HomescreenPageobject {
 			System.out.println("Total Time for page load - " + totalTime1);
 			Thread.sleep(6500);
 			test.log(Status.PASS, "Age of Business page redirection" + totalTime);
-			screenshot.screenshot128(driver, extentreport);
+			screenshot.screenshot171(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot128.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot171.png",
 					"Date selection").build());
 			Thread.sleep(3000);
 			
@@ -4609,9 +4840,9 @@ public class GSTRegistration extends HomescreenPageobject {
 			executor3001114.executeScript("arguments[0].click();", element3001114);
 			Thread.sleep(1500);
 
-			screenshot.screenshot129(driver, extentreport);
+			screenshot.screenshot172(driver, extentreport);
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot129.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot172.png",
 					"OTP verification").build());
 			Thread.sleep(2500);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[contains(text(),'Proceed to pay')])[1]")));
@@ -4623,14 +4854,535 @@ public class GSTRegistration extends HomescreenPageobject {
 			sendStatusToGoogleChat("Onboarding Automation Ended");
 		} catch (Exception MSMERegistration) {
 			sendStatusToGoogleChat("MSMERegistration onboarding failed ---------"+MSMERegistration);
-			screenshot.screenshot130(driver, extentreport);
+			screenshot.screenshot173(driver, extentreport);
 			System.out.println(MSMERegistration);
 			test.log(Status.WARNING, MSMERegistration);
 			test.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(
-					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot130.png",
+					"\\\\14.140.167.188\\Vakilsearch\\VSWebPageAutomationTesting\\" + Date1 + "\\Screenshot173.png",
 					"MSMERegistration Onboarding failed").build());
 		}
 	}
+	
+	
+	//PVT self serve
+	
+	
+	public void Pvtselfserve(WebDriver driver)
+			throws IOException, InterruptedException, AWTException {
+		SimpleDateFormat dateFormat1PrivateLimited = new SimpleDateFormat("wwyyyyhhmm");
+		String Date11PrivateLimited = dateFormat1PrivateLimited.format(new Date());
+		Robot robot = new Robot();
+		sendStatusToGoogleChat("QE Automation for Self serve flow");
+		//------------------------------------------------------------------Get Started flow
+		
+		try {
+			
+			
+			sendStatusToGoogleChat("PVT Self serve Direct flow started");
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			Thread.sleep(3000);
+			driver.get("https://qe.vakilsearch.com/selfserve-company-registration");
+			Thread.sleep(5000);
+			
+			//-----------------------------------------T&C
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[contains(text(),'T&C')])[1]"))).click();
+			Thread.sleep(4000);
+			driver.findElement(By.xpath("(//img[@alt='close'])[2]")).click();
+			Thread.sleep(4000);
+			
+			
+			//-----------------------------------------Video
+			
+			driver.findElement(By.xpath("//img[@alt='banner']")).click();
+			Thread.sleep(4000);
+			driver.findElement(By.xpath("(//b[contains(text(),'x')])[1]")).click();
+			Thread.sleep(4000);
+			
+			//-----------------------------------------Get started
+			
+			
+			WebElement element300119 = driver.findElement(By.xpath("(//button[contains(text(),'Get Started')])[1]"));
+			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
+			executor300119.executeScript("arguments[0].click();", element300119);
+			
+			
+			//-------------------------------------------------Onboarding
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@class='styles_inputBox__RUknH']")));  //company name
+			driver.findElement(By.xpath("//input[@class='styles_inputBox__RUknH']")).click();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//input[@class='styles_inputBox__RUknH']")).sendKeys("Test");
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();
+			Thread.sleep(5000);
+			
+			
+			driver.findElement(By.xpath("//div[@class=' css-133ib9g-control']")).click();
+			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			Thread.sleep(4000);
+			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();
+			Thread.sleep(3000);
+			
+			
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder='Email']")));	
+			WebElement findElement3 = driver.findElement(By.xpath("//input[@placeholder='Email']"));
+			findElement3.sendKeys("shakthi" + Date11 + "@yopmail.com");
+			WebElement findElement2122 = driver
+					.findElement(By.xpath("//input[@placeholder='Mobile Number']"));
+			findElement2122.click();
+			findElement2122.sendKeys("8056016697" );
+			Thread.sleep(4000);
+			driver.findElement(By.xpath("//input[@placeholder='City/Pincode']")).sendKeys("chen");
+			Thread.sleep(8000);
+			driver.findElement(By.xpath("//li[contains(text(),'Chennai, Tamilnadu')]")).click();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();
+			
+			
+			driver.findElement(By.xpath("//button[contains(text(),'Send OTP')]")).click();
+			Thread.sleep(4000);
+			try {
+				for (int i = 1; i < 7; i++) {
+				
+				driver.findElement(By.xpath("//p[contains(text(),'Please enter the OTP sent to your mobile number')]/following-sibling::div[1]/child::div/child::div/child::input["+i+"]")).sendKeys("0");
+				}
+				
+				Thread.sleep(5000);
+				  } catch (Exception e) {
+					  
+					  Thread.sleep(5000); 
+				  }
+		 
+			driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
+			Thread.sleep(60000);
+			
+			//--------------------------------------------------------------------Bundle screen
+			
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Copy to unlock')]"))).click();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//img[@alt='close']")).click();
+			Thread.sleep(4000);
+			
+			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[2]")).click();
+			
+			sendStatusToGoogleChat("PVT Self serve Direct flow Passed");
+			Thread.sleep(3000);
+	         
+			
+			((JavascriptExecutor) driver).executeScript("window.open()");
+			 Set<String> windowHandles = driver.getWindowHandles();
+	            List<String> tabs = new ArrayList<String>(windowHandles);
+			 driver.switchTo().window(tabs.get(1));
+			Thread.sleep(5000);
+			
+			
+			
+			
+			
+			//-------------------------------------------Bundle flow
+			
+			
+			
+			
+			
+			
+			
+			sendStatusToGoogleChat("PVT Self serve Bundle flow started");
+			Thread.sleep(3000);
+			driver.get("https://qe.vakilsearch.com/selfserve-company-registration");
+			Thread.sleep(5000);
+			
+			
+			//--------------------View package
+			
+			driver.findElement(By.xpath("(//button[contains(text(),'View Package')])[1]")).click();
+			Thread.sleep(5000);
+			
+			
+			//---------------------Bundle packages
+			
+			driver.findElement(By.xpath("//p[contains(text(),'Click here to know more')]")).click();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("(//img[@alt='close'])[2]")).click();
+			Thread.sleep(3000);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='relative']"))).click();   
+			Thread.sleep(5000);
+			driver.findElement(By.xpath("(//button[contains(text(),'Get Started')])[6]")).click();
+			Thread.sleep(5000);
+			
+			//---------------------Onboarding- 2
+			
+		
+			
+			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();  //step1
+			Thread.sleep(6000);
+			
+			
+			
+			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();  //step2
+			Thread.sleep(5000);
+			
+			
+			
+			
+			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();  //step3
+			Thread.sleep(5000);
+			
+			driver.findElement(By.xpath("//button[contains(text(),'Send OTP')]")).click();  //otp screen
+			Thread.sleep(4000);
+			try {
+				for (int i = 1; i < 7; i++) {
+				
+				driver.findElement(By.xpath("//p[contains(text(),'Please enter the OTP sent to your mobile number')]/following-sibling::div[1]/child::div/child::div/child::input["+i+"]")).sendKeys("0");
+				}
+				
+				Thread.sleep(5000);
+				  } catch (Exception e) {
+					  
+					  Thread.sleep(5000); 
+				  }
+		 
+			driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
+			Thread.sleep(5000);
+			
+			
+			//-------------------------------------Pre-bundle
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Change plan')]")));
+			driver.findElement(By.xpath("//button[contains(text(),'Change plan')]")).click();
+			Thread.sleep(5000);
+			driver.navigate().back();
+			driver.navigate().back();
+			Thread.sleep(5000);
+			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();
+            Thread.sleep(5000);
+			sendStatusToGoogleChat("PVT Self serve Bundle flow Passed");
+			Thread.sleep(3000);
+			
+			
+			
+			
+			
+			
+		} catch (Exception e) {
+			
+			sendStatusToGoogleChat("PVT Self serve Failed" +  e);
+			
+			
+		}
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	//TM self serve
+	
+	
+	public void TMselfserve(WebDriver driver, String Username, String Mobilenumber, ExtentReports extentreport)throws InterruptedException, AWTException, IOException {
+		SimpleDateFormat dateFormat1TrademarkRegistration = new SimpleDateFormat("mmwwyyyyhhmm");
+		String Date1TrademarkRegistration = dateFormat1TrademarkRegistration.format(new Date());
+		Robot robot = new Robot();
+		test = extentreport.createTest("TM Self Serve");
+		
+		try {
+			
+			try {
+			sendStatusToGoogleChat("TM Self serve Direct flow started");
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			Thread.sleep(3000);
+			driver.get("https://qe.vakilsearch.com/selfserve-trademark-registration");
+			Thread.sleep(5000);
+			
+			//-----------------------------------------T&C
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[contains(text(), 'File your ™ in just 6 hours using our quick and secured platform')]/child::span"))).click();
+			Thread.sleep(4000);
+			driver.findElement(By.xpath("//button[contains(text(), 'Close')]")).click();
+			Thread.sleep(4000);
+			
+                //-----------------------------------------Video
+			
+			driver.findElement(By.xpath("//img[@alt='video banner']")).click();
+			Thread.sleep(4000);
+			driver.findElement(By.xpath("(//b[contains(text(),'x')])[2]")).click();
+			Thread.sleep(4000);
+			
+			
+			//----------------------------Why you need Ip expert
+			
+			driver.findElement(By.xpath("//p[contains(text(),'Why do you need an IP expert to file ™ in just 6 hrs?')]")).click();
+			Thread.sleep(4000);
+			driver.findElement(By.xpath("(//img[@alt='close'])[2]")).click();
+			Thread.sleep(4000);
+			
+			
+           //-----------------------------------------Get started
+			
+			
+			WebElement element300119 = driver.findElement(By.xpath("(//button[contains(text(),'Get Started')])[1]"));
+			JavascriptExecutor executor300119 = (JavascriptExecutor) driver;
+			executor300119.executeScript("arguments[0].click();", element300119);
+			
+			//------------------------------------------Onboarding
+			
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[@type='radio'])[2]"))).click();
+			Thread.sleep(5000);
+			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();
+			Thread.sleep(5000);
+			
+			robot.keyPress(KeyEvent.VK_TAB);
+			robot.keyRelease(KeyEvent.VK_TAB);
+			Thread.sleep(5000);
+			driver.findElement(By.xpath("//li[contains(text(),'Cosmetics Industry')]")).click();
+			Thread.sleep(5000);
+			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();
+			Thread.sleep(5000);
+			
+			try {
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder='Email']")));	
+			WebElement findElement3 = driver.findElement(By.xpath("//input[@placeholder='Email']"));
+			findElement3.sendKeys("shakthi" + Date11 + "@yopmail.com");
+			WebElement findElement2122 = driver
+					.findElement(By.xpath("//input[@placeholder='Mobile Number']"));
+			findElement2122.click();
+			findElement2122.sendKeys("91" +Date11 );
+			Thread.sleep(4000);
+			driver.findElement(By.xpath("//input[@placeholder='City/Pincode']")).sendKeys("chen");
+			Thread.sleep(8000);
+			driver.findElement(By.xpath("//li[contains(text(),'Chennai, Tamilnadu')]")).click();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();
+			}catch(Exception e) {
+				
+				
+				driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();
+				
+			}
+			
+			
+			
+			driver.findElement(By.xpath("//button[contains(text(),'Send OTP')]")).click();
+			Thread.sleep(4000);
+			try {
+				for (int i = 1; i < 7; i++) {
+				
+				driver.findElement(By.xpath("//p[contains(text(),'Please enter the OTP sent to your mobile number')]/following-sibling::div[1]/child::div/child::div/child::input["+i+"]")).sendKeys("0");
+				}
+				
+				Thread.sleep(5000);
+				  } catch (Exception e) {
+					  
+					  Thread.sleep(5000); 
+				  }
+		 
+			driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
+			Thread.sleep(60000);
+			
+			
+			
+             //--------------------------------------------------------------------Bundle screen
+			
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Copy to unlock')]"))).click();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//img[@alt='close']")).click();
+			Thread.sleep(4000);
+			driver.findElement(By.xpath("(//span[contains(text(),'Proceed to pay')])[2]")).click();
+			Thread.sleep(3000);
+			sendStatusToGoogleChat("TM Self serve Direct flow Passed");
+			Thread.sleep(5000);
+	         
+			
+			((JavascriptExecutor) driver).executeScript("window.open()");
+			 Set<String> windowHandles = driver.getWindowHandles();
+	            List<String> tabs = new ArrayList<String>(windowHandles);
+			 driver.switchTo().window(tabs.get(1));
+			Thread.sleep(5000);
+
+            }catch(Exception e) {
+            	((JavascriptExecutor) driver).executeScript("window.open()");
+   			 Set<String> windowHandles = driver.getWindowHandles();
+   	            List<String> tabs = new ArrayList<String>(windowHandles);
+   			 driver.switchTo().window(tabs.get(1));
+   			Thread.sleep(5000);
+            	sendStatusToGoogleChat("TM Self serve Direct flow Failed" + e);
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			//-------------------------------------------10% offer flow
+			
+			
+			
+			try {
+			sendStatusToGoogleChat("TM Self serve 10% offer flow started");
+			Thread.sleep(3000);
+			driver.get("https://qe.vakilsearch.com/selfserve-trademark-registration");
+			Thread.sleep(65000);
+			
+			driver.findElement(By.xpath("//button[contains(text(),'Avail and Proceed')]")).click();   //----------------------------10% offer
+			Thread.sleep(5000);
+			
+			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click(); //step1
+			Thread.sleep(5000);
+			
+			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click(); //step2
+			Thread.sleep(5000);
+			
+			driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();  //step3
+			Thread.sleep(5000);
+			
+			driver.findElement(By.xpath("//button[contains(text(),'Send OTP')]")).click();  //otp screen
+			Thread.sleep(4000);
+			try {
+				for (int i = 1; i < 7; i++) {
+				
+				driver.findElement(By.xpath("//p[contains(text(),'Please enter the OTP sent to your mobile number')]/following-sibling::div[1]/child::div/child::div/child::input["+i+"]")).sendKeys("0");
+				}
+				
+				Thread.sleep(5000);
+				  } catch (Exception e) {
+					  
+					  Thread.sleep(5000); 
+				  }
+		 
+			driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
+			Thread.sleep(5000);
+			
+			//Bundle page2
+			
+			
+			driver.findElement(By.xpath("//p[contains(text(),'Attorney-Led Registration')]")).click();
+			Thread.sleep(5000);		
+			driver.findElement(By.xpath("//span[contains(text(),'View details')]")).click();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//img[@alt='close']")).click();
+			Thread.sleep(5000);
+			driver.findElement(By.xpath("//span[contains(text(),'Proceed to pay')]")).click();
+			
+			
+			sendStatusToGoogleChat("TM Self serve 10% offer flow Passed");
+			Thread.sleep(3000);
+	         
+			
+			((JavascriptExecutor) driver).executeScript("window.open()");
+			 Set<String> windowHandles2 = driver.getWindowHandles();
+	            List<String> tabs2 = new ArrayList<String>(windowHandles2);
+			 driver.switchTo().window(tabs2.get(2));
+			Thread.sleep(5000);
+			
+			}catch(Exception e) {
+				((JavascriptExecutor) driver).executeScript("window.open()");
+				 Set<String> windowHandles2 = driver.getWindowHandles();
+		            List<String> tabs2 = new ArrayList<String>(windowHandles2);
+				 driver.switchTo().window(tabs2.get(2));
+				Thread.sleep(5000);
+				sendStatusToGoogleChat("TM Self serve 10% offer flow Failed" + e);
+				Thread.sleep(3000);
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			//---------------------------Bundle flow
+			   try {
+				WebDriverWait wait = new WebDriverWait(driver, 30);
+			    sendStatusToGoogleChat("TM Self serve Bundle flow started");
+			    Thread.sleep(3000);
+			    driver.get("https://qe.vakilsearch.com/selfserve-trademark-registration");
+			    Thread.sleep(5000);
+				driver.findElement(By.xpath("//p[contains(text(),'View pricing packages')]")).click();
+				Thread.sleep(5000);
+				WebElement element3001191 = driver.findElement(By.xpath("(//button[contains(text(),'Get Started')])[4]"));
+				JavascriptExecutor executor3001191 = (JavascriptExecutor) driver;
+				executor3001191.executeScript("arguments[0].click();", element3001191);
+				Thread.sleep(5000);
+				driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click(); //step1
+				Thread.sleep(5000);
+				
+				driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click(); //step2
+				Thread.sleep(5000);
+				
+				driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();  //step3
+				Thread.sleep(5000);
+				
+				driver.findElement(By.xpath("//button[contains(text(),'Send OTP')]")).click();  //otp screen
+				Thread.sleep(4000);
+				try {
+					for (int i = 1; i < 7; i++) {
+					
+					driver.findElement(By.xpath("//p[contains(text(),'Please enter the OTP sent to your mobile number')]/following-sibling::div[1]/child::div/child::div/child::input["+i+"]")).sendKeys("0");
+					}
+					
+					Thread.sleep(5000);
+					  } catch (Exception e) {
+						  
+						  Thread.sleep(5000); 
+					  }
+			 
+				driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
+				Thread.sleep(5000);
+				
+				
+				//Pre bundle
+				
+				
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Change plan')]")));
+				driver.findElement(By.xpath("//button[contains(text(),'Change plan')]")).click();
+				Thread.sleep(5000);
+				driver.navigate().back();
+				driver.navigate().back();
+				Thread.sleep(5000);
+				driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();
+	            Thread.sleep(5000);
+				sendStatusToGoogleChat("TM Self serve Bundle flow Passed");
+				Thread.sleep(3000);	
+			}catch(Exception e) {
+				
+				sendStatusToGoogleChat("TM Self serve Bundle flow Failed" + e);
+				Thread.sleep(3000);
+				
+			}
+			
+						
+			
+		}catch(Exception e) {
+			
+			sendStatusToGoogleChat("TM Self serve flow Failed" + e);
+	
+			
+		}
+		
+		sendStatusToGoogleChat("QE Automation for Self serve flow ended");	
+		
+	}
+	
+	
+	
+	
 	
 	
 	//Gchat status

@@ -25,7 +25,7 @@ public class LoginPageobjects extends HomescreenPageobject {
 	@FindBy(xpath = "//div[@class='react-switch-handle']")
 	public static WebElement whatsapptogleoff;
 	
-	@FindBy(xpath = "(//input[@inputmode='numeric'])[2]")
+	@FindBy(xpath = "//p[contains(text(),'OTP Verification')]/following-sibling::div[1]/child::input[1]")
 	public static WebElement OTPtextbox;
 	
 	@FindBy(xpath = "//input[@placeholder='Enter your company name']")
